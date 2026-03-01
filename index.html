@@ -921,6 +921,147 @@
     font-weight: 300;
   }
 
+  /* CRM MOCKUP STYLES */
+  .crm-mockup {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .crm-header {
+    background: #1a1f36;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #2d3748;
+  }
+
+  .crm-title {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .crm-actions {
+    display: flex;
+    gap: 6px;
+  }
+
+  .crm-btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #718096;
+    background: #2d3748;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .crm-btn.active {
+    background: #2563EB;
+    color: white;
+  }
+
+  .crm-body {
+    padding: 12px;
+    background: #f8fafc;
+  }
+
+  .crm-lead {
+    display: grid;
+    grid-template-columns: 2fr 80px 90px 60px;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .crm-lead:last-child {
+    border-bottom: none;
+  }
+
+  .lead-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lead-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #1a202c;
+  }
+
+  .lead-badge {
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    width: fit-content;
+  }
+
+  .lead-badge.client {
+    background: #e6fffa;
+    color: #00695c;
+  }
+
+  .lead-badge.prospect {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .lead-status {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .lead-status.mandate-signed {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .lead-status.won {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .lead-status.message-left {
+    background: #fed7aa;
+    color: #9a3412;
+  }
+
+  .lead-status.visit-planned {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .lead-budget {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #475569;
+    text-align: right;
+  }
+
+  .lead-score {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #1a202c;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
   /* PRODUCTS SECTION */
   .products-section { padding: 100px 2rem; }
 
@@ -1697,9 +1838,50 @@
       gap: 2rem;
     }
     
-    .btn-product {
-      width: 100%;
-      justify-content: center;
+    .crm-mockup {
+      border-radius: 8px;
+    }
+    
+    .crm-header {
+      padding: 10px 12px;
+    }
+    
+    .crm-title {
+      font-size: 0.65rem;
+    }
+    
+    .crm-body {
+      padding: 8px;
+    }
+    
+    .crm-lead {
+      grid-template-columns: 1.5fr 60px 70px 50px;
+      gap: 6px;
+      padding: 6px 0;
+      font-size: 0.6rem;
+    }
+    
+    .lead-name {
+      font-size: 0.65rem;
+    }
+    
+    .lead-badge {
+      font-size: 0.5rem;
+      padding: 1px 4px;
+    }
+    
+    .lead-status {
+      font-size: 0.55rem;
+      padding: 2px 6px;
+    }
+    
+    .lead-budget {
+      font-size: 0.55rem;
+    }
+    
+    .lead-score {
+      font-size: 0.55rem;
+      padding: 1px 4px;
     }
   }
 
@@ -1762,9 +1944,7 @@
       <span class="highlight">la performance commerciale B2B.</span>
     </h1>
 
-    <p class="hero-sub">
-      NexaPro conçoit des solutions intelligentes pour automatiser, qualifier et accélérer la croissance des équipes commerciales.
-    </p>
+    <p class="hero-sub">NexaPro édite LeadQualif, un CRM intelligent pour les équipes commerciales immobilières et B2B. Pipeline, scoring IA, génération de documents automatique.</p>
 
     <div class="hero-actions">
       <a href="#products" class="btn-hero">
@@ -1803,6 +1983,7 @@
     <div class="reveal">
       <span class="section-tag">Notre vision</span>
       <h2>La performance commerciale<br>ne devrait pas être complexe.</h2>
+      <p class="section-sub">Notre philosophie : simplifier la performance commerciale avec l'intelligence artificielle. Notre premier produit, LeadQualif, est déjà utilisé par des équipes immobilières et B2B pour gérer leur pipeline et générer leurs documents commerciaux automatiquement.</p>
       <p class="section-sub">Nous croyons que les meilleures équipes commerciales méritent des outils à leur hauteur — simples, puissants et intelligents.</p>
     </div>
 
@@ -1857,56 +2038,82 @@
       <div class="product-card flagship">
         <div class="product-status status-live">
           <div class="status-dot"></div>
-          <span>Disponible</span>
+          <span>Disponible maintenant</span>
         </div>
         <div class="product-content">
           <div class="product-name">LeadQualif</div>
-          <div class="product-tagline">Qualification IA et automatisation commerciale</div>
+          <div class="product-tagline">CRM intelligent avec scoring IA et génération de documents</div>
           <div class="product-desc">
-            Notre solution flagship qui analyse, qualifie et distribue automatiquement vos leads les plus prometteurs.
+            LeadQualif est un CRM complet pour les équipes commerciales immobilières et B2B. Gérez votre pipeline, qualifiez vos leads par IA, générez automatiquement vos devis, mandats et contrats.
           </div>
           <div class="product-features">
             <div class="pf-item">
               <span class="pf-check">✓</span>
-              <span>Scoring IA avancé</span>
+              <span>Pipeline leads en vue Kanban ou Liste avec scoring IA</span>
             </div>
             <div class="pf-item">
               <span class="pf-check">✓</span>
-              <span>Automatisation du pipeline</span>
+              <span>Génération automatique de documents (devis, mandats, contrats)</span>
             </div>
             <div class="pf-item">
               <span class="pf-check">✓</span>
-              <span>Analytics temps réel</span>
+              <span>Dashboard analytics : score moyen IA, taux de transformation, commissions</span>
             </div>
             <div class="pf-item">
               <span class="pf-check">✓</span>
-              <span>Intégrations CRM</span>
+              <span>Qualification intelligente avec score de 0 à 100 par lead</span>
             </div>
           </div>
-          <a href="/leadqualif" class="btn-product">
+          <a href="https://www.leadqualif.com" class="btn-product">
             Découvrir LeadQualif
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
         <div class="product-visual">
-          <div class="product-mockup">
-            <div class="pv-header">
-              <div class="pv-dot"></div>
-              <div class="pv-dot"></div>
-              <div class="pv-dot"></div>
+          <div class="crm-mockup">
+            <div class="crm-header">
+              <div class="crm-title">Pipeline · 7 leads · 1 317 200 €</div>
+              <div class="crm-actions">
+                <div class="crm-btn">Kanban</div>
+                <div class="crm-btn active">Liste</div>
+              </div>
             </div>
-            <div class="pv-body">
-              <div class="pv-row">
-                <span class="pv-lead">TechCorp SAS</span>
-                <span class="pv-score score-hot">92/100</span>
+            <div class="crm-body">
+              <div class="crm-lead">
+                <div class="lead-info">
+                  <div class="lead-name">Immobilière SARL Martin</div>
+                  <div class="lead-badge client">Client</div>
+                </div>
+                <div class="lead-status mandate-signed">Mandat signé</div>
+                <div class="lead-budget">450 000 €</div>
+                <div class="lead-score">92/100</div>
               </div>
-              <div class="pv-row">
-                <span class="pv-lead">InnovStart</span>
-                <span class="pv-score score-warm">78/100</span>
+              <div class="crm-lead">
+                <div class="lead-info">
+                  <div class="lead-name">Dupont Construction</div>
+                  <div class="lead-badge prospect">Prospect</div>
+                </div>
+                <div class="lead-status won">Gagné</div>
+                <div class="lead-budget">280 000 €</div>
+                <div class="lead-score">78/100</div>
               </div>
-              <div class="pv-row">
-                <span class="pv-lead">B2B Experts</span>
-                <span class="pv-score score-cold">45/100</span>
+              <div class="crm-lead">
+                <div class="lead-info">
+                  <div class="lead-name">Agence Premium</div>
+                  <div class="lead-badge client">Client</div>
+                </div>
+                <div class="lead-status message-left">Message laissé</div>
+                <div class="lead-budget">320 000 €</div>
+                <div class="lead-score">65/100</div>
+              </div>
+              <div class="crm-lead">
+                <div class="lead-info">
+                  <div class="lead-name">Investissements Durables</div>
+                  <div class="lead-badge prospect">Prospect</div>
+                </div>
+                <div class="lead-status visit-planned">Visite planifiée</div>
+                <div class="lead-budget">180 000 €</div>
+                <div class="lead-score">45/100</div>
               </div>
             </div>
           </div>
@@ -1953,7 +2160,7 @@
       <div class="mission-numbers">
         <div class="m-stat">
           <span class="m-stat-num">2024</span>
-          <span class="m-stat-label">Année de fondation</span>
+          <span class="m-stat-label">CRM immobilier & B2B</span>
         </div>
         <div class="m-stat">
           <span class="m-stat-num">2400+</span>
