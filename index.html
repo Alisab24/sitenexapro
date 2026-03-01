@@ -170,6 +170,91 @@
     transform: translateY(-1px);
   }
 
+  /* Mobile Menu */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #07090F;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu-link {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu-link:hover {
+    color: var(--blue);
+  }
+
+  .mobile-menu-cta {
+    margin-top: 1rem;
+    padding: 12px 32px;
+    font-size: 1rem;
+  }
+
   /* TRUST BAR */
   .trust-bar {
     display: flex;
@@ -1918,6 +2003,173 @@
     }
     
   }
+
+  /* TABLETTE */
+  @media (max-width: 1024px) {
+    .vision-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .vision-visual {
+      display: none;
+    }
+    
+    .mission-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .mission-numbers {
+      order: -1;
+    }
+    
+    .contact-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .contact-left {
+      order: -1;
+    }
+    
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* MOBILE LARGE */
+  @media (max-width: 768px) {
+    /* Navbar */
+    .nav-links {
+      display: none;
+    }
+    
+    .nav-cta {
+      display: none;
+    }
+    
+    .mobile-menu-btn {
+      display: flex;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 100px 1.2rem 60px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2rem, 8vw, 2.8rem);
+      letter-spacing: -1px;
+    }
+    
+    .hero-subtitle {
+      font-size: 0.95rem;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .hero-cta .btn {
+      width: 100%;
+    }
+    
+    .trust-bar {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      font-size: 0.75rem;
+    }
+    
+    /* Vision */
+    .vision-piliers {
+      gap: 1rem;
+    }
+    
+    .pilier-card {
+      padding: 18px;
+    }
+    
+    /* Products */
+    .product-flagship {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .product-mockup {
+      font-size: 0.7rem;
+    }
+    
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .product-cta {
+      flex-direction: column;
+    }
+    
+    /* Mission */
+    .mission-numbers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .m-stat-num {
+      font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+    
+    /* Contact */
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+      padding: 28px;
+    }
+    
+    /* Footer */
+    .footer-top {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.8rem;
+    }
+    
+    /* Global */
+    .section-inner {
+      padding: 0 1.2rem;
+    }
+    
+    body {
+      font-size: 14px;
+    }
+  }
+
+  /* PETIT MOBILE */
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: clamp(1.8rem, 9vw, 2.5rem);
+    }
+    
+    .trust-bar {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .mission-numbers {
+      grid-template-columns: 1fr;
+    }
+    
+    .btn {
+      min-height: 44px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1939,7 +2191,26 @@
   <div class="nav-cta">
     <button class="btn-primary">Nous contacter</button>
   </div>
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
 </nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-content">
+    <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+    <div class="mobile-menu-nav">
+      <a href="#vision" class="mobile-menu-link">Vision</a>
+      <a href="#products" class="mobile-menu-link">Produits</a>
+      <a href="#mission" class="mobile-menu-link">Mission</a>
+      <a href="#contact" class="mobile-menu-link">Contact</a>
+      <button class="btn-primary mobile-menu-cta">Nous contacter</button>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -2525,6 +2796,42 @@
       if (el) el.textContent = fallbackValues[id];
     });
   }
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+  function openMobileMenu() {
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+  }
+
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+  }
+
+  // Close menu when clicking links
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  // Close menu when clicking outside
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      closeMobileMenu();
+    }
+  });
 
 </script>
 
