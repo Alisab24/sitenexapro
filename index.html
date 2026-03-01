@@ -766,6 +766,21 @@
   }
 
   /* VISION SECTION */
+  .mission-section {
+    padding: 100px 2rem;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transform: translateY(0);
+    transition: transform 0.1s ease-out;
+  }
+
   .vision-section {
     padding: 100px 2rem;
     background: var(--bg2);
@@ -1333,15 +1348,46 @@
 
   .m-stat-num {
     font-family: 'Syne', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: var(--white);
-    line-height: 1;
+    color: var(--text);
     display: block;
-    background: linear-gradient(135deg, var(--white) 40%, var(--blue-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+  }
+
+  .m-stat-num.counting {
+    color: rgba(255, 255, 255, 0.6);
+    transform: scale(0.95);
+  }
+
+  .m-stat-num.complete {
+    color: var(--text);
+    transform: scale(1);
+  }
+
+  .m-stat-num::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 1.2em;
+    background: var(--text);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .m-stat-num.counting::after {
+    opacity: 0.6;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 0.6; }
+    51%, 100% { opacity: 0; }
   }
 
   .m-stat-label {
@@ -2159,19 +2205,19 @@
     <div class="mission-layout">
       <div class="mission-numbers">
         <div class="m-stat">
-          <span class="m-stat-num">2024</span>
+          <span class="m-stat-num" id="counter-2024">2024</span>
           <span class="m-stat-label">CRM immobilier & B2B</span>
         </div>
         <div class="m-stat">
-          <span class="m-stat-num">2400+</span>
+          <span class="m-stat-num" id="counter-2400">2400+</span>
           <span class="m-stat-label">Équipes accompagnées</span>
         </div>
         <div class="m-stat">
-          <span class="m-stat-num">€4.2M</span>
+          <span class="m-stat-num" id="counter-4m">€4.2M</span>
           <span class="m-stat-label">De pipeline généré</span>
         </div>
         <div class="m-stat">
-          <span class="m-stat-num">98%</span>
+          <span class="m-stat-num" id="counter-98">98%</span>
           <span class="m-stat-label">Satisfaction client</span>
         </div>
       </div>
@@ -2451,6 +2497,108 @@
 
   // Make function global
   window.handleSubmit = handleSubmit;
+
+  // Counter animations for mission section
+  function animateCounter(element, start, end, duration, suffix, prefix, decimals = 0) {
+    let startTime = null;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const current = start + (end - start) * eased;
+      element.textContent = prefix + (decimals > 0 ? current.toFixed(decimals) : Math.floor(current)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Mission section counter observer
+  const missionSection = document.getElementById('mission');
+  if (missionSection) {
+    const counter2024 = document.getElementById('counter-2024');
+    const counter2400 = document.getElementById('counter-2400');
+    const counter4m = document.getElementById('counter-4m');
+    const counter98 = document.getElementById('counter-98');
+
+    const missionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add counting class for visual effects
+          [counter2024, counter2400, counter4m, counter98].forEach(el => {
+            if (el) el.classList.add('counting');
+          });
+
+          // Start counters with stagger
+          setTimeout(() => {
+            if (counter2024) {
+              animateCounter(counter2024, 2020, 2024, 2000, '', '', 0);
+              setTimeout(() => {
+                counter2024.classList.remove('counting');
+                counter2024.classList.add('complete');
+              }, 2000);
+            }
+          }, 0);
+
+          setTimeout(() => {
+            if (counter2400) {
+              animateCounter(counter2400, 0, 2400, 2000, '+', '', 0);
+              setTimeout(() => {
+                counter2400.classList.remove('counting');
+                counter2400.classList.add('complete');
+              }, 2000);
+            }
+          }, 150);
+
+          setTimeout(() => {
+            if (counter4m) {
+              animateCounter(counter4m, 0, 4.2, 2000, 'M', '€', 1);
+              setTimeout(() => {
+                counter4m.classList.remove('counting');
+                counter4m.classList.add('complete');
+              }, 2000);
+            }
+          }, 300);
+
+          setTimeout(() => {
+            if (counter98) {
+              animateCounter(counter98, 0, 98, 2000, '%', '', 0);
+              setTimeout(() => {
+                counter98.classList.remove('counting');
+                counter98.classList.add('complete');
+              }, 2000);
+            }
+          }, 450);
+
+          missionObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    missionObserver.observe(missionSection);
+  }
+
+  // Parallax effect for mission section
+  let ticking = false;
+  function updateParallax() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const missionNumbers = document.querySelector('.mission-numbers');
+        if (missionNumbers && missionSection) {
+          const rect = missionSection.getBoundingClientRect();
+          if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            const parallaxOffset = scrolled * 0.3;
+            missionNumbers.style.transform = `translateY(${parallaxOffset}px)`;
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', updateParallax);
+
 </script>
 
 </body>
