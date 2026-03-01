@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadQualif — CRM Immobilier avec Scoring IA et Génération de Documents</title>
+<meta name="description" content="LeadQualif est le CRM pour les équipes commerciales immobilières et B2B. Pipeline intelligent, scoring IA automatique, génération de documents (devis, mandats, contrats).">
+<meta property="og:title" content="LeadQualif — CRM Immobilier avec Scoring IA">
+<meta property="og:description" content="Pipeline commercial, scoring IA et génération de documents en une seule plateforme.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='100' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --blue-glow: rgba(37, 99, 235, 0.35);
+    --bg: #f8fafc;
+    --bg2: #f1f5f9;
+    --bg3: #e2e8f0;
+    --surface: #ffffff;
+    --surface2: #f8fafc;
+    --border: #e2e8f0;
+    --border2: #cbd5e1;
+    --text: #1a202c;
+    --text2: #475569;
+    --text3: #718096;
+    --white: #FFFFFF;
+    --sidebar: #1a1f36;
+    --sidebar-dark: #0f172a;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--blue);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+  }
+
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .logo-text span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-link {
+    color: var(--text2);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover { color: var(--blue); }
+
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-light);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 140px 2rem 100px;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .hero-sub {
+    font-size: 1.2rem;
+    color: var(--text2);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-hero {
+    background: var(--blue);
+    color: white;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-hero:hover {
+    background: var(--blue-light);
+    box-shadow: 0 6px 28px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .btn-outline:hover {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* FEATURES */
+  .features-section {
+    padding: 100px 2rem;
+    background: var(--bg);
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .feature-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .feature-card:hover::before { opacity: 1; }
+
+  .feature-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--bg2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--blue);
+  }
+
+  .feature-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .feature-desc {
+    font-size: 1rem;
+    color: var(--text2);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* HOW IT WORKS */
+  .how-section {
+    padding: 100px 2rem;
+    background: var(--surface);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .step-card {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+  }
+
+  .step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .step-desc {
+    font-size: 1rem;
+    color: var(--text2);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* MOCKUP */
+  .mockup-section {
+    padding: 100px 2rem;
+    background: var(--bg);
+  }
+
+  .mockup-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .app-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    height: 600px;
+  }
+
+  .sidebar {
+    background: var(--sidebar);
+    padding: 1.5rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .sidebar-logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+  }
+
+  .sidebar-logo-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: white;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .sidebar-item:hover {
+    background: rgba(37, 99, 235, 0.1);
+    color: white;
+  }
+
+  .sidebar-item.active {
+    background: var(--blue);
+    color: white;
+  }
+
+  .sidebar-icon {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+  }
+
+  .main-content {
+    background: var(--bg2);
+    padding: 1.5rem;
+  }
+
+  .content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .content-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .content-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .view-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .view-btn.active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+  }
+
+  .add-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .add-btn:hover {
+    background: var(--blue-light);
+  }
+
+  .pipeline-table {
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pipeline-header {
+    display: grid;
+    grid-template-columns: 2fr 120px 120px 100px 100px 100px 120px;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg3);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pipeline-row {
+    display: grid;
+    grid-template-columns: 2fr 120px 120px 100px 100px 100px 120px;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .pipeline-row:hover {
+    background: var(--bg2);
+  }
+
+  .pipeline-row:last-child {
+    border-bottom: none;
+  }
+
+  .cell-name {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .cell-role {
+    font-size: 0.85rem;
+  color: var(--text2);
+  }
+
+  .cell-email {
+    font-size: 0.85rem;
+    color: var(--text3);
+  }
+
+  .cell-type {
+    font-size: 0.85rem;
+    color: var(--text2);
+  }
+
+  .status-badge {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .status-signed {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .status-won {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  .status-message {
+    background: #fed7aa;
+    color: #9a3412;
+  }
+
+  .status-document {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .cell-budget {
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+  }
+
+  .cell-source {
+    font-size: 0.8rem;
+    color: var(--text3);
+  }
+
+  .cell-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .action-btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .action-btn:hover {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+  }
+
+  /* PRICING */
+  .pricing-section {
+    padding: 100px 2rem;
+    background: var(--surface);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .pricing-card.featured {
+    border-color: var(--blue);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+    transform: scale(1.02);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+
+  .pricing-plan {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .pricing-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-desc {
+    font-size: 0.9rem;
+    color: var(--text2);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+  .pricing-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-features li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--text2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .check-icon {
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  .pricing-btn {
+    width: 100%;
+    background: var(--blue);
+    color: white;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .pricing-btn:hover {
+    background: var(--blue-light);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--sidebar);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-link {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: white; }
+
+  .footer-copyright {
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .features-grid, .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 100px 1rem 80px;
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .btn-hero, .btn-outline {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .app-layout {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+    
+    .sidebar {
+      display: none;
+    }
+    
+    .pipeline-header, .pipeline-row {
+      grid-template-columns: 1.5fr 80px 70px 60px 80px;
+      gap: 0.5rem;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.7rem;
+    }
+    
+    .cell-actions {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-inner {
+      padding: 0 1rem;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero-sub {
+      font-size: 1rem;
+    }
+    
+    .feature-card {
+      padding: 1.5rem;
+    }
+    
+    .step-card {
+      padding: 1.5rem;
+    }
+    
+    .pipeline-header, .pipeline-row {
+      grid-template-columns: 1fr 60px 60px 50px 60px;
+      font-size: 0.65rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">L</div>
+    <span class="logo-text">Lead<span>Qualif</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#features" class="nav-link">Fonctionnalités</a>
+    <a href="#how" class="nav-link">Comment ça marche</a>
+    <a href="#pricing" class="nav-link">Tarifs</a>
+    <a href="https://www.leadqualif.com" class="btn-primary">Essayer gratuitement</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Le CRM qui qualifie vos leads et génère vos documents automatiquement.</h1>
+    <p class="hero-sub">LeadQualif combine pipeline commercial, scoring IA et génération de documents (devis, mandats, contrats) en une seule plateforme simple.</p>
+    <div class="hero-actions">
+      <a href="https://www.leadqualif.com" class="btn-hero">
+        Essayer gratuitement
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#mockup" class="btn-outline">Voir la démo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Fonctionnalités</span>
+      <h2>Tout ce dont vous avez besoin<br>pour performer en immobilier</h2>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Pipeline Intelligent</div>
+        <div class="feature-desc">Vue Kanban ou Liste. Tous vos leads centralisés avec statuts en temps réel : Mandat signé, Gagné, Offre en cours, Visite planifiée, Message laissé.</div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Scoring IA</div>
+        <div class="feature-desc">Chaque lead reçoit automatiquement un score de qualification de 0 à 100. Concentrez vos efforts sur les leads chauds (Score ≥ 70). Score moyen actuel de nos clients : 68%.</div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <div class="feature-title">Génération de Documents</div>
+        <div class="feature-desc">Générez en 1 clic vos devis, mandats et contrats directement depuis le lead. Numérotation automatique, historique complet, téléchargement PDF.</div>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Analytics & Performance</div>
+        <div class="feature-desc">Dashboard en temps réel : leads par mois, commission totale identifiée, taux de transformation, répartition par statut. Toutes vos métriques en un coup d'œil.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Comment ça marche</span>
+      <h2>Simple en 3 étapes</h2>
+    </div>
+    
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-title">Ajoutez vos leads</div>
+        <div class="step-desc">via formulaire web IA ou manuellement</div>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-title">L'IA les qualifie</div>
+        <div class="step-desc">score automatique sur intention d'achat et profil</div>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-title">Closez et documentez</div>
+        <div class="step-desc">générez vos documents en 1 clic depuis le pipeline</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUP -->
+<section class="mockup-section" id="mockup">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Démo</span>
+      <h2>L'interface LeadQualif<br>en conditions réelles</h2>
+    </div>
+    
+    <div class="mockup-container">
+      <div class="app-layout">
+        <div class="sidebar">
+          <div class="sidebar-logo">
+            <div class="sidebar-logo-icon">L</div>
+            <span class="sidebar-logo-text">LeadQualif</span>
+          </div>
+          
+          <div class="sidebar-nav">
+            <a href="#" class="sidebar-item active">
+              <span class="sidebar-icon">📊</span>
+              <span>Dashboard</span>
+            </a>
+            <a href="#" class="sidebar-item">
+              <span class="sidebar-icon">📋</span>
+              <span>Pipeline</span>
+            </a>
+            <a href="#" class="sidebar-item">
+              <span class="sidebar-icon">📄</span>
+              <span>Documents</span>
+            </a>
+            <a href="#" class="sidebar-item">
+              <span class="sidebar-icon">📈</span>
+              <span>Analytics</span>
+            </a>
+            <a href="#" class="sidebar-item">
+              <span class="sidebar-icon">🔗</span>
+              <span>Intégrations</span>
+            </a>
+            <a href="#" class="sidebar-item">
+              <span class="sidebar-icon">⚙️</span>
+              <span>Settings</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="main-content">
+          <div class="content-header">
+            <div class="content-title">Pipeline · 7 leads · 1 317 200 €</div>
+            <div class="content-actions">
+              <button class="view-btn active">Liste</button>
+              <button class="view-btn">Kanban</button>
+              <button class="add-btn">+ Nouveau lead</button>
+            </div>
+          </div>
+          
+          <div class="pipeline-table">
+            <div class="pipeline-header">
+              <div>NOM</div>
+              <div>RÔLE</div>
+              <div>EMAIL</div>
+              <div>TYPE</div>
+              <div>STATUT</div>
+              <div>BUDGET</div>
+              <div>SOURCE</div>
+              <div>ACTIONS</div>
+            </div>
+            
+            <div class="pipeline-row">
+              <div class="cell-name">BAL MKA</div>
+              <div class="cell-role">Client</div>
+              <div class="cell-email">contact@balmka.fr</div>
+              <div class="cell-type">Maison</div>
+              <div class="status-badge status-signed">Mandat signé</div>
+              <div class="cell-budget">677 700€</div>
+              <div class="cell-source">Formulaire Web IA</div>
+              <div class="cell-actions">
+                <button class="action-btn">📄</button>
+                <button class="action-btn">✏️</button>
+              </div>
+            </div>
+            
+            <div class="pipeline-row">
+              <div class="cell-name">PLAMA BOB</div>
+              <div class="cell-role">Client</div>
+              <div class="cell-email">bob.plama@email.com</div>
+              <div class="cell-type">Terrain</div>
+              <div class="status-badge status-won">Gagné</div>
+              <div class="cell-budget">60 000€</div>
+              <div class="cell-source">Référence</div>
+              <div class="cell-actions">
+                <button class="action-btn">📄</button>
+                <button class="action-btn">✏️</button>
+              </div>
+            </div>
+            
+            <div class="pipeline-row">
+              <div class="cell-name">OMA Mayk</div>
+              <div class="cell-role">Client</div>
+              <div class="cell-email">oma.mayk@email.com</div>
+              <div class="cell-type">Appartement</div>
+              <div class="status-badge status-message">Message laissé</div>
+              <div class="cell-budget">4 500€</div>
+              <div class="cell-source">Formulaire Web IA</div>
+              <div class="cell-actions">
+                <button class="action-btn">📞</button>
+                <button class="action-btn">✏️</button>
+              </div>
+            </div>
+            
+            <div class="pipeline-row">
+              <div class="cell-name">Jean Dupon</div>
+              <div class="cell-role">Client</div>
+              <div class="cell-email">jean.dupon@email.com</div>
+              <div class="cell-type">Appartement</div>
+              <div class="status-badge status-document">Document généré</div>
+              <div class="cell-budget">25 000€</div>
+              <div class="cell-source">Appel entrant</div>
+              <div class="cell-actions">
+                <button class="action-btn">📄</button>
+                <button class="action-btn">📧</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Tarifs</span>
+      <h2>Des tarifs simples<br>qui grandissent avec vous</h2>
+    </div>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-plan">Starter</div>
+        <div class="pricing-price">49€<span style="font-size: 1rem; font-weight: 400;">/mois</span></div>
+        <div class="pricing-desc">Pour les agents immobiliers indépendants</div>
+        <ul class="pricing-features">
+          <li><span class="check-icon">✓</span> 1 utilisateur</li>
+          <li><span class="check-icon">✓</span> 100 leads/mois</li>
+          <li><span class="check-icon">✓</span> Pipeline + scoring IA</li>
+        </ul>
+        <button class="pricing-btn">Commencer</button>
+      </div>
+      
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Le plus populaire</div>
+        <div class="pricing-plan">Growth</div>
+        <div class="pricing-price">149€<span style="font-size: 1rem; font-weight: 400;">/mois</span></div>
+        <div class="pricing-desc">Pour les petites équipes immobilières</div>
+        <ul class="pricing-features">
+          <li><span class="check-icon">✓</span> 5 utilisateurs</li>
+          <li><span class="check-icon">✓</span> Leads illimités</li>
+          <li><span class="check-icon">✓</span> Génération documents</li>
+          <li><span class="check-icon">✓</span> Analytics complets</li>
+        </ul>
+        <button class="pricing-btn">Commencer</button>
+      </div>
+      
+      <div class="pricing-card">
+        <div class="pricing-plan">Enterprise</div>
+        <div class="pricing-price">Sur<span style="font-size: 1rem; font-weight: 400;"> mesure</span></div>
+        <div class="pricing-desc">Pour les agences immobilières</div>
+        <ul class="pricing-features">
+          <li><span class="check-icon">✓</span> Équipes illimitées</li>
+          <li><span class="check-icon">✓</span> API complète</li>
+          <li><span class="check-icon">✓</span> Onboarding dédié</li>
+          <li><span class="check-icon">✓</span> Support prioritaire</li>
+        </ul>
+        <button class="pricing-btn">Nous contacter</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">LeadQualif</div>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">CGU</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-copyright">© 2024 LeadQualif. Tous droits réservés.</div>
+  </div>
+</footer>
+
+</body>
+</html>
