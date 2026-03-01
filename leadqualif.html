@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadQualif - CRM pour Agences SMMA et Immobilières</title>
+<meta name="description" content="Le CRM qui qualifie vos leads et génère vos documents automatiquement. Conçu pour les agences SMMA et immobilières.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #2563EB;
+  --blue-light: #60A5FA;
+  --blue-dark: #1D4ED8;
+  --green: #059669;
+  --green-light: #10b981;
+  --dark: #1a1f36;
+  --white: #FFFFFF;
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1E293B;
+  --gray-900: #0F172A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--gray-700);
+  background: var(--white);
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--blue);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+}
+
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--gray-900);
+}
+
+.back-link {
+  color: var(--gray-500);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--gray-700);
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-ghost {
+  color: var(--gray-600);
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: color 0.2s;
+}
+
+.btn-ghost:hover {
+  color: var(--gray-800);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+.hero {
+  padding: 120px 2rem 80px;
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--gray-900);
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+/* TARGET SECTION */
+.target-section {
+  padding: 80px 2rem;
+  background: var(--white);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-tag {
+  color: var(--blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.target-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.target-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.target-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+  transform: translateY(-4px);
+}
+
+.card-badge {
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.badge-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem;
+}
+
+.smma-bg {
+  background: var(--blue);
+  color: white;
+}
+
+.immo-bg {
+  background: var(--green);
+  color: white;
+}
+
+.card-content {
+  padding: 2rem;
+}
+
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--gray-900);
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.feature-check {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.immo-card:hover {
+  border-color: var(--green);
+}
+
+.immo-card .feature-check {
+  color: var(--green);
+}
+
+/* MOCKUP */
+.mockup-section {
+  padding: 80px 2rem;
+  background: var(--gray-50);
+}
+
+.mockup-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.mockup-header {
+  background: var(--dark);
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mockup-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+}
+
+.mockup-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.control-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.mockup-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 400px;
+}
+
+.mockup-sidebar {
+  background: var(--dark);
+  padding: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem;
+  color: var(--gray-400);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.sidebar-item.active {
+  background: var(--blue);
+  color: white;
+}
+
+.sidebar-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-table {
+  padding: 1.5rem;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr 0.8fr;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr 0.8fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gray-100);
+  align-items: center;
+}
+
+.lead-name {
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.lead-role {
+  color: var(--gray-600);
+}
+
+.lead-type {
+  color: var(--gray-500);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.status-won {
+  background: #10b981;
+  color: white;
+}
+
+.status-signed {
+  background: #3b82f6;
+  color: white;
+}
+
+.status-message {
+  background: #f59e0b;
+  color: white;
+}
+
+.status-doc {
+  background: #8b5cf6;
+  color: white;
+}
+
+.status-visit {
+  background: #eab308;
+  color: white;
+}
+
+.lead-budget {
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.lead-score {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.score-bar {
+  width: 20px;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background: var(--green);
+}
+
+/* FEATURES */
+.features-section {
+  padding: 80px 2rem;
+  background: var(--white);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  padding: 2rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.feature-desc {
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* HOW IT WORKS */
+.how-section {
+  padding: 80px 2rem;
+  background: var(--gray-50);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  background: var(--blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 auto 1rem;
+}
+
+.step-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+}
+
+/* TESTIMONIALS */
+.testimonials-section {
+  padding: 80px 2rem;
+  background: var(--white);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  padding: 2rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+}
+
+.author-info {
+  flex: 1;
+}
+
+.author-name {
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.author-role {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+}
+
+/* PRICING */
+.pricing-section {
+  padding: 80px 2rem;
+  background: var(--gray-50);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.pricing-card.featured {
+  border-color: var(--blue);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+  transform: scale(1.05);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.pricing-plan {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-desc {
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.pricing-features li {
+  padding: 0.5rem 0;
+  color: var(--gray-600);
+  font-size: 0.9rem;
+}
+
+.pricing-features li::before {
+  content: "✓";
+  color: var(--green);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.pricing-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pricing-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+/* CTA FINAL */
+.cta-section {
+  padding: 100px 2rem;
+  background: var(--gray-900);
+  color: white;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 16px 32px;
+  background: var(--blue);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.cta-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+  padding: 3rem 2rem;
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: var(--gray-600);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--gray-800);
+}
+
+.footer-copyright {
+  color: var(--gray-500);
+  font-size: 0.85rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  .nav-left {
+    gap: 1rem;
+  }
+  
+  .back-link {
+    display: none;
+  }
+  
+  .nav-cta {
+    gap: 0.5rem;
+  }
+  
+  .hero {
+    padding: 100px 1rem 60px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hero-cta .btn {
+    width: 100%;
+  }
+  
+  .target-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-card.featured {
+    transform: none;
+  }
+  
+  .mockup-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .mockup-sidebar {
+    display: none;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .table-header > :nth-child(2),
+  .table-row > :nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">L</div>
+        <span class="logo-text">LeadQualif</span>
+      </a>
+      <a href="/" class="back-link">← NexaPro</a>
+    </div>
+    <div class="nav-cta">
+      <button class="btn-ghost">Se connecter</button>
+      <button class="btn-primary">Essai gratuit 14 jours</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Le CRM qui qualifie vos leads et génère vos documents automatiquement.</h1>
+    <p class="hero-subtitle">Conçu pour les agences SMMA et les agences immobilières. Pipeline intelligent, scoring IA, devis et mandats en 1 clic.</p>
+    <div class="hero-cta">
+      <a href="https://www.leadqualif.com/register" class="btn-primary" style="padding: 12px 24px; font-size: 1rem;">Essayer gratuitement 14 jours</a>
+      <button class="btn-ghost" style="padding: 12px 24px; font-size: 1rem;">Voir la démo</button>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">
+        <span>🏢</span>
+        <span>Agences SMMA</span>
+      </div>
+      <div class="badge">
+        <span>🏠</span>
+        <span>Agences Immobilières</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET SECTION -->
+<section class="target-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Fait pour votre métier</span>
+      <h2>Deux secteurs. Un seul outil puissant.</h2>
+    </div>
+    
+    <div class="target-cards">
+      <div class="target-card smma-card">
+        <div class="card-badge">
+          <div class="badge-circle smma-bg">🏢</div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Agences SMMA</h3>
+          <p class="card-desc">Gérez vos prospects, qualifiez les leads de vos campagnes Meta/Google, générez vos devis et contrats de prestation en 1 clic.</p>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Pipeline leads par campagne</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Score IA sur intention d'achat</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Devis et contrats auto-générés</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Suivi commissions et CA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="target-card immo-card">
+        <div class="card-badge">
+          <div class="badge-circle immo-bg">🏠</div>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Agences Immobilières</h3>
+          <p class="card-desc">Suivez mandats et acheteurs, qualifiez par score IA, générez mandats, compromis et documents réglementaires automatiquement.</p>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Pipeline Acheteurs / Vendeurs / Mandats</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Score IA intention d'achat</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Génération mandats et devis auto</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Suivi budget et commission</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUP -->
+<section class="mockup-section">
+  <div class="section-inner">
+    <div class="mockup-container">
+      <div class="mockup-header">
+        <div class="mockup-title">Pipeline · 7 leads · 1 317 200 €</div>
+        <div class="mockup-controls">
+          <button class="control-btn active">Kanban</button>
+          <button class="control-btn">Liste</button>
+        </div>
+      </div>
+      
+      <div class="mockup-content">
+        <div class="mockup-sidebar">
+          <div class="sidebar-item active">
+            <div class="sidebar-icon">📊</div>
+            <span>Pipeline</span>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">👥</div>
+            <span>Contacts</span>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">📄</div>
+            <span>Documents</span>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">📈</div>
+            <span>Analytics</span>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-icon">⚙️</div>
+            <span>Paramètres</span>
+          </div>
+        </div>
+        
+        <div class="mockup-table">
+          <div class="table-header">
+            <div>NOM</div>
+            <div>RÔLE</div>
+            <div>TYPE</div>
+            <div>STATUT</div>
+            <div>BUDGET</div>
+            <div>SCORE IA</div>
+          </div>
+          
+          <div class="table-row">
+            <div class="lead-name">BAL MKA</div>
+            <div class="lead-role">Client</div>
+            <div class="lead-type">Maison</div>
+            <div><span class="status-badge status-signed">Mandat signé</span></div>
+            <div class="lead-budget">677 700€</div>
+            <div class="lead-score">
+              <span>94/100</span>
+              <div class="score-bar">
+                <div class="score-fill" style="width: 94%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="table-row">
+            <div class="lead-name">PLAMA BOB</div>
+            <div class="lead-role">Client</div>
+            <div class="lead-type">Terrain</div>
+            <div><span class="status-badge status-won">Gagné</span></div>
+            <div class="lead-budget">60 000€</div>
+            <div class="lead-score">
+              <span>87/100</span>
+              <div class="score-bar">
+                <div class="score-fill" style="width: 87%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="table-row">
+            <div class="lead-name">OMA Mayk</div>
+            <div class="lead-role">Client</div>
+            <div class="lead-type">Appartement</div>
+            <div><span class="status-badge status-message">Message laissé</span></div>
+            <div class="lead-budget">4 500€</div>
+            <div class="lead-score">
+              <span>65/100</span>
+              <div class="score-bar">
+                <div class="score-fill" style="width: 65%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="table-row">
+            <div class="lead-name">Jean Dupon</div>
+            <div class="lead-role">Client</div>
+            <div class="lead-type">Appartement</div>
+            <div><span class="status-badge status-doc">Document généré</span></div>
+            <div class="lead-budget">25 000€</div>
+            <div class="lead-score">
+              <span>72/100</span>
+              <div class="score-bar">
+                <div class="score-fill" style="width: 72%"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="table-row">
+            <div class="lead-name">Charles</div>
+            <div class="lead-role">Client</div>
+            <div class="lead-type">Villa</div>
+            <div><span class="status-badge status-visit">Visite planifiée</span></div>
+            <div class="lead-budget">60 000€</div>
+            <div class="lead-score">
+              <span>58/100</span>
+              <div class="score-bar">
+                <div class="score-fill" style="width: 58%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Fonctionnalités</span>
+      <h2>Tout ce dont vous avez besoin pour performer</h2>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Pipeline Intelligent</h3>
+        <p class="feature-desc">Vue Kanban ou Liste. Statuts en temps réel : Mandat signé, Gagné, Offre en cours, Visite planifiée.</p>
+      </div>
+      
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">Scoring IA</h3>
+        <p class="feature-desc">Chaque lead scoré de 0 à 100. Score ≥ 70 = lead chaud. Score moyen clients : 68%.</p>
+      </div>
+      
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">📄</div>
+        <h3 class="feature-title">Génération Documents</h3>
+        <p class="feature-desc">SMMA : devis, contrats. Immobilier : mandats, bon de visite, compromis. En 1 clic depuis le lead.</p>
+      </div>
+      
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">📈</div>
+        <h3 class="feature-title">Analytics</h3>
+        <p class="feature-desc">Commission totale identifiée, taux de transformation, leads par source, répartition par statut.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Comment ça marche</span>
+      <h2>Simple en 3 étapes</h2>
+    </div>
+    
+    <div class="steps-grid">
+      <div class="step-card animate-on-scroll">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Vos leads arrivent</h3>
+        <p class="step-desc">Formulaire web IA, Meta Ads, Google Ads ou manuel</p>
+      </div>
+      
+      <div class="step-card animate-on-scroll">
+        <div class="step-number">2</div>
+        <h3 class="step-title">LeadQualif les qualifie</h3>
+        <p class="step-desc">Score IA automatique selon secteur</p>
+      </div>
+      
+      <div class="step-card animate-on-scroll">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Vous closez</h3>
+        <p class="step-desc">Document généré en 1 clic</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Témoignages</span>
+      <h2>Ils nous font confiance</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll">
+        <p class="testimonial-text">"Nos devis se génèrent en 30 secondes. Le scoring IA a doublé notre taux de closing."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">KB</div>
+          <div class="author-info">
+            <div class="author-name">Karim B.</div>
+            <div class="author-role">Fondateur Agence SMMA Paris</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card animate-on-scroll">
+        <p class="testimonial-text">"La génération de mandats est parfaite. On sait immédiatement quels acheteurs sont prêts."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SM</div>
+          <div class="author-info">
+            <div class="author-name">Sophie M.</div>
+            <div class="author-role">Directrice Agence Immobilière Lyon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Tarifs</span>
+      <h2>Choisissez votre plan</h2>
+    </div>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card animate-on-scroll">
+        <div class="pricing-plan">Starter</div>
+        <div class="pricing-price">49€<span style="font-size: 1rem;">/mois</span></div>
+        <div class="pricing-desc">Pour démarrer</div>
+        <ul class="pricing-features">
+          <li>1 utilisateur</li>
+          <li>100 leads/mois</li>
+          <li>Pipeline + scoring IA</li>
+        </ul>
+        <button class="pricing-btn">Commencer</button>
+      </div>
+      
+      <div class="pricing-card featured animate-on-scroll">
+        <div class="pricing-badge">Le plus populaire</div>
+        <div class="pricing-plan">Growth</div>
+        <div class="pricing-price">149€<span style="font-size: 1rem;">/mois</span></div>
+        <div class="pricing-desc">Pour les équipes</div>
+        <ul class="pricing-features">
+          <li>5 utilisateurs</li>
+          <li>Leads illimités</li>
+          <li>Génération documents</li>
+          <li>Analytics complets</li>
+        </ul>
+        <button class="pricing-btn">Commencer</button>
+      </div>
+      
+      <div class="pricing-card animate-on-scroll">
+        <div class="pricing-plan">Enterprise</div>
+        <div class="pricing-price">Sur<span style="font-size: 1rem;"> mesure</span></div>
+        <div class="pricing-desc">Pour les grandes entreprises</div>
+        <ul class="pricing-features">
+          <li>Équipes illimitées</li>
+          <li>API complète</li>
+          <li>Onboarding dédié</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <button class="pricing-btn">Nous contacter</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="section-inner">
+    <h2>Prêt à transformer votre performance ?</h2>
+    <p class="cta-subtitle">14 jours gratuits · Sans carte bancaire · Onboarding guidé</p>
+    <a href="https://www.leadqualif.com/register" class="cta-btn">Démarrer gratuitement →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">LeadQualif est édité par NexaPro · <a href="https://nexapro.tech" style="color: inherit;">nexapro.tech</a></div>
+    <div class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">CGU</a>
+      <a href="#">RGPD</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-copyright">© 2024 LeadQualif. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Animate on scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+  observer.observe(el);
+});
+
+// Mockup controls
+document.querySelectorAll('.control-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Sidebar interactions
+document.querySelectorAll('.sidebar-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
