@@ -1162,25 +1162,27 @@
       <div class="feature-card">
         <div class="feature-icon">📊</div>
         <div class="feature-title">Pipeline Intelligent</div>
-        <div class="feature-desc">Vue Kanban ou Liste. Tous vos leads centralisés avec statuts en temps réel : Mandat signé, Gagné, Offre en cours, Visite planifiée, Message laissé.</div>
+        <div class="feature-desc">Gérez tous vos leads entrants — qu'ils viennent de vos campagnes SMMA ou de formulaires immobiliers. Vue Kanban ou Liste. Statuts personnalisés : Mandat signé, Offre en cours, Visite planifiée, Gagné.</div>
       </div>
       
       <div class="feature-card">
         <div class="feature-icon">🎯</div>
         <div class="feature-title">Scoring IA</div>
-        <div class="feature-desc">Chaque lead reçoit automatiquement un score de qualification de 0 à 100. Concentrez vos efforts sur les leads chauds (Score ≥ 70). Score moyen actuel de nos clients : 68%.</div>
+        <div class="feature-desc">Chaque lead est automatiquement scoré de 0 à 100 selon son intention d'achat. Pour les agences SMMA : score sur budget et urgence. Pour l'immobilier : score sur capacité financière et projet.</div>
       </div>
       
       <div class="feature-card">
         <div class="feature-icon">📄</div>
         <div class="feature-title">Génération de Documents</div>
-        <div class="feature-desc">Générez en 1 clic vos devis, mandats et contrats directement depuis le lead. Numérotation automatique, historique complet, téléchargement PDF.</div>
+        <div class="feature-desc">Générez en 1 clic selon votre métier :
+- SMMA : devis de prestation, contrat de service, proposition commerciale
+- Immobilier : mandat de vente, compromis, bon de visite, devis travaux</div>
       </div>
       
       <div class="feature-card">
         <div class="feature-icon">📈</div>
         <div class="feature-title">Analytics & Performance</div>
-        <div class="feature-desc">Dashboard en temps réel : leads par mois, commission totale identifiée, taux de transformation, répartition par statut. Toutes vos métriques en un coup d'œil.</div>
+        <div class="feature-desc">Dashboard adapté à votre secteur : CA pipeline SMMA, commission immobilière identifiée, taux de transformation, leads par source (Meta Ads, Google Ads, Formulaire Web, Bouche à oreille).</div>
       </div>
     </div>
   </div>
@@ -1198,19 +1200,19 @@
       <div class="step-card">
         <div class="step-number">1</div>
         <div class="step-title">Ajoutez vos leads</div>
-        <div class="step-desc">via formulaire web IA ou manuellement</div>
+        <div class="step-desc">vos leads arrivent automatiquement</div>
       </div>
       
       <div class="step-card">
         <div class="step-number">2</div>
-        <div class="step-title">L'IA les qualifie</div>
-        <div class="step-desc">score automatique sur intention d'achat et profil</div>
+        <div class="step-title">LeadQualif les qualifie par IA</div>
+        <div class="step-desc">score sur intention, budget, urgence selon votre secteur</div>
       </div>
       
       <div class="step-card">
         <div class="step-number">3</div>
-        <div class="step-title">Closez et documentez</div>
-        <div class="step-desc">générez vos documents en 1 clic depuis le pipeline</div>
+        <div class="step-title">Vous closez et documentez</div>
+        <div class="step-desc">générez le bon document selon votre métier en 1 clic</div>
       </div>
     </div>
   </div>
@@ -1361,6 +1363,7 @@
           <li><span class="check-icon">✓</span> 1 utilisateur</li>
           <li><span class="check-icon">✓</span> 100 leads/mois</li>
           <li><span class="check-icon">✓</span> Pipeline + scoring IA</li>
+          <li><span class="check-icon">✓</span> ✓ Fonctionne pour les agences SMMA et les agences immobilières</li>
         </ul>
         <button class="pricing-btn">Commencer</button>
       </div>
@@ -1375,6 +1378,7 @@
           <li><span class="check-icon">✓</span> Leads illimités</li>
           <li><span class="check-icon">✓</span> Génération documents</li>
           <li><span class="check-icon">✓</span> Analytics complets</li>
+          <li><span class="check-icon">✓</span> ✓ Fonctionne pour les agences SMMA et les agences immobilières</li>
         </ul>
         <button class="pricing-btn">Commencer</button>
       </div>
@@ -1388,8 +1392,67 @@
           <li><span class="check-icon">✓</span> API complète</li>
           <li><span class="check-icon">✓</span> Onboarding dédié</li>
           <li><span class="check-icon">✓</span> Support prioritaire</li>
+          <li><span class="check-icon">✓</span> ✓ Fonctionne pour les agences SMMA et les agences immobilières</li>
         </ul>
         <button class="pricing-btn">Nous contacter</button>
+      </div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" style="
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), #818CF8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .smma-avatar {
+    background: linear-gradient(135deg, var(--blue), #2563EB);
+  }
+
+  .immo-avatar {
+    background: linear-gradient(135deg, #059669, #10b981);
+  }
+">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Témoignages</span>
+      <h2>Ils nous font confiance.<br>Deux secteurs. Des résultats.</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p class="testimonial-text">"Avant LeadQualif, on perdait des leads dans des Google Sheets. Maintenant tout est centralisé, scoré et nos devis se génèrent en 30 secondes."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar smma-avatar">KB</div>
+            <div>
+              <div class="author-name">Karim B.</div>
+              <div class="author-role">Fondateur, Agence SMMA Paris</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p class="testimonial-text">"Le scoring IA nous fait gagner un temps fou. On sait immédiatement quels acheteurs sont vraiment prêts. Et la génération de mandats est parfaite."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar immo-avatar">SM</div>
+            <div>
+              <div class="author-name">Sophie M.</div>
+              <div class="author-role">Directrice, Agence Immobilière Lyon</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1404,7 +1467,7 @@
       <a href="#">CGU</a>
       <a href="#">Contact</a>
     </div>
-    <div class="footer-copyright">© 2024 LeadQualif. Tous droits réservés.</div>
+    <div class="footer-copyright">© 2024 LeadQualif. Tous droits réservés. LeadQualif est édité par NexaPro · <a href="https://nexapro.tech" style="color: #94a3b8;">nexapro.tech</a></div>
   </div>
 </footer>
 
