@@ -13,6 +13,7 @@
 <style>
   :root {
     --blue: #2563EB;
+    --blue-mid: #1D4ED8;
     --blue-light: #3B82F6;
     --blue-glow: rgba(37, 99, 235, 0.35);
     --bg: #080C14;
@@ -165,6 +166,29 @@
     box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
     transform: translateY(-1px);
   }
+
+  /* TRUST BAR */
+  .trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border2);
+    animation: fadeUp 0.6s ease 0.4s both;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text3);
+  }
+
+  .trust-item svg { color: var(--blue-light); flex-shrink: 0; }
 
   /* HERO */
   .hero {
@@ -738,6 +762,123 @@
     font-weight: 300;
   }
 
+  /* VISION SECTION */
+  .vision-section {
+    padding: 100px 2rem;
+    background: var(--bg2);
+  }
+
+  .vision-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 4rem;
+  }
+
+  .vision-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pillar {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: default;
+  }
+
+  .pillar:hover {
+    border-color: var(--border);
+    background: var(--surface2);
+  }
+
+  .pillar-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .pillar-text h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--white);
+  }
+
+  .pillar-text p {
+    font-size: 0.85rem;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .vision-visual {
+    position: relative;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .v-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+  }
+
+  .v-ring:nth-child(1) { width: 300px; height: 300px; animation: spin1 20s linear infinite; }
+  .v-ring:nth-child(2) { width: 220px; height: 220px; border-color: rgba(37, 99, 235, 0.25); animation: spin1 14s linear infinite reverse; }
+  .v-ring:nth-child(3) { width: 140px; height: 140px; border-color: rgba(59, 130, 246, 0.35); animation: spin1 10s linear infinite; }
+
+  @keyframes spin1 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .v-center {
+    width: 80px; height: 80px;
+    background: linear-gradient(140deg, var(--blue-light), var(--blue-mid));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    box-shadow: 0 0 50px rgba(37, 99, 235, 0.4);
+    position: relative;
+    z-index: 2;
+  }
+
+  .v-orbit {
+    position: absolute;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--blue-light);
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
   /* METRICS */
   .metrics-section {
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
@@ -777,254 +918,489 @@
     font-weight: 300;
   }
 
-  /* TESTIMONIALS */
-  .testimonials-grid {
+  /* PRODUCTS SECTION */
+  .products-section { padding: 100px 2rem; }
+
+  .products-grid {
+    margin-top: 3.5rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    margin-top: 4rem;
   }
 
-  .testi-card {
+  .product-card {
     background: var(--surface);
     border: 1px solid var(--border2);
-    border-radius: 14px;
-    padding: 28px;
+    border-radius: 18px;
+    padding: 40px;
     position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
   }
 
-  .testi-card:hover {
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .product-card:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    background: var(--surface2);
     transform: translateY(-4px);
-    border-color: var(--border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(37, 99, 235, 0.07);
   }
 
-  .testi-stars { color: #FBBF24; font-size: 0.9rem; margin-bottom: 14px; }
+  .product-card:hover::before { opacity: 1; }
 
-  .testi-text {
-    font-size: 0.92rem;
+  .product-card.flagship {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .product-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .status-live {
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    color: #34D399;
+  }
+
+  .status-soon {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    color: #FBBF24;
+  }
+
+  .status-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .status-live .status-dot { animation: blink 1.5s ease infinite; }
+
+  .product-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .product-tagline {
+    font-size: 0.9rem;
+    color: var(--blue-light);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .product-desc {
+    font-size: 0.9rem;
     color: var(--text2);
     line-height: 1.7;
     font-weight: 300;
-    font-style: italic;
-    margin-bottom: 20px;
+    margin-bottom: 1.8rem;
   }
 
-  .testi-author {
+  .product-features {
     display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .testi-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue) 0%, #818CF8 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: white;
-    flex-shrink: 0;
-  }
-
-  .testi-name {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  .testi-role {
-    font-size: 0.78rem;
-    color: var(--text3);
-  }
-
-  /* PRICING */
-  .pricing-section { background: var(--bg2); }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 4rem;
-  }
-
-  .pricing-card {
-    background: var(--surface);
-    border: 1px solid var(--border2);
-    border-radius: 16px;
-    padding: 36px 32px;
-    position: relative;
-    transition: all 0.3s ease;
-  }
-
-  .pricing-card.featured {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
-    border-color: rgba(37, 99, 235, 0.4);
-    box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
-  }
-
-  .pricing-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--blue);
-    color: white;
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 100px;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-  }
-
-  .pricing-plan {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text3);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-
-  .pricing-price {
-    font-family: 'Inter', 'Syne', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.6px;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .pricing-price span {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text3);
-  }
-
-  .pricing-desc {
-    font-size: 0.88rem;
-    color: var(--text2);
-    margin-bottom: 2rem;
-    font-weight: 300;
-  }
-
-  .pricing-features {
-    list-style: none;
+    flex-direction: column;
+    gap: 8px;
     margin-bottom: 2rem;
   }
 
-  .pricing-features li {
-    font-size: 0.88rem;
-    color: var(--text2);
-    padding: 7px 0;
+  .pf-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid var(--border2);
-    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--text2);
   }
 
-  .pricing-features li:last-child { border-bottom: none; }
-
-  .check {
+  .pf-check {
     color: var(--blue-light);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     flex-shrink: 0;
   }
 
-  .btn-plan {
-    width: 100%;
-    padding: 13px;
-    border-radius: 9px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    border: 1px solid var(--border2);
-    background: transparent;
-    color: var(--text);
-  }
-
-  .btn-plan:hover {
-    border-color: var(--blue);
-    color: var(--white);
-  }
-
-  .btn-plan.featured-btn {
+  .btn-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: var(--blue);
-    border-color: var(--blue);
-    color: white;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 11px 22px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
   }
 
-  .btn-plan.featured-btn:hover {
+  .btn-product:hover {
     background: var(--blue-light);
-    box-shadow: 0 4px 30px rgba(37, 99, 235, 0.55);
+    box-shadow: 0 4px 28px rgba(37, 99, 235, 0.5);
     transform: translateY(-1px);
   }
 
-  /* CTA */
-  .cta-section {
-    text-align: center;
-    position: relative;
+  .product-visual {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
     overflow: hidden;
   }
 
-  .cta-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 500px;
-    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.2) 0%, transparent 65%);
-    pointer-events: none;
+  .product-mockup {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    overflow: hidden;
   }
 
-  .cta-box {
+  .pv-header {
+    background: var(--bg3);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .pv-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .pv-dot:nth-child(1) { background: #FF5F57; }
+  .pv-dot:nth-child(2) { background: #FFBD2E; }
+  .pv-dot:nth-child(3) { background: #28CA41; }
+
+  .pv-body { padding: 16px; }
+
+  .pv-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    border-radius: 7px;
+    margin-bottom: 6px;
     background: var(--surface);
-    border: 1px solid rgba(37, 99, 235, 0.25);
-    border-radius: 24px;
-    padding: 80px 60px;
-    position: relative;
-    overflow: hidden;
-    max-width: 800px;
-    margin: 0 auto;
+    border: 1px solid var(--border2);
   }
 
-  .cta-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.6), transparent);
+  .pv-lead { font-size: 0.78rem; color: var(--text2); }
+
+  .pv-score {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 5px;
   }
 
-  .cta-box h2 { margin-bottom: 1rem; }
+  .score-hot { background: rgba(37, 99, 235, 0.15); color: var(--blue-light); }
+  .score-warm { background: rgba(251, 191, 36, 0.1); color: #FBBF24; }
+  .score-cold { background: rgba(100, 116, 139, 0.15); color: var(--text3); }
 
-  .cta-sub {
-    font-size: 1.05rem;
-    color: var(--text2);
-    margin-bottom: 2.5rem;
-    font-weight: 300;
+  .product-card.soon {
+    opacity: 0.7;
+    cursor: default;
   }
 
-  .cta-actions {
+  .product-card.soon:hover {
+    transform: none;
+    border-color: var(--border2);
+  }
+
+  .product-soon-visual {
+    background: var(--bg2);
+    border: 1px dashed var(--border2);
+    border-radius: 12px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .soon-text { font-size: 0.8rem; color: var(--text3); }
+
+  /* MISSION SECTION */
+  .mission-section {
+    padding: 100px 2rem;
+    background: var(--bg2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission-section::before {
+    content: '';
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .mission-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .mission-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .m-stat {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .m-stat:first-child { padding-top: 0; }
+  .m-stat:last-child { border-bottom: none; }
+
+  .m-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+    background: linear-gradient(135deg, var(--white) 40%, var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .m-stat-label {
+    font-size: 0.88rem;
+    color: var(--text2);
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  .mission-content { padding-top: 0.5rem; }
+
+  .mission-manifesto {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin-bottom: 2rem;
+  }
+
+  .mission-manifesto em {
+    font-style: normal;
+    color: var(--blue-light);
+  }
+
+  .mission-body {
+    font-size: 0.95rem;
+    color: var(--text2);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  /* CONTACT SECTION */
+  .contact-section {
+    padding: 100px 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(37, 99, 235, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .contact-box {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .contact-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.5), transparent);
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .contact-left {
+    padding: 52px 48px;
+    border-right: 1px solid var(--border2);
+  }
+
+  .contact-left h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .contact-left p {
+    font-size: 0.9rem;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-opt {
+    display: flex;
+    align-items: center;
     gap: 14px;
-    flex-wrap: wrap;
+    padding: 16px 18px;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 11px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+
+  .contact-opt:hover {
+    border-color: var(--border);
+    background: var(--surface2);
+  }
+
+  .opt-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .opt-text h5 {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .opt-text p {
+    font-size: 0.78rem;
+    color: var(--text3);
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .contact-right { padding: 52px 48px; }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text2);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    padding: 11px 14px;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: rgba(37, 99, 235, 0.5);
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text3);
+  }
+
+  .form-textarea { resize: vertical; min-height: 90px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--blue);
+    border: none;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    margin-top: 4px;
+  }
+
+  .btn-submit:hover {
+    background: var(--blue-light);
+    box-shadow: 0 6px 28px rgba(37, 99, 235, 0.5);
+    transform: translateY(-1px);
   }
 
   /* FOOTER */
@@ -1183,25 +1559,28 @@
       font-size: clamp(2.2rem, 5vw, 3.8rem);
     }
     
-    .features-grid, .steps-grid, .testimonials-grid, .pricing-grid { 
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
+    .vision-layout, .mission-layout, .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
     }
     
-    .metrics-grid { 
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+    .vision-visual {
+      display: none;
+    }
+    
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .product-card.flagship {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 
   @media (max-width: 900px) {
-    .features-grid, .steps-grid, .testimonials-grid, .pricing-grid { grid-template-columns: 1fr; }
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .mockup-body { grid-template-columns: 1fr; }
-    .mockup-sidebar { display: none; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .nav-links { display: none; }
-    .hero-stats { gap: 1.5rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
 
   @media (max-width: 768px) {
@@ -1238,19 +1617,10 @@
       padding: 16px 24px;
     }
     
-    .hero-stats {
-      grid-template-columns: repeat(2, 1fr);
+    .trust-bar {
+      flex-direction: column;
       gap: 1rem;
-      margin-top: 2rem;
-      padding-top: 2rem;
-    }
-    
-    .stat-num {
-      font-size: 1.5rem;
-    }
-    
-    .stat-label {
-      font-size: 0.75rem;
+      align-items: center;
     }
     
     .section-inner {
@@ -1261,26 +1631,36 @@
       padding: 60px 20px;
     }
     
-    .features-grid, .steps-grid, .testimonials-grid, .pricing-grid {
+    .vision-layout, .mission-layout, .contact-inner {
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 2rem;
     }
     
-    .metrics-grid {
-      grid-template-columns: 1fr;
+    .vision-visual {
+      display: none;
+    }
+    
+    .mission-numbers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     
-    .metric-big {
+    .m-stat-num {
       font-size: 2.5rem;
     }
     
-    .pricing-card {
-      padding: 24px 20px;
+    .contact-left, .contact-right {
+      padding: 36px 28px;
     }
     
-    .pricing-price {
-      font-size: 2.2rem;
+    .contact-left {
+      border-right: none;
+      border-bottom: 1px solid var(--border2);
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
     }
     
     .cta-box {
@@ -1334,14 +1714,13 @@
     <span class="logo-text">Nexa<span>Pro</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#features">Fonctionnalités</a></li>
-    <li><a href="#how">Comment ça marche</a></li>
-    <li><a href="#pricing">Tarifs</a></li>
-    <li><a href="#testimonials">Témoignages</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#products">Produits</a></li>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-cta">
-    <button class="btn-ghost">Se connecter</button>
-    <button class="btn-primary">Essai gratuit →</button>
+    <button class="btn-primary">Nous contacter</button>
   </div>
 </nav>
 
@@ -1353,17 +1732,16 @@
   <div class="hero-inner">
     <div class="hero-badge">
       <div class="badge-dot"></div>
-      <span>Éditeur de solutions SaaS pour équipes commerciales B2B</span>
+      <span>Éditeur de solutions SaaS B2B · Paris, France</span>
     </div>
 
     <h1>
-      Qualifiez vos leads.<br>
-      <span class="highlight">Automatisez votre pipeline.</span><br>
-      Convertissez plus vite.
+      Nous construisons des outils pour<br>
+      <span class="highlight">la performance commerciale B2B.</span>
     </h1>
 
     <p class="hero-sub">
-      NexaPro développe des solutions SaaS intelligentes pour automatiser et accélérer la performance commerciale B2B. Découvrez notre premier produit : LeadQualif.
+      NexaPro conçoit des solutions intelligentes pour automatiser, qualifier et accélérer la croissance des équipes commerciales.
     </p>
 
     <div class="hero-actions">
@@ -1371,338 +1749,297 @@
         Voir nos produits
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="https://leadqualif.nexapro.tech" class="btn-outline">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        Accéder à l'application
+      <a href="#contact" class="btn-outline">
+        Contact entreprise
       </a>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num stat-number">+340%</span>
-        <span class="stat-label">Taux de qualification</span>
+    <div class="trust-bar">
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Conforme RGPD
       </div>
-      <div class="stat">
-        <span class="stat-num stat-number">-62%</span>
-        <span class="stat-label">Temps de closing</span>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        SLA 99.9% uptime
       </div>
-      <div class="stat">
-        <span class="stat-num stat-number">2400+</span>
-        <span class="stat-label">Équipes actives</span>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Données hébergées en Europe
       </div>
-      <div class="stat">
-        <span class="stat-num stat-number">98%</span>
-        <span class="stat-label">Satisfaction client</span>
+      <div class="trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Fondé en 2024
       </div>
     </div>
   </div>
 </section>
 
-<!-- MOCKUP -->
-<div class="hero-mockup reveal">
-  <div class="mockup-frame">
-    <div class="mockup-bar">
-      <div class="mockup-dot"></div>
-      <div class="mockup-dot"></div>
-      <div class="mockup-dot"></div>
-      <div class="mockup-url">app.nexapro.tech/dashboard</div>
-    </div>
-    <div class="mockup-body">
-      <div class="mockup-sidebar">
-        <div class="sidebar-header">Menu</div>
-        <div class="sidebar-item active">
-          <div class="sidebar-item-dot"></div>
-          Dashboard
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-item-dot"></div>
-          Leads Pipeline
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-item-dot"></div>
-          Automatisations
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-item-dot"></div>
-          Conversion
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-item-dot"></div>
-          Analytics
-        </div>
-        <div class="sidebar-item">
-          <div class="sidebar-item-dot"></div>
-          Équipe
-        </div>
-      </div>
-      <div class="mockup-main">
-        <div class="mockup-kpis">
-          <div class="kpi-card">
-            <div class="kpi-label">Leads qualifiés</div>
-            <div class="kpi-value kpi-number">1,284</div>
-            <div class="kpi-change">↑ +24% ce mois</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Taux de conversion</div>
-            <div class="kpi-value kpi-number">38.4%</div>
-            <div class="kpi-change">↑ +8.2% vs objectif</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Pipeline actif</div>
-            <div class="kpi-value kpi-number">€892K</div>
-            <div class="kpi-change">↑ +16% vs mois dernier</div>
-          </div>
-        </div>
-        <div class="mockup-chart">
-          <div class="chart-title">Performance pipeline — 8 dernières semaines</div>
-          <div class="chart-bars">
-            <div class="chart-bar" style="height:45%; animation-delay:0.1s"></div>
-            <div class="chart-bar" style="height:55%; animation-delay:0.15s"></div>
-            <div class="chart-bar" style="height:40%; animation-delay:0.2s"></div>
-            <div class="chart-bar" style="height:65%; animation-delay:0.25s"></div>
-            <div class="chart-bar" style="height:50%; animation-delay:0.3s"></div>
-            <div class="chart-bar" style="height:75%; animation-delay:0.35s"></div>
-            <div class="chart-bar highlight" style="height:90%; animation-delay:0.4s"></div>
-            <div class="chart-bar highlight" style="height:85%; animation-delay:0.45s"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- LOGOS -->
-<div class="logos-section reveal">
-  <p class="logos-label">Adopté par des équipes B2B dans toute l'Europe</p>
-  <div class="logos-grid">
-    <span class="logo-brand">Salesforce</span>
-    <span class="logo-brand">Notion</span>
-    <span class="logo-brand">Stripe</span>
-    <span class="logo-brand">Intercom</span>
-    <span class="logo-brand">Segment</span>
-    <span class="logo-brand">Amplitude</span>
-  </div>
-</div>
-
-<!-- FEATURES -->
-<section class="features-section" id="features">
+<!-- VISION -->
+<section class="vision-section" id="vision">
   <div class="section-inner">
     <div class="reveal">
-      <span class="section-tag">Produits</span>
-      <h2>Nos solutions SaaS<br>pour la performance B2B</h2>
-      <p class="section-sub">Des outils conçus pour les équipes commerciales B2B qui refusent de perdre du temps sur des tâches sans valeur.</p>
+      <span class="section-tag">Notre vision</span>
+      <h2>La performance commerciale<br>ne devrait pas être complexe.</h2>
+      <p class="section-sub">Nous croyons que les meilleures équipes commerciales méritent des outils à leur hauteur — simples, puissants et intelligents.</p>
     </div>
 
-    <div class="features-grid reveal">
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3>Qualification intelligente</h3>
-        <p>LeadQualif est la première solution éditée par NexaPro. Notre IA analyse chaque lead entrant et lui attribue un score de qualification basé sur plus de 80 critères comportementaux et firmographiques.</p>
+    <div class="vision-layout reveal">
+      <div class="vision-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-text">
+            <h4>Simplifier l'automatisation commerciale</h4>
+            <p>Nous éliminons la complexité technique pour que vos équipes se concentrent sur la vente, pas sur les outils.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📊</div>
+          <div class="pillar-text">
+            <h4>Rendre la performance mesurable</h4>
+            <p>Chaque action commerciale devient une donnée exploitable. Décidez avec des faits, pas des intuitions.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">⚡</div>
+          <div class="pillar-text">
+            <h4>Construire des outils simples et puissants</h4>
+            <p>La sophistication ne devrait jamais se faire au détriment de l'expérience. Nos produits s'adoptent en minutes.</p>
+          </div>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Automatisation du pipeline</h3>
-        <p>Avec LeadQualif, créez des séquences d'actions automatiques déclenchées par le comportement de vos prospects. Zéro tâche manuelle répétitive.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Analytics de conversion</h3>
-        <p>LeadQualif visualise en temps réel où vos leads se bloquent dans le pipeline et identifie les leviers d'optimisation du taux de closing.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔗</div>
-        <h3>Intégrations natives</h3>
-        <p>Connectez LeadQualif à votre CRM existant, votre outil d'emailing et vos outils favoris en quelques clics. API REST disponible.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
-        <h3>Collaboration d'équipe</h3>
-        <p>Avec LeadQualif, partagez les leads, attribuez des tâches, et gardez toute l'équipe alignée avec des workflows collaboratifs en temps réel.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>Sécurité enterprise</h3>
-        <p>RGPD, SSO, chiffrement AES-256, audit logs. LeadQualif est conforme aux standards de sécurité les plus stricts du marché B2B.</p>
+
+      <div class="vision-visual">
+        <div class="v-ring"></div>
+        <div class="v-ring"></div>
+        <div class="v-ring"></div>
+        <div class="v-center">N</div>
+        <div class="v-orbit" style="top:20px; left:50%; transform:translateX(-50%)">Qualification IA</div>
+        <div class="v-orbit" style="top:60%; right:10%; transform:translateX(50%)">Automatisation</div>
+        <div class="v-orbit" style="bottom:20px; left:10%; transform:translateX(-50%)">Analytics</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
+<!-- PRODUITS -->
+<section class="products-section" id="products">
   <div class="section-inner">
     <div class="reveal">
-      <span class="section-tag">Comment ça marche</span>
-      <h2>Opérationnel en<br>moins de 10 minutes</h2>
-      <p class="section-sub">Pas besoin d'un consultant pour 6 mois. LeadQualif est conçu pour être adopté immédiatement par vos équipes commerciales.</p>
+      <span class="section-tag">Nos produits</span>
+      <h2>Des solutions intelligentes<br>pour chaque étape de votre croissance</h2>
+      <p class="section-sub">Chaque produit NexaPro est conçu pour résoudre un défi spécifique de la performance commerciale B2B.</p>
     </div>
 
-    <div class="steps-grid reveal">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Connectez vos sources</h3>
-        <p>Intégrez votre CRM, votre formulaire web ou votre outil d'outbound. LeadQualif centralise tous vos leads entrants automatiquement.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Configurez vos règles</h3>
-        <p>Définissez vos critères de qualification et vos workflows d'automatisation via notre éditeur visuel. Aucune compétence technique requise.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h3>Convertissez mieux</h3>
-        <p>Votre équipe reçoit uniquement les leads chauds et qualifiés. Concentrez votre énergie sur ce qui compte : closer.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- METRICS -->
-<section class="metrics-section">
-  <div class="section-inner">
-    <div class="metrics-grid reveal">
-      <div class="metric-card">
-        <span class="metric-big metric-number">+340%</span>
-        <div class="metric-label">De leads qualifiés en moyenne</div>
-      </div>
-      <div class="metric-card">
-        <span class="metric-big metric-number">-62%</span>
-        <div class="metric-label">De réduction du cycle de vente</div>
-      </div>
-      <div class="metric-card">
-        <span class="metric-big metric-number">2400+</span>
-        <div class="metric-label">Équipes commerciales actives</div>
-      </div>
-      <div class="metric-card">
-        <span class="metric-big metric-number">€4.2M</span>
-        <div class="metric-label">De pipeline généré ce trimestre</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-tag">Témoignages</span>
-      <h2>Ce que disent<br>nos clients</h2>
-      <p class="section-sub">Des équipes commerciales B2B qui ont transformé leur performance avec NexaPro.</p>
-    </div>
-
-    <div class="testimonials-grid reveal">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"NexaPro a complètement transformé notre approche commerciale. En 3 mois, notre taux de conversion a augmenté de 40%. L'IA de qualification est bluffante."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">ML</div>
-          <div>
-            <div class="testi-name">Marc Leblanc</div>
-            <div class="testi-role">VP Sales — TechStart SAS</div>
+    <div class="products-grid reveal">
+      <div class="product-card flagship">
+        <div class="product-status status-live">
+          <div class="status-dot"></div>
+          <span>Disponible</span>
+        </div>
+        <div class="product-content">
+          <div class="product-name">LeadQualif</div>
+          <div class="product-tagline">Qualification IA et automatisation commerciale</div>
+          <div class="product-desc">
+            Notre solution flagship qui analyse, qualifie et distribue automatiquement vos leads les plus prometteurs.
+          </div>
+          <div class="product-features">
+            <div class="pf-item">
+              <span class="pf-check">✓</span>
+              <span>Scoring IA avancé</span>
+            </div>
+            <div class="pf-item">
+              <span class="pf-check">✓</span>
+              <span>Automatisation du pipeline</span>
+            </div>
+            <div class="pf-item">
+              <span class="pf-check">✓</span>
+              <span>Analytics temps réel</span>
+            </div>
+            <div class="pf-item">
+              <span class="pf-check">✓</span>
+              <span>Intégrations CRM</span>
+            </div>
+          </div>
+          <a href="https://leadqualif.app" class="btn-product">
+            Découvrir LeadQualif
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="product-visual">
+          <div class="product-mockup">
+            <div class="pv-header">
+              <div class="pv-dot"></div>
+              <div class="pv-dot"></div>
+              <div class="pv-dot"></div>
+            </div>
+            <div class="pv-body">
+              <div class="pv-row">
+                <span class="pv-lead">TechCorp SAS</span>
+                <span class="pv-score score-hot">92/100</span>
+              </div>
+              <div class="pv-row">
+                <span class="pv-lead">InnovStart</span>
+                <span class="pv-score score-warm">78/100</span>
+              </div>
+              <div class="pv-row">
+                <span class="pv-lead">B2B Experts</span>
+                <span class="pv-score score-cold">45/100</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Avant NexaPro, mes commerciaux perdaient 60% de leur temps sur des leads non qualifiés. Maintenant ils se concentrent sur ce qui compte. ROI immédiat."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SC</div>
-          <div>
-            <div class="testi-name">Sophie Carré</div>
-            <div class="testi-role">Directrice Commerciale — B2B Experts</div>
-          </div>
+
+      <div class="product-card soon">
+        <div class="product-status status-soon">
+          <div class="status-dot"></div>
+          <span>Bientôt Q3 2025</span>
+        </div>
+        <div class="product-name">PipelineAI</div>
+        <div class="product-tagline">Prédictions et optimisation de pipeline</div>
+        <div class="product-desc">
+          L'IA qui prédit vos conversions et optimise automatiquement votre pipeline commercial.
+        </div>
+        <div class="product-soon-visual">
+          <span class="soon-text">Coming soon</span>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"L'intégration avec notre CRM a pris 15 minutes. En une semaine, toute l'équipe était onboardée. La simplicité sans sacrifier la puissance."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">AD</div>
-          <div>
-            <div class="testi-name">Antoine Dumont</div>
-            <div class="testi-role">Head of Growth — ScaleOps</div>
-          </div>
+
+      <div class="product-card soon">
+        <div class="product-status status-soon">
+          <div class="status-dot"></div>
+          <span>Bientôt Q4 2025</span>
+        </div>
+        <div class="product-name">SalesFlow</div>
+        <div class="product-tagline">Workflows et collaboration d'équipe</div>
+        <div class="product-desc">
+          Plateforme de workflows collaboratifs pour aligner vos équipes commerciales et marketing.
+        </div>
+        <div class="product-soon-visual">
+          <span class="soon-text">Coming soon</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing-section" id="pricing">
+<!-- MISSION -->
+<section class="mission-section" id="mission">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center">
-      <span class="section-tag">Tarifs</span>
-      <h2>Simple, transparent,<br>sans surprise</h2>
-      <p class="section-sub" style="margin: 0 auto">Choisissez le plan adapté à la taille de votre équipe commerciale. Résiliez à tout moment.</p>
-    </div>
-
-    <div class="pricing-grid reveal">
-      <div class="pricing-card">
-        <div class="pricing-plan">Starter</div>
-        <div class="pricing-price price-number">€49<span>/mois</span></div>
-        <div class="pricing-desc">Pour les petites équipes qui démarrent</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> Jusqu'à 3 utilisateurs</li>
-          <li><span class="check">✓</span> 500 leads/mois</li>
-          <li><span class="check">✓</span> Scoring IA de base</li>
-          <li><span class="check">✓</span> 5 automatisations</li>
-          <li><span class="check">✓</span> Intégration CRM standard</li>
-          <li><span class="check">✓</span> Support email</li>
-        </ul>
-        <button class="btn-plan" onclick="window.location.href='https://leadqualif.nexapro.tech'">Découvrir LeadQualif</button>
+    <div class="mission-layout">
+      <div class="mission-numbers">
+        <div class="m-stat">
+          <span class="m-stat-num">2024</span>
+          <span class="m-stat-label">Année de fondation</span>
+        </div>
+        <div class="m-stat">
+          <span class="m-stat-num">2400+</span>
+          <span class="m-stat-label">Équipes accompagnées</span>
+        </div>
+        <div class="m-stat">
+          <span class="m-stat-num">€4.2M</span>
+          <span class="m-stat-label">De pipeline généré</span>
+        </div>
+        <div class="m-stat">
+          <span class="m-stat-num">98%</span>
+          <span class="m-stat-label">Satisfaction client</span>
+        </div>
       </div>
-
-      <div class="pricing-card featured">
-        <div class="pricing-badge">⚡ Le plus populaire</div>
-        <div class="pricing-plan">Growth</div>
-        <div class="pricing-price price-number">€149<span>/mois</span></div>
-        <div class="pricing-desc">Pour les équipes en croissance rapide</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> Jusqu'à 15 utilisateurs</li>
-          <li><span class="check">✓</span> Leads illimités</li>
-          <li><span class="check">✓</span> Scoring IA avancé</li>
-          <li><span class="check">✓</span> Automatisations illimitées</li>
-          <li><span class="check">✓</span> Toutes les intégrations</li>
-          <li><span class="check">✓</span> Analytics avancés</li>
-          <li><span class="check">✓</span> Support prioritaire</li>
-        </ul>
-        <button class="btn-plan featured-btn" onclick="window.location.href='https://leadqualif.nexapro.tech'">Découvrir LeadQualif →</button>
-      </div>
-
-      <div class="pricing-card">
-        <div class="pricing-plan">Enterprise</div>
-        <div class="pricing-price price-number">Sur<span> mesure</span></div>
-        <div class="pricing-desc">Pour les grandes organisations B2B</div>
-        <ul class="pricing-features">
-          <li><span class="check">✓</span> Utilisateurs illimités</li>
-          <li><span class="check">✓</span> Leads illimités</li>
-          <li><span class="check">✓</span> IA personnalisée</li>
-          <li><span class="check">✓</span> SLA garanti 99.9%</li>
-          <li><span class="check">✓</span> SSO / SAML</li>
-          <li><span class="check">✓</span> Onboarding dédié</li>
-          <li><span class="check">✓</span> Account manager</li>
-        </ul>
-        <button class="btn-plan" onclick="window.location.href='https://leadqualif.nexapro.tech'">Contacter les ventes</button>
+      
+      <div class="mission-content">
+        <div class="mission-manifesto">
+          Nous démocratisons l'<em>excellence commerciale</em>.
+        </div>
+        <div class="mission-body">
+          <p>NexaPro est née d'une conviction simple : les équipes commerciales B2B méritent des outils aussi intelligents que ceux du marketing. Trop longtemps, les commerciaux ont dû se contenter de solutions complexes, coûteuses et inefficaces.</p>
+          <p>Notre mission est de changer cela. En rendant l'automatisation, la qualification et l'analyse accessibles à tous, nous permettons à chaque équipe commerciale de performer au niveau des plus grands.</p>
+          <p>Chaque ligne de code que nous écrivons, chaque algorithme que nous perfectionnons, a un but : <em>libérer le potentiel humain</em> en automatisant ce qui peut l'être, pour que vos équipes se concentrent sur ce qu'elles font de mieux – construire des relations et conclure des deals.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <div class="section-inner">
-    <div class="cta-glow"></div>
-    <div class="cta-box reveal">
-      <span class="section-tag">Prêt à démarrer ?</span>
-      <h2>Transformez votre performance<br>commerciale dès aujourd'hui</h2>
-      <p class="cta-sub">14 jours gratuits, sans carte bancaire. Onboarding guidé inclus.</p>
-      <div class="cta-actions">
-        <a href="https://leadqualif.nexapro.tech" class="btn-hero">
-          Essai gratuit 14 jours
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="https://leadqualif.nexapro.tech/demo" class="btn-outline">Voir la démo</a>
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-box">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <h2>Discutons de votre performance commerciale.</h2>
+        <p>Chaque transformation commence par une conversation. Nos experts sont là pour comprendre vos défis et concevoir la solution NexaPro qui vous aidera à atteindre vos objectifs.</p>
+        
+        <div class="contact-options">
+          <a href="mailto:contact@nexapro.tech" class="contact-opt">
+            <span class="opt-icon">📧</span>
+            <div class="opt-text">
+              <h5>Email direct</h5>
+              <p>contact@nexapro.tech</p>
+            </div>
+          </a>
+          
+          <a href="#" class="contact-opt">
+            <span class="opt-icon">📅</span>
+            <div class="opt-text">
+              <h5>Réserver un appel</h5>
+              <p>30 min avec un expert NexaPro</p>
+            </div>
+          </a>
+          
+          <a href="mailto:invest@nexapro.tech" class="contact-opt">
+            <span class="opt-icon">💼</span>
+            <div class="opt-text">
+              <h5>Investisseurs</h5>
+              <p>invest@nexapro.tech</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-right">
+        <form onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Prénom</label>
+              <input type="text" class="form-input" placeholder="Jean" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-input" placeholder="Dupont" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Email professionnel</label>
+            <input type="email" class="form-input" placeholder="jean@entreprise.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Entreprise</label>
+            <input type="text" class="form-input" placeholder="TechCorp SAS" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Votre profil</label>
+            <select class="form-select" required>
+              <option value="">Sélectionnez...</option>
+              <option value="ceo">CEO / Fondateur</option>
+              <option value="sales">Directeur Commercial</option>
+              <option value="marketing">Directeur Marketing</option>
+              <option value="salesops">Sales Ops</option>
+              <option value="revenue">Revenue Manager</option>
+              <option value="other">Autre</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Décrivez vos enjeux et objectifs..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-submit">Envoyer votre demande</button>
+        </form>
       </div>
     </div>
   </div>
@@ -1717,16 +2054,15 @@
           <div class="logo-icon">N</div>
           <span class="logo-text" style="margin-left: 10px;">Nexa<span>Pro</span></span>
         </a>
-        <p>NexaPro est l'éditeur de solutions SaaS pour équipes commerciales B2B qui veulent qualifier, automatiser et closer plus vite.</p>
+        <p>NexaPro est l'éditeur de solutions SaaS pour équipes commerciales B2B qui veulent automatiser, qualifier et accélérer leur croissance.</p>
       </div>
       <div class="footer-col">
         <h4>Produit</h4>
         <ul>
-          <li><a href="https://leadqualif.nexapro.tech">LeadQualif</a></li>
-          <li><a href="#">PipelineAI</a></li>
-          <li><a href="#">SalesFlow</a></li>
-          <li><a href="#">Tarifs</a></li>
-          <li><a href="#">Roadmap</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#products">Produits</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
