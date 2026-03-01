@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexaPro — Éditeur de solutions SaaS pour la performance commerciale B2B</title>
-<meta name="description" content="NexaPro développe des solutions SaaS intelligentes pour automatiser et accélérer la performance commerciale B2B. Découvrez LeadQualif.">
-<meta property="og:title" content="NexaPro — Solutions SaaS B2B">
-<meta property="og:description" content="Éditeur de LeadQualif et autres outils de performance commerciale.">
+<title>NexaPro — Éditeur SaaS B2B</title>
+<meta name="description" content="NexaPro est l'éditeur de solutions SaaS pour la performance commerciale B2B. LeadQualif, PipelineAI, SalesFlow.">
+<meta property="og:title" content="NexaPro — Éditeur SaaS B2B">
+<meta property="og:description" content="Éditeur de solutions SaaS pour la performance commerciale B2B. LeadQualif, PipelineAI, SalesFlow.">
 <meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='100' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -1585,9 +1587,13 @@
     .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .nav-logo { font-size: 16px; }
+    .logo-text { font-size: 16px; }
+    
     .hero {
-      padding: 60px 20px 60px;
+      padding: 80px 16px 60px;
       min-height: auto;
     }
     
@@ -1596,14 +1602,13 @@
     }
     
     h1 {
-      font-size: 32px;
+      font-size: 28px;
       line-height: 1.2;
       letter-spacing: -1px;
     }
     
     .hero-sub {
-      font-size: 1rem;
-      max-width: 100%;
+      font-size: 0.95rem;
     }
     
     .hero-actions {
@@ -1616,21 +1621,23 @@
       width: 100%;
       text-align: center;
       justify-content: center;
-      padding: 16px 24px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
     }
     
     .trust-bar {
       flex-direction: column;
-      gap: 1rem;
+      gap: 12px;
       align-items: center;
+      font-size: 0.8rem;
     }
     
     .section-inner {
-      padding: 0 20px;
+      padding: 0 16px;
     }
     
     section {
-      padding: 60px 20px;
+      padding: 60px 16px;
     }
     
     .vision-layout, .mission-layout, .contact-inner {
@@ -1649,11 +1656,11 @@
     }
     
     .m-stat-num {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
     }
     
     .contact-left, .contact-right {
-      padding: 36px 28px;
+      padding: 32px 20px;
     }
     
     .contact-left {
@@ -1661,22 +1668,38 @@
       border-bottom: 1px solid var(--border2);
     }
     
+    .contact-left h2 {
+      font-size: 1.5rem;
+    }
+    
     .form-row {
       grid-template-columns: 1fr;
     }
     
-    .cta-box {
-      padding: 40px 24px;
+    .form-input, .form-select, .form-textarea {
+      font-size: 16px; /* Prevent zoom on iOS */
     }
     
-    .cta-actions {
-      flex-direction: column;
-      gap: 12px;
+    .btn-submit {
+      font-size: 0.9rem;
+      padding: 14px;
     }
     
-    .cta-actions .btn-hero, .cta-actions .btn-outline {
+    .product-card {
+      padding: 24px 20px;
+    }
+    
+    .product-name {
+      font-size: 1.4rem;
+    }
+    
+    .product-card.flagship {
+      gap: 2rem;
+    }
+    
+    .btn-product {
       width: 100%;
-      text-align: center;
+      justify-content: center;
     }
   }
 
@@ -1699,9 +1722,6 @@
       font-size: 2.2rem;
     }
     
-    .pricing-price {
-      font-size: 2rem;
-    }
   }
 </style>
 </head>
@@ -1863,7 +1883,7 @@
               <span>Intégrations CRM</span>
             </div>
           </div>
-          <a href="https://leadqualif.app" class="btn-product">
+          <a href="/leadqualif" class="btn-product">
             Découvrir LeadQualif
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -2000,7 +2020,7 @@
       </div>
       
       <div class="contact-right">
-        <form onsubmit="return false;">
+        <form id="contactForm" onsubmit="handleSubmit(event);">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Prénom</label>
@@ -2040,7 +2060,7 @@
             <textarea class="form-textarea" placeholder="Décrivez vos enjeux et objectifs..." required></textarea>
           </div>
           
-          <button type="submit" class="btn-submit">Envoyer votre demande</button>
+          <button type="submit" class="btn-submit" id="submitBtn">Envoyer votre demande</button>
         </form>
       </div>
     </div>
@@ -2127,7 +2147,7 @@
   reveals.forEach(el => observer.observe(el));
 
   // Staggered reveal for grid children
-  document.querySelectorAll('.features-grid, .steps-grid, .testimonials-grid, .pricing-grid, .metrics-grid').forEach(grid => {
+  document.querySelectorAll('.vision-grid, .products-grid, .mission-numbers').forEach(grid => {
     const cards = grid.children;
     Array.from(cards).forEach((card, i) => {
       card.style.transitionDelay = `${i * 0.08}s`;
@@ -2193,6 +2213,37 @@
   }, { threshold: 0.3 });
 
   if (metricsSection) metricsObserver.observe(metricsSection);
+
+  // Contact form handler
+  function handleSubmit(event) {
+    event.preventDefault();
+    
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.textContent;
+    
+    // Simulate form submission
+    submitBtn.textContent = 'Envoi en cours...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+      submitBtn.textContent = 'Message envoyé ✓';
+      submitBtn.style.background = '#10b981';
+      
+      // Reset form
+      form.reset();
+      
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 3000);
+    }, 1500);
+  }
+
+  // Make function global
+  window.handleSubmit = handleSubmit;
 </script>
 
 </body>
