@@ -13,18 +13,17 @@
 <style>
   :root {
     --blue: #2563EB;
-    --blue-mid: #1D4ED8;
     --blue-light: #3B82F6;
     --blue-glow: rgba(37, 99, 235, 0.35);
-    --bg: #080C14;
-    --bg2: #0D1524;
+    --bg: #07090F;
+    --bg2: #0C1120;
     --bg3: #111827;
     --surface: #141E30;
     --surface2: #1A2540;
     --border: rgba(37, 99, 235, 0.18);
     --border2: rgba(255,255,255,0.07);
-    --text: #F0F4FF;
-    --text2: #94A3B8;
+    --text: #EDF2FF;
+    --text2: #8FA3BF;
     --text3: #64748B;
     --white: #FFFFFF;
   }
@@ -39,6 +38,7 @@
     color: var(--text);
     overflow-x: hidden;
     line-height: 1.6;
+    font-weight: 300;
   }
 
   /* NOISE TEXTURE OVERLAY */
@@ -64,9 +64,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(8, 12, 20, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border2);
+    background: rgba(7, 9, 15, 0.8);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     transition: all 0.3s ease;
   }
 
@@ -103,7 +103,7 @@
 
   .logo-text {
     font-family: 'Syne', sans-serif;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 18px;
     color: var(--white);
     letter-spacing: -0.3px;
@@ -140,6 +140,7 @@
     border: none;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.9rem;
+    font-weight: 400;
     cursor: pointer;
     padding: 8px 16px;
     transition: color 0.2s;
@@ -207,8 +208,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+      linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 100%);
   }
@@ -221,7 +222,7 @@
     transform: translateX(-50%);
     width: 900px;
     height: 700px;
-    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.2) 0%, transparent 65%);
+    background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, transparent 65%);
     pointer-events: none;
   }
 
@@ -231,7 +232,7 @@
     right: -200px;
     width: 600px;
     height: 600px;
-    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -815,7 +816,7 @@
   .pillar-text h4 {
     font-family: 'Syne', sans-serif;
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 4px;
     color: var(--white);
   }
@@ -852,7 +853,7 @@
 
   .v-center {
     width: 80px; height: 80px;
-    background: linear-gradient(140deg, var(--blue-light), var(--blue-mid));
+    background: linear-gradient(140deg, var(--blue-light), var(--blue));
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -952,10 +953,10 @@
   }
 
   .product-card:hover {
-    border-color: rgba(37, 99, 235, 0.3);
+    border-color: rgba(37, 99, 235, 0.4);
     background: var(--surface2);
     transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(37, 99, 235, 0.07);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(37, 99, 235, 0.1);
   }
 
   .product-card:hover::before { opacity: 1; }
@@ -1054,7 +1055,7 @@
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 11px 22px;
     border-radius: 9px;
     border: none;
@@ -1212,7 +1213,7 @@
   .mission-manifesto {
     font-family: 'Syne', sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.4;
     color: var(--white);
     letter-spacing: -0.5px;
@@ -1326,8 +1327,9 @@
   }
 
   .opt-text h5 {
+    font-family: 'Syne', sans-serif;
     font-size: 0.88rem;
-    font-weight: 500;
+    font-weight: 800;
     color: var(--white);
     margin-bottom: 2px;
   }
@@ -1348,7 +1350,7 @@
   .form-label {
     display: block;
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text2);
     margin-bottom: 6px;
     letter-spacing: 0.3px;
@@ -1361,7 +1363,7 @@
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
-    font-weight: 300;
+    font-weight: 400;
     padding: 11px 14px;
     border-radius: 8px;
     outline: none;
@@ -1388,7 +1390,7 @@
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 13px;
     border-radius: 9px;
     cursor: pointer;
