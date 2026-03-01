@@ -170,6 +170,44 @@
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .target-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .target-badge:hover {
+    background: rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .badge-icon {
+    font-size: 1.2rem;
+  }
+
+  .badge-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue);
   }
 
   .btn-hero {
@@ -806,6 +844,24 @@
       gap: 12px;
     }
     
+    .hero-badges {
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .target-badge {
+      padding: 6px 12px;
+    }
+    
+    .badge-icon {
+      font-size: 1rem;
+    }
+    
+    .badge-text {
+      font-size: 0.75rem;
+    }
+    
     .btn-hero, .btn-outline {
       width: 100%;
       text-align: center;
@@ -880,11 +936,23 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Le CRM qui qualifie vos leads et génère vos documents automatiquement.</h1>
-    <p class="hero-sub">LeadQualif combine pipeline commercial, scoring IA et génération de documents (devis, mandats, contrats) en une seule plateforme simple.</p>
+    <h1>Le CRM qui transforme vos leads en clients. Pour agences SMMA et immobilières.</h1>
+    <p class="hero-sub">LeadQualif centralise votre pipeline, qualifie vos leads par IA et génère vos documents commerciaux automatiquement. Conçu pour les agences SMMA et les agences immobilières.</p>
+    
+    <div class="hero-badges">
+      <div class="target-badge">
+        <span class="badge-icon">🏢</span>
+        <span class="badge-text">Agences SMMA</span>
+      </div>
+      <div class="target-badge">
+        <span class="badge-icon">🏠</span>
+        <span class="badge-text">Agences Immobilières</span>
+      </div>
+    </div>
+    
     <div class="hero-actions">
       <a href="https://www.leadqualif.com" class="btn-hero">
-        Essayer gratuitement
+        Essayer gratuitement 14 jours
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="#mockup" class="btn-outline">Voir la démo</a>
