@@ -9,7 +9,7 @@
 <meta property="og:description" content="Éditeur de LeadQualif et autres outils de performance commerciale.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --blue: #2563EB;
@@ -355,9 +355,11 @@
   .stat { text-align: center; }
 
   .stat-num {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', 'Syne', sans-serif;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.5px;
     color: var(--white);
     display: block;
   }
@@ -494,9 +496,11 @@
   }
 
   .kpi-value {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', 'Syne', sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.3px;
     color: var(--white);
   }
 
@@ -753,10 +757,11 @@
   }
 
   .metric-big {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', 'Syne', sans-serif;
     font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--white);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.8px;
     line-height: 1;
     display: block;
     background: linear-gradient(135deg, var(--white) 50%, var(--blue-light));
@@ -887,9 +892,11 @@
   }
 
   .pricing-price {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', 'Syne', sans-serif;
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.6px;
     color: var(--white);
     line-height: 1;
     margin-bottom: 0.4rem;
@@ -1100,6 +1107,35 @@
 
   .footer-links a:hover { color: var(--text2); }
 
+  /* PREMIUM NUMBERS TYPOGRAPHY */
+  .stat-number {
+    font-family: 'Inter', sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  
+  .kpi-number {
+    font-family: 'Inter', sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  
+  .metric-number {
+    font-family: 'Inter', sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+  }
+  
+  .price-number {
+    font-family: 'Inter', sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+  }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -1130,6 +1166,34 @@
   }
 
   /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .section-inner {
+      padding: 0 30px;
+    }
+    
+    .hero {
+      padding: 100px 30px 80px;
+    }
+    
+    .hero-inner {
+      max-width: 700px;
+    }
+    
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+    }
+    
+    .features-grid, .steps-grid, .testimonials-grid, .pricing-grid { 
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+    
+    .metrics-grid { 
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
   @media (max-width: 900px) {
     .features-grid, .steps-grid, .testimonials-grid, .pricing-grid { grid-template-columns: 1fr; }
     .metrics-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1140,11 +1204,122 @@
     .hero-stats { gap: 1.5rem; }
   }
 
+  @media (max-width: 768px) {
+    .hero {
+      padding: 60px 20px 60px;
+      min-height: auto;
+    }
+    
+    .hero-inner {
+      max-width: 100%;
+    }
+    
+    h1 {
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    
+    .hero-sub {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+    
+    .btn-hero, .btn-outline {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+      padding: 16px 24px;
+    }
+    
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+    
+    .stat-num {
+      font-size: 1.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+    }
+    
+    .section-inner {
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 60px 20px;
+    }
+    
+    .features-grid, .steps-grid, .testimonials-grid, .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .metrics-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .metric-big {
+      font-size: 2.5rem;
+    }
+    
+    .pricing-card {
+      padding: 24px 20px;
+    }
+    
+    .pricing-price {
+      font-size: 2.2rem;
+    }
+    
+    .cta-box {
+      padding: 40px 24px;
+    }
+    
+    .cta-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .cta-actions .btn-hero, .cta-actions .btn-outline {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   @media (max-width: 600px) {
     .footer-top { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-    .cta-box { padding: 50px 28px; }
+    .cta-box { padding: 40px 20px; }
     .mockup-kpis { grid-template-columns: 1fr; }
+    
+    h1 {
+      font-size: 28px;
+    }
+    
+    .hero-badge {
+      font-size: 0.7rem;
+      padding: 4px 12px 4px 6px;
+    }
+    
+    .metric-big {
+      font-size: 2.2rem;
+    }
+    
+    .pricing-price {
+      font-size: 2rem;
+    }
   }
 </style>
 </head>
@@ -1204,19 +1379,19 @@
 
     <div class="hero-stats">
       <div class="stat">
-        <span class="stat-num">+340%</span>
+        <span class="stat-num stat-number">+340%</span>
         <span class="stat-label">Taux de qualification</span>
       </div>
       <div class="stat">
-        <span class="stat-num">-62%</span>
+        <span class="stat-num stat-number">-62%</span>
         <span class="stat-label">Temps de closing</span>
       </div>
       <div class="stat">
-        <span class="stat-num">2400+</span>
+        <span class="stat-num stat-number">2400+</span>
         <span class="stat-label">Équipes actives</span>
       </div>
       <div class="stat">
-        <span class="stat-num">98%</span>
+        <span class="stat-num stat-number">98%</span>
         <span class="stat-label">Satisfaction client</span>
       </div>
     </div>
@@ -1264,17 +1439,17 @@
         <div class="mockup-kpis">
           <div class="kpi-card">
             <div class="kpi-label">Leads qualifiés</div>
-            <div class="kpi-value">1,284</div>
+            <div class="kpi-value kpi-number">1,284</div>
             <div class="kpi-change">↑ +24% ce mois</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">Taux de conversion</div>
-            <div class="kpi-value">38.4%</div>
+            <div class="kpi-value kpi-number">38.4%</div>
             <div class="kpi-change">↑ +8.2% vs objectif</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-label">Pipeline actif</div>
-            <div class="kpi-value">€892K</div>
+            <div class="kpi-value kpi-number">€892K</div>
             <div class="kpi-change">↑ +16% vs mois dernier</div>
           </div>
         </div>
@@ -1387,19 +1562,19 @@
   <div class="section-inner">
     <div class="metrics-grid reveal">
       <div class="metric-card">
-        <span class="metric-big">+340%</span>
+        <span class="metric-big metric-number">+340%</span>
         <div class="metric-label">De leads qualifiés en moyenne</div>
       </div>
       <div class="metric-card">
-        <span class="metric-big">-62%</span>
+        <span class="metric-big metric-number">-62%</span>
         <div class="metric-label">De réduction du cycle de vente</div>
       </div>
       <div class="metric-card">
-        <span class="metric-big">2400+</span>
+        <span class="metric-big metric-number">2400+</span>
         <div class="metric-label">Équipes commerciales actives</div>
       </div>
       <div class="metric-card">
-        <span class="metric-big">€4.2M</span>
+        <span class="metric-big metric-number">€4.2M</span>
         <div class="metric-label">De pipeline généré ce trimestre</div>
       </div>
     </div>
@@ -1465,7 +1640,7 @@
     <div class="pricing-grid reveal">
       <div class="pricing-card">
         <div class="pricing-plan">Starter</div>
-        <div class="pricing-price">€49<span>/mois</span></div>
+        <div class="pricing-price price-number">€49<span>/mois</span></div>
         <div class="pricing-desc">Pour les petites équipes qui démarrent</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Jusqu'à 3 utilisateurs</li>
@@ -1481,7 +1656,7 @@
       <div class="pricing-card featured">
         <div class="pricing-badge">⚡ Le plus populaire</div>
         <div class="pricing-plan">Growth</div>
-        <div class="pricing-price">€149<span>/mois</span></div>
+        <div class="pricing-price price-number">€149<span>/mois</span></div>
         <div class="pricing-desc">Pour les équipes en croissance rapide</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Jusqu'à 15 utilisateurs</li>
@@ -1497,7 +1672,7 @@
 
       <div class="pricing-card">
         <div class="pricing-plan">Enterprise</div>
-        <div class="pricing-price">Sur<span> mesure</span></div>
+        <div class="pricing-price price-number">Sur<span> mesure</span></div>
         <div class="pricing-desc">Pour les grandes organisations B2B</div>
         <ul class="pricing-features">
           <li><span class="check">✓</span> Utilisateurs illimités</li>
