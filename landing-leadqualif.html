@@ -255,6 +255,111 @@
     transform: translateY(-2px);
   }
 
+  /* TARGET SECTION */
+  .target-section {
+    padding: 80px 2rem;
+    background: var(--surface);
+  }
+
+  .target-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .target-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .target-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .card-badge {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .badge-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+  }
+
+  .smma-bg {
+    background: var(--blue);
+    color: white;
+  }
+
+  .immo-bg {
+    background: #059669;
+    color: white;
+  }
+
+  .card-content {
+    padding: 2rem 2rem 1.5rem;
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text2);
+  }
+
+  .feature-check {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .smma-card:hover {
+    border-color: var(--blue);
+  }
+
+  .immo-card:hover {
+    border-color: #059669;
+  }
+
   /* FEATURES */
   .features-section {
     padding: 100px 2rem;
@@ -862,6 +967,22 @@
       font-size: 0.75rem;
     }
     
+    .target-cards {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .card-content {
+      padding: 1.5rem 1.5rem;
+    }
+    
+    .badge-circle {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      margin: 0 auto 0.75rem;
+    }
+    
     .btn-hero, .btn-outline {
       width: 100%;
       text-align: center;
@@ -956,6 +1077,75 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="#mockup" class="btn-outline">Voir la démo</a>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET SECTIONS -->
+<section class="target-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Secteurs d'activité</span>
+      <h2>Fait pour votre métier.</h2>
+      <p class="section-sub">Deux secteurs. Un seul outil puissant.</p>
+    </div>
+    
+    <div class="target-cards">
+      <div class="target-card smma-card">
+        <div class="card-badge">
+          <span class="badge-circle smma-bg">🏢</span>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Agences SMMA</div>
+          <div class="card-desc">Gérez vos prospects clients, qualifiez les leads entrants de vos campagnes Meta/Google, suivez vos deals et générez vos devis et contrats de prestation en 1 clic.</div>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Pipeline leads par campagne</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Score IA sur intention d'achat</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Devis et contrats auto-générés</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Suivi commissions et CA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="target-card immo-card">
+        <div class="card-badge">
+          <span class="badge-circle immo-bg">🏠</span>
+        </div>
+        <div class="card-content">
+          <div class="card-title">Agences Immobilières</div>
+          <div class="card-desc">Suivez tous vos mandats, qualifiez acheteurs et vendeurs par score IA, planifiez les visites et générez mandats, compromis et documents réglementaires automatiquement.</div>
+          <div class="card-features">
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Pipeline Acheteurs / Vendeurs / Mandats</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Score IA intention d'achat</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Génération mandats et devis auto</span>
+            </div>
+            <div class="feature-item">
+              <span class="feature-check">✓</span>
+              <span>Suivi budget et commission</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
