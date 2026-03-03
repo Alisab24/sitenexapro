@@ -174,6 +174,80 @@ a:hover {
     padding: 0.75rem 0.5rem;
   }
 }
+
+/* FOOTER */
+footer {
+  padding: 3rem 2rem;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-copy span:first-child {
+  font-size: 0.82rem;
+  color: #8FA3BF;
+  font-weight: 400;
+}
+
+.footer-entity {
+  font-size: 0.70rem;
+  color: #2D3F55;
+  font-weight: 300;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.80rem;
+  color: #4D6480;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.footer-links a:hover {
+  color: #8FA3BF;
+}
+
+.footer-sep {
+  color: #2D3F55;
+  font-size: 0.75rem;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .footer-legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .footer-links {
+    gap: 8px;
+  }
+}
 </style>
 </head>
 <body>
@@ -439,6 +513,29 @@ a:hover {
     <p><strong>Date de mise à jour :</strong> <span id="currentDate"></span></p>
   </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-legal">
+    <div class="footer-copy">
+      <span>© 2025 NexaPro · Tous droits réservés.</span>
+      <span class="footer-entity">
+        NexaPro est une marque commerciale d'AWFI GROUP SARL · Bohicon, Bénin.
+      </span>
+    </div>
+    <div class="footer-links">
+      <a href="/mentions-legales.html">Mentions légales</a>
+      <span class="footer-sep">·</span>
+      <a href="/politique-confidentialite.html">Confidentialité</a>
+      <span class="footer-sep">·</span>
+      <a href="/cgu.html">CGU</a>
+      <span class="footer-sep">·</span>
+      <a href="/cgv.html">CGV</a>
+      <span class="footer-sep">·</span>
+      <a href="/rgpd.html">RGPD</a>
+    </div>
+  </div>
+</footer>
 
 <script>
   // Date dynamique

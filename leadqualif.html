@@ -827,42 +827,71 @@ footer {
   border-top: 1px solid var(--gray-200);
 }
 
-.footer-content {
+.footer-legal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  flex-wrap: wrap;
+  gap: 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.footer-logo {
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: var(--gray-900);
-  margin-bottom: 1rem;
-  letter-spacing: -0.5px;
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-copy span:first-child {
+  font-size: 0.82rem;
+  color: #8FA3BF;
+  font-weight: 400;
+}
+
+.footer-entity {
+  font-size: 0.70rem;
+  color: #2D3F55;
+  font-weight: 300;
 }
 
 .footer-links {
   display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 1rem;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
-  color: var(--gray-600);
+  font-size: 0.80rem;
+  color: #4D6480;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-weight: 400;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .footer-links a:hover {
-  color: var(--gray-800);
+  color: #8FA3BF;
 }
 
-.footer-copyright {
-  color: var(--gray-500);
-  font-size: 0.85rem;
+.footer-sep {
+  color: #2D3F55;
+  font-size: 0.75rem;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .footer-legal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .footer-links {
+    gap: 8px;
+  }
 }
 
 /* ANIMATIONS */
@@ -1377,16 +1406,25 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-content">
-    <div class="footer-logo">LeadQualif est édité par NexaPro · <a href="https://nexapro.tech" style="color: inherit;">nexapro.tech</a></div>
-    <div class="footer-links">
-      <a href="#">Mentions légales</a>
-      <a href="#">CGU</a>
-      <a href="#">RGPD</a>
-      <a href="#">Contact</a>
+  <div class="footer-legal">
+      <div class="footer-copy">
+        <span>© 2025 NexaPro · Tous droits réservés.</span>
+        <span class="footer-entity">
+          NexaPro est une marque commerciale d'AWFI GROUP SARL · Bohicon, Bénin.
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <span class="footer-sep">·</span>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+        <span class="footer-sep">·</span>
+        <a href="/cgu.html">CGU</a>
+        <span class="footer-sep">·</span>
+        <a href="/cgv.html">CGV</a>
+        <span class="footer-sep">·</span>
+        <a href="/rgpd.html">RGPD</a>
+      </div>
     </div>
-    <div class="footer-copyright">© 2024 LeadQualif. Tous droits réservés.</div>
-  </div>
 </footer>
 
 <script>
