@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Blog NexaPro - Stratégies, outils et insights pour agences SMMA et immobilières</title>
+  <meta name="description" content="Blog NexaPro : stratégies, outils et insights pour agences SMMA et immobilières qui veulent performer. Experts en CRM, scoring IA et automatisation.">
+  <meta name="keywords" content="blog agence SMMA, blog immobilier, CRM B2B, scoring IA, automatisation marketing, LeadQualif">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://nexapro.tech/blog.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Le Blog NexaPro - Stratégies et insights pour agences">
+  <meta property="og:description" content="Stratégies, outils et insights pour agences SMMA et immobilières qui veulent performer.">
+  <meta property="og:url" content="https://nexapro.tech/blog.html">
+  <meta property="og:site_name" content="NexaPro">
+  <meta property="og:image" content="https://nexapro.tech/og-blog-default.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le Blog NexaPro - Stratégies et insights pour agences">
+  <meta name="twitter:description" content="Stratégies, outils et insights pour agences SMMA et immobilières qui veulent performer.">
+  
+  <style>
+    :root {
+      --blue: #2563EB;
+      --blue-light: #3B82F6;
+      --bg-dark: #07090F;
+      --text: #E2E8F0;
+      --text2: #94A3B8;
+      --text3: #64748B;
+      --border: rgba(255,255,255,0.06);
+      --border2: #1E293B;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .nav-logo:hover {
+      color: var(--blue);
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .logo-text span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text2);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      background: var(--blue);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--blue-light);
+      transform: translateY(-1px);
+    }
+
+    /* Blog Header */
+    .blog-header {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .blog-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .blog-subtitle {
+      font-size: 1.2rem;
+      color: var(--text2);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Filters */
+    .blog-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 20px;
+      border: 1px solid var(--border2);
+      background: transparent;
+      color: var(--text2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--blue);
+      color: white;
+      border-color: var(--blue);
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .blog-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .blog-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(37,99,235,0.1);
+    }
+
+    .blog-card-image {
+      height: 200px;
+      background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #3B82F6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card-content {
+      padding: 1.5rem;
+    }
+
+    .blog-category {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .category-smma {
+      background: rgba(37,99,235,0.15);
+      color: #3B82F6;
+    }
+
+    .category-immobilier {
+      background: rgba(5,150,105,0.15);
+      color: #10B981;
+    }
+
+    .category-crm {
+      background: rgba(168,85,247,0.15);
+      color: #A855F7;
+    }
+
+    .category-automation {
+      background: rgba(34,197,94,0.15);
+      color: #22C55E;
+    }
+
+    .category-productivite {
+      background: rgba(251,146,60,0.15);
+      color: #FB923C;
+    }
+
+    .blog-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .blog-card-excerpt {
+      color: var(--text2);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text3);
+    }
+
+    .read-time {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .blog-card-link:hover {
+      color: var(--blue-light);
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-brand p {
+      color: var(--text3);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 300px;
+      margin-top: 1rem;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-col h4 {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul { 
+      list-style: none; 
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.875rem;
+      color: var(--text3);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 300;
+    }
+
+    .footer-col ul li a:hover { color: var(--text2); }
+
+    .footer-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-copy span:first-child {
+      font-size: 0.82rem;
+      color: var(--text3);
+      font-weight: 400;
+    }
+
+    .footer-entity {
+      font-size: 0.70rem;
+      color: var(--text3);
+      font-weight: 300;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.80rem;
+      color: var(--text3);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--text2);
+    }
+
+    .footer-sep {
+      color: var(--text3);
+      font-size: 0.75rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .blog-filters {
+        gap: 0.5rem;
+      }
+      
+      .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="/" class="nav-logo">
+          <div class="logo-icon">N</div>
+          <span class="logo-text">Nexa<span>Pro</span></span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="#vision">Vision</a>
+        <a href="#products">Nos produits</a>
+        <a href="/leadqualif.html">LeadQualif</a>
+        <a href="#mission">Mission</a>
+        <a href="#contact">Contact</a>
+        <a href="/blog.html" class="nav-btn">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Header -->
+  <div class="container">
+    <div class="blog-header">
+      <h1 class="blog-title">Le Blog NexaPro</h1>
+      <p class="blog-subtitle">Stratégies, outils et insights pour agences SMMA et immobilières qui veulent performer</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="blog-filters">
+      <button class="filter-btn active" onclick="filterArticles('all')">Tous</button>
+      <button class="filter-btn" onclick="filterArticles('smma')">SMMA</button>
+      <button class="filter-btn" onclick="filterArticles('immobilier')">Immobilier</button>
+      <button class="filter-btn" onclick="filterArticles('crm')">CRM & IA</button>
+      <button class="filter-btn" onclick="filterArticles('automation')">Automatisation</button>
+      <button class="filter-btn" onclick="filterArticles('productivite')">Productivité</button>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid" id="blogGrid">
+      <!-- Article 1 -->
+      <article class="blog-card" data-category="smma">
+        <div class="blog-card-image">
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: 700;">
+            📊
+          </div>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category category-smma">SMMA</span>
+          <h3 class="blog-card-title">Comment qualifier vos leads automatiquement en agence SMMA</h3>
+          <p class="blog-card-excerpt">Découvrez comment les agences SMMA modernes utilisent le scoring IA pour qualifier leurs leads en 2025 et multiplier leur taux de closing par 3.</p>
+          <div class="blog-card-meta">
+            <div class="read-time">
+              <span>⏱️</span>
+              <span>6 min de lecture</span>
+            </div>
+            <span>•</span>
+            <span>Janvier 2025</span>
+          </div>
+          <a href="/blog/qualification-leads-agence-smma.html" class="blog-card-link">
+            Lire l'article →
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="blog-card" data-category="immobilier">
+        <div class="blog-card-image">
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: 700;">
+            🏠
+          </div>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category category-immobilier">Immobilier</span>
+          <h3 class="blog-card-title">CRM Immobilier avec IA : le guide complet pour agences qui veulent scaler en 2025</h3>
+          <p class="blog-card-excerpt">CRM immobilier avec IA : comment les agences immobilières modernes gèrent leur pipeline, qualifient acheteurs et vendeurs, et génèrent leurs mandats automatiquement.</p>
+          <div class="blog-card-meta">
+            <div class="read-time">
+              <span>⏱️</span>
+              <span>8 min de lecture</span>
+            </div>
+            <span>•</span>
+            <span>Janvier 2025</span>
+          </div>
+          <a href="/blog/crm-agence-immobiliere.html" class="blog-card-link">
+            Lire l'article →
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="blog-card" data-category="automation">
+        <div class="blog-card-image">
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: 700;">
+            ⚡
+          </div>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category category-automation">Automatisation</span>
+          <h3 class="blog-card-title">Automatisation du pipeline commercial : comment réduire votre cycle de vente de 62%</h3>
+          <p class="blog-card-excerpt">Comment automatiser votre pipeline commercial B2B et réduire de 62% le temps de closing. Guide pratique pour agences SMMA et immobilières.</p>
+          <div class="blog-card-meta">
+            <div class="read-time">
+              <span>⏱️</span>
+              <span>7 min de lecture</span>
+            </div>
+            <span>•</span>
+            <span>Janvier 2025</span>
+          </div>
+          <a href="/blog/automatisation-pipeline-commercial.html" class="blog-card-link">
+            Lire l'article →
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article class="blog-card" data-category="crm">
+        <div class="blog-card-image">
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: 700;">
+            🧠
+          </div>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category category-crm">CRM & IA</span>
+          <h3 class="blog-card-title">Scoring IA des leads B2B : comment l'algorithme prédit vos meilleurs clients</h3>
+          <p class="blog-card-excerpt">Le scoring IA transforme la qualification des leads B2B. Découvrez comment fonctionne l'algorithme, quels critères utiliser et comment améliorer votre taux de conversion.</p>
+          <div class="blog-card-meta">
+            <div class="read-time">
+              <span>⏱️</span>
+              <span>9 min de lecture</span>
+            </div>
+            <span>•</span>
+            <span>Janvier 2025</span>
+          </div>
+          <a href="/blog/scoring-ia-leads-b2b.html" class="blog-card-link">
+            Lire l'article →
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article class="blog-card" data-category="productivite">
+        <div class="blog-card-image">
+          <div style="height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: 700;">
+            🚀
+          </div>
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-category category-productivite">Productivité</span>
+          <h3 class="blog-card-title">Les 7 outils SaaS indispensables pour agence en 2025</h3>
+          <p class="blog-card-excerpt">Sélection des meilleurs outils SaaS pour booster la productivité de votre agence SMMA ou immobilière en 2025. CRM, automatisation, analytics et génération de documents.</p>
+          <div class="blog-card-meta">
+            <div class="read-time">
+              <span>⏱️</span>
+              <span>5 min de lecture</span>
+            </div>
+            <span>•</span>
+            <span>Janvier 2025</span>
+          </div>
+          <a href="/blog/productivite-agence-outils-saas.html" class="blog-card-link">
+            Lire l'article →
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" style="margin-bottom: 12px; display: inline-flex;">
+            <div class="logo-icon">N</div>
+            <span class="logo-text" style="margin-left: 10px;">Nexa<span>Pro</span></span>
+          </a>
+          <p>NexaPro est l'éditeur de solutions SaaS pour équipes commerciales B2B qui veulent automatiser, qualifier et accélérer leur croissance.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Produit</h4>
+          <ul>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#products">Nos produits</a></li>
+            <li><a href="/leadqualif.html">LeadQualif</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ressources</h4>
+          <ul>
+            <li>
+              <a href="https://www.leadqualif.com/login">
+                Documentation
+                <span style="
+                  font-size:0.68rem;
+                  background:rgba(37,99,235,0.15);
+                  color:#3B82F6;
+                  padding:2px 7px;
+                  border-radius:4px;
+                  margin-left:6px;
+                  font-weight:500;
+                ">Bientôt</span>
+              </a>
+            </li>
+            <li>
+              <a href="/blog.html">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Études de cas
+                <span style="
+                  font-size:0.68rem;
+                  background:rgba(37,99,235,0.15);
+                  color:#3B82F6;
+                  padding:2px 7px;
+                  border-radius:4px;
+                  margin-left:6px;
+                  font-weight:500;
+                ">Bientôt</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Webinaires
+                <span style="
+                  font-size:0.68rem;
+                  background:rgba(37,99,235,0.15);
+                  color:#3B82F6;
+                  padding:2px 7px;
+                  border-radius:4px;
+                  margin-left:6px;
+                  font-weight:500;
+                ">Bientôt</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.leadqualif.com/login">
+                API LeadQualif
+                <span style="
+                  font-size:0.68rem;
+                  background:rgba(37,99,235,0.15);
+                  color:#3B82F6;
+                  padding:2px 7px;
+                  border-radius:4px;
+                  margin-left:6px;
+                  font-weight:500;
+                ">Bientôt</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Entreprise</h4>
+          <ul>
+            <li><a href="#mission">À propos</a></li>
+            <li>
+              <a href="mailto:contact@nexapro.tech?subject=Candidature NexaPro">
+                Carrières
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contact@nexapro.tech?subject=Partenariat NexaPro">
+                Partenaires
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contact@nexapro.tech?subject=Demande Presse NexaPro">
+                Presse
+              </a>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <span>© 2025 NexaPro · All rights reserved.</span>
+        <span class="footer-entity">
+          NexaPro is a product of ALIDJOLAN, LLC · Wilmington, DE, United States.
+        </span>
+      </div>
+      <div class="footer-links">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <span class="footer-sep">·</span>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+        <span class="footer-sep">·</span>
+        <a href="/cgu.html">CGU</a>
+        <span class="footer-sep">·</span>
+        <a href="/cgv.html">CGV</a>
+        <span class="footer-sep">·</span>
+        <a href="/rgpd.html">RGPD</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function filterArticles(category) {
+      const cards = document.querySelectorAll('.blog-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      // Update active button
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filter cards
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
