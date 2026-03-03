@@ -445,7 +445,36 @@ nav {
 }
 
 .mockup-table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  overflow-x: auto;
   padding: 1.5rem;
+}
+
+.mockup-table td,
+.mockup-table th,
+.pipeline-mock td,
+.pipeline-mock th {
+  white-space: nowrap;
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+.mockup-table td.col-budget,
+.pipeline-table td.budget,
+td[data-col="budget"] {
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+td.col-score { 
+  white-space: nowrap; 
+  min-width: 80px; 
+}
+
+.status-badge { 
+  white-space: nowrap; 
 }
 
 .table-header {
@@ -960,6 +989,16 @@ footer {
 }
 
 /* Mobile */
+@media (max-width: 768px) {
+  .mockup-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mockup-table {
+    min-width: 650px;
+  }
+}
+
 @media (max-width: 640px) {
   .footer-legal {
     flex-direction: column;
@@ -1205,7 +1244,7 @@ footer {
   <div class="section-inner">
     <div class="mockup-container">
       <div class="mockup-header">
-        <div class="mockup-title">Pipeline · 7 leads · 1 317 200 €</div>
+        <div class="mockup-title">Pipeline · 7 leads · 1&nbsp;317&nbsp;200 €</div>
         <div class="mockup-controls">
           <button class="control-btn active">Kanban</button>
           <button class="control-btn">Liste</button>
@@ -1236,7 +1275,8 @@ footer {
           </div>
         </div>
         
-        <div class="mockup-table">
+        <div style="overflow-x: auto; width: 100%;">
+          <div class="mockup-table">
           <div class="table-header">
             <div>NOM</div>
             <div>RÔLE</div>
@@ -1251,7 +1291,7 @@ footer {
             <div class="lead-role">Client</div>
             <div class="lead-type">Maison</div>
             <div><span class="status-badge status-signed">Mandat signé</span></div>
-            <div class="lead-budget">677 700€</div>
+            <div class="lead-budget">677&nbsp;700€</div>
             <div class="lead-score">
               <span>94/100</span>
               <div class="score-bar">
@@ -1265,7 +1305,7 @@ footer {
             <div class="lead-role">Client</div>
             <div class="lead-type">Terrain</div>
             <div><span class="status-badge status-won">Gagné</span></div>
-            <div class="lead-budget">60 000€</div>
+            <div class="lead-budget">60&nbsp;000€</div>
             <div class="lead-score">
               <span>87/100</span>
               <div class="score-bar">
@@ -1279,7 +1319,7 @@ footer {
             <div class="lead-role">Client</div>
             <div class="lead-type">Appartement</div>
             <div><span class="status-badge status-message">Message laissé</span></div>
-            <div class="lead-budget">4 500€</div>
+            <div class="lead-budget">4&nbsp;500€</div>
             <div class="lead-score">
               <span>65/100</span>
               <div class="score-bar">
@@ -1293,7 +1333,7 @@ footer {
             <div class="lead-role">Client</div>
             <div class="lead-type">Appartement</div>
             <div><span class="status-badge status-doc">Document généré</span></div>
-            <div class="lead-budget">25 000€</div>
+            <div class="lead-budget">25&nbsp;000€</div>
             <div class="lead-score">
               <span>72/100</span>
               <div class="score-bar">
@@ -1307,7 +1347,7 @@ footer {
             <div class="lead-role">Client</div>
             <div class="lead-type">Villa</div>
             <div><span class="status-badge status-visit">Visite planifiée</span></div>
-            <div class="lead-budget">60 000€</div>
+            <div class="lead-budget">60&nbsp;000€</div>
             <div class="lead-score">
               <span>58/100</span>
               <div class="score-bar">
