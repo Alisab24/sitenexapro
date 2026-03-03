@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGPD - Règlement Général sur la Protection des Données - NexaPro</title>
+<meta name="description" content="RGPD NexaPro - Protection des données personnelles conformément au règlement européen">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --bg: #07090F;
+  --bg2: #0C1120;
+  --text: #E2E8F0;
+  --text2: #8FA3BF;
+  --text3: #64748B;
+  --border: #1E293B;
+  --border2: #334155;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 2rem 80px;
+  min-height: 100vh;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--blue-light);
+}
+
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 2rem;
+  letter-spacing: -2px;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2.5rem 0 1rem;
+  letter-spacing: -1px;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.5rem 0 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text2);
+}
+
+ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  color: var(--text2);
+}
+
+a {
+  color: var(--blue-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--text);
+}
+
+.legal-section {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1.5rem 0;
+}
+
+.highlight {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.gdpr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.gdpr-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.gdpr-item h4 {
+  color: var(--blue-light);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.gdpr-item p {
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 1rem 60px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  .legal-section {
+    padding: 1.5rem;
+  }
+  
+  .gdpr-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="/" class="back-link">← Retour à nexapro.tech</a>
+  
+  <h1>RGPD - Protection des Données Personnelles</h1>
+  
+  <div class="legal-section">
+    <h2>NOTRE ENGAGEMENT RGPD</h2>
+    <p>
+      AWFI GROUP SARL, exploitant la marque NexaPro et éditrice de LeadQualif, 
+      est une société de droit béninois opérant à l'échelle internationale. 
+      Dans le cadre de son développement en Europe et à l'international, 
+      AWFI GROUP SARL s'engage volontairement à respecter les exigences du RGPD 
+      (Règlement UE 2016/679) pour l'ensemble des données traitées, 
+      qu'elles concernent des ressortissants européens ou non.
+    </p>
+    <p>
+      Cet engagement constitue un avantage concurrentiel et un gage de sérieux 
+      vis-à-vis de nos clients, partenaires et investisseurs internationaux.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>CHAMP D'APPLICATION</h2>
+    <h3>1. Territorialité</h3>
+    <p>
+      Bien qu'AWFI GROUP SARL soit établie au Bénin, notre engagement RGPD 
+      s'applique à :
+    </p>
+    <ul>
+      <li>Toutes les données de ressortissants européens</li>
+      <li>Toutes les données traitées sur le territoire européen</li>
+      <li>Toutes les données de nos clients européens, où qu'ils soient situés</li>
+    </ul>
+
+    <h3>2. Extraterritorialité</h3>
+    <p>
+      Conformément à l'article 3 du RGPD, nous appliquons ses principes 
+      lorsque nos activités de traitement sont liées à :
+    </p>
+    <ul>
+      <li>L'offre de biens/services à des personnes dans l'UE</li>
+      <li>La surveillance du comportement de personnes dans l'UE</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>PRINCIPES FONDAMENTAUX DU RGPD</h2>
+    <div class="gdpr-grid">
+      <div class="gdpr-item">
+        <h4>🎯 Licéité, loyauté, transparence</h4>
+        <p>Traitement licite, loyale et transparent vis-à-vis de la personne concernée</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>📋 Limitation des finalités</h4>
+        <p>Collecte pour des finalités déterminées, explicites et légitimes</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>📊 Minimisation des données</h4>
+        <p>Collecte limitée à ce qui est nécessaire au regard des finalités</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>✅ Exactitude</h4>
+        <p>Données exactes et mises à jour, mesures pour effacer les données inexactes</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>⏰ Limitation de la conservation</h4>
+        <p>Conservation sous forme identifiant permettant l'identification pendant une durée limitée</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>🔒 Intégrité et confidentialité</h4>
+        <p>Sécurité appropriée contre les traitements non autorisés ou illicites</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>🔐 Responsabilité</h4>
+        <p>Le responsable du traitement doit être en mesure de démontrer la conformité</p>
+      </div>
+      <div class="gdpr-item">
+        <h4>🛡️ Sécurité par défaut</h4>
+        <p>Mesures techniques et organisationnelles appropriées dès la conception</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>BASES JURIDIQUES DU TRAITEMENT</h2>
+    <h3>1. Consentement</h3>
+    <p>
+      Pour les newsletters et marketing direct, nous recueillons un consentement 
+      explicite, libre, spécifique et informé. Le consentement peut être retiré 
+      à tout moment.
+    </p>
+
+    <h3>2. Exécution du contrat</h3>
+    <p>
+      Le traitement des données nécessaires à la fourniture du service LeadQualif 
+      et à l'exécution des obligations contractuelles.
+    </p>
+
+    <h3>3. Obligation légale</h3>
+    <p>
+      Respect des obligations légales en matière de conservation des données 
+      comptables, fiscales et de lutte contre le blanchiment.
+    </p>
+
+    <h3>4. Intérêt légitime</h3>
+    <p>
+      Pour l'amélioration de nos services, la sécurité et la prévention 
+      des fraudes, sous réserve de ne pas méconnaître les intérêts des 
+      personnes concernées.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>DROITS DES PERSONNES CONCERNÉES</h2>
+    <h3>1. Droit d'information (Articles 13-14)</h3>
+    <p>
+      Lors de la collecte, nous vous informons sur :
+    </p>
+    <ul>
+      <li>L'identité du responsable du traitement et ses coordonnées</li>
+      <li>Les finalités et la base juridique du traitement</li>
+      <li>Les destinataires des données</li>
+      <li>La durée de conservation</li>
+      <li>L'existence de vos droits et comment les exercer</li>
+    </ul>
+
+    <h3>2. Droit d'accès (Article 15)</h3>
+    <p>
+      Vous pouvez demander une copie de vos données personnelles. Nous répondons 
+      dans un délai d'un mois, prolongeable de deux mois en cas de 
+      complexité.
+    </p>
+
+    <h3>3. Droit de rectification (Article 16)</h3>
+    <p>
+      Vous pouvez obtenir la rectification des données inexactes vous concernant. 
+      Compte tenu des finalités du traitement, vous pouvez demander 
+      le complément des données incomplètes.
+    </p>
+
+    <h3>4. Droit à l'effacement ("droit à l'oubli") (Article 17)</h3>
+    <p>
+      Vous pouvez demander la suppression de vos données lorsque :
+    </p>
+    <ul>
+      <li>Les données ne sont plus nécessaires au regard des finalités</li>
+      <li>Vous retirez votre consentement (pas d'autre base juridique)</li>
+      <li>Vous vous opposez au traitement (pas de motif légitime prépondérant)</li>
+      <li>Les données ont fait l'objet d'un traitement illicite</li>
+      <li>Une obligation légale impose l'effacement</li>
+    </ul>
+
+    <h3>5. Droit à la limitation du traitement (Article 18)</h3>
+      <p>
+        Vous pouvez obtenir la limitation du traitement lorsque :
+      </p>
+      <ul>
+        <li>L'exactitude des données est contestée</li>
+        <li>Le traitement est illicite mais vous acceptez la limitation</li>
+        <li>Nous n'avons plus besoin des données mais vous en avez besoin pour une action en justice</li>
+        <li>Vous vous opposez au traitement (en attente de la vérification)</li>
+      </ul>
+
+    <h3>6. Droit à la portabilité des données (Article 20)</h3>
+    <p>
+      Vous avez le droit de recevoir vos données dans un format structuré, 
+      couramment utilisé et lisible par machine, et de les transmettre 
+      à un autre responsable du traitement.
+    </p>
+
+    <h3>7. Droit d'opposition (Article 21)</h3>
+    <p>
+      Vous pouvez vous opposer à tout moment au traitement de vos données 
+      lorsqu'il est fondé sur l'intérêt légitime, pour des raisons 
+      tenant à votre situation particulière.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>NOTIFICATION DES VIOLATIONS</h2>
+    <h3>1. Délai de notification</h3>
+    <p>
+      En cas de violation de données personnelles, nous notifions l'autorité 
+      de contrôle compétente dans les 72 heures suivant en avoir eu connaissance.
+    </p>
+
+    <h3>2. Notification des personnes concernées</h3>
+    <p>
+      Si la violation est susceptible d'engendrer un risque élevé pour 
+      les droits et libertés des personnes, nous vous notifions sans 
+      délai injustifié.
+    </p>
+
+    <h3>3. Contenu de la notification</h3>
+    <p>
+      La notification inclut :
+    </p>
+    <ul>
+      <li>La nature de la violation</li>
+      <li>Le nom et coordonnées du DPO</li>
+      <li>Les conséquences probables de la violation</li>
+      <li>Les mesures prises pour y remédier</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>PROTECTION DES DONNÉES TRANSFRONTIÈRES</h2>
+    <h3>1. Transferts hors UE</h3>
+    <p>
+      Certains de nos sous-traitants techniques sont basés hors de l'Union 
+      Européenne. Nous nous assurons que les transferts sont protégés par :
+    </p>
+    <ul>
+      <li>Des clauses contractuelles types approuvées par la Commission Européenne</li>
+      <li>Des certifications adéquates (Privacy Shield, etc.)</li>
+      <li>Des règles d'entreprise contraignantes (BCR)</li>
+    </ul>
+
+    <h3>2. Garanties appropriées</h3>
+    <p>
+      Nous nous assurons que les destinataires offrent un niveau de protection 
+      adéquat et que vos droits sont opposables à ces destinataires.
+    </p>
+  </div>
+
+  <div class="legal-section">
+    <h2>ANALYSE D'IMPACT (AIPD)</h2>
+    <h3>1. Quand réalisons-nous une AIPD ?</h3>
+    <p>
+      Nous réalisons une analyse d'impact lorsque le traitement est susceptible 
+      d'engendrer un risque élevé pour les droits et libertés des personnes, 
+      notamment en cas de :
+    </p>
+    <ul>
+      <li>Évaluation systématique et à grande échelle d'aspects personnels</li>
+      <li>Traitement à grande échelle de données sensibles</li>
+      <li>Surveillance systématique d'une zone accessible au public</li>
+    </ul>
+
+    <h3>2. Contenu de l'AIPD</h3>
+    <p>
+      Notre AIPD inclut :
+    </p>
+    <ul>
+      <li>Une description des traitements et finalités</li>
+      <li>L'évaluation de la nécessité et de la proportionnalité</li>
+      <li>Les risques pour les droits et libertés</li>
+      <li>Les mesures prévues pour traiter ces risques</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>DÉLÉGUÉ À LA PROTECTION DES DONNÉES (DPO)</h2>
+    <div class="highlight">
+      <p><strong>Nom du DPO :</strong> À définir</p>
+      <p><strong>Email :</strong> <a href="mailto:dpo@nexapro.tech">dpo@nexapro.tech</a></p>
+      <p><strong>Rôle :</strong> Point de contact unique pour toutes les questions RGPD</p>
+      <p><strong>Missions :</strong> Conseil, contrôle, formation et coopération avec les autorités</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>CONTACT ET RECOURS</h2>
+    <h3>1. Contact DPO</h3>
+    <p>
+      Pour toute question ou réclamation relative à la protection de vos données :
+    </p>
+    <div class="highlight">
+      <p><strong>Email :</strong> <a href="mailto:dpo@nexapro.tech">dpo@nexapro.tech</a></p>
+      <p><strong>Délai de réponse :</strong> 1 mois maximum</p>
+      <p><strong>Accusé de réception :</strong> Sous 5 jours ouvrés</p>
+    </div>
+
+    <h3>2. Autorités de contrôle</h3>
+    <p>
+      En cas de réponse insatisfaisante, vous pouvez saisir :
+    </p>
+    <ul>
+      <li><strong>Pour le Bénin :</strong> Autorité Béninoise de Protection des Données Personnelles (APDP)</li>
+      <li><strong>Pour la France :</strong> Commission Nationale de l'Informatique et des Libertés (CNIL)</li>
+      <li><strong>Pour l'Allemagne :</strong> Bundesbeauftragte für den Datenschutz und die Informationsfreiheit (BfDI)</li>
+      <li><strong>Pour le Royaume-Uni :</strong> Information Commissioner's Office (ICO)</li>
+      <li><strong>Pour tout autre pays UE :</strong> L'autorité de protection des données compétente</li>
+    </ul>
+  </div>
+
+  <div class="legal-section highlight">
+    <h2>INFORMATIONS LÉGALES</h2>
+    <p><strong>Éditeur :</strong> AWFI GROUP SARL</p>
+    <p><strong>Forme juridique :</strong> Société à Responsabilité Limitée</p>
+    <p><strong>Siège social :</strong> Bohicon, République du Bénin</p>
+    <p><strong>Email général :</strong> <a href="mailto:contact@nexapro.tech">contact@nexapro.tech</a></p>
+    <p><strong>Email DPO :</strong> <a href="mailto:dpo@nexapro.tech">dpo@nexapro.tech</a></p>
+    <p><strong>Directeur publication :</strong> Aliou DJANARI</p>
+    <p><strong>Date de mise à jour :</strong> <span id="currentDate"></span></p>
+    <p><strong>Engagement RGPD :</strong> Volontaire et complet pour tous nos clients</p>
+  </div>
+</div>
+
+<script>
+  // Date dynamique
+  document.getElementById('currentDate').textContent = new Date().toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+</script>
+</body>
+</html>
