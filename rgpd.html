@@ -177,20 +177,74 @@ a:hover {
 /* FOOTER */
 footer {
   padding: 3rem 2rem;
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
+  background: var(--bg-dark);
+  border-top: none;
 }
 
-.footer-legal {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 800px;
+.footer-inner {
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-brand p {
+  color: var(--text3);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 300px;
+  margin-top: 1rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-col h4 {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.footer-col ul { 
+  list-style: none; 
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  font-size: 0.875rem;
+  color: var(--text3);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 300;
+}
+
+.footer-col ul li a:hover { color: var(--text2); }
+
+/* Style badges "Bientôt" */
+.footer-col ul li a span {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  cursor: default;
+}
+
+.footer-col ul li a:hover span {
+  opacity: 1;
 }
 
 .footer-copy {
@@ -201,13 +255,13 @@ footer {
 
 .footer-copy span:first-child {
   font-size: 0.82rem;
-  color: #8FA3BF;
+  color: var(--text3);
   font-weight: 400;
 }
 
 .footer-entity {
   font-size: 0.70rem;
-  color: #2D3F55;
+  color: var(--text2);
   font-weight: 300;
 }
 
@@ -220,7 +274,7 @@ footer {
 
 .footer-links a {
   font-size: 0.80rem;
-  color: #4D6480;
+  color: var(--text3);
   text-decoration: none;
   font-weight: 400;
   transition: color 0.2s;
@@ -228,11 +282,11 @@ footer {
 }
 
 .footer-links a:hover {
-  color: #8FA3BF;
+  color: var(--text2);
 }
 
 .footer-sep {
-  color: #2D3F55;
+  color: var(--text2);
   font-size: 0.75rem;
 }
 
@@ -551,7 +605,123 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-legal">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="margin-bottom: 12px; display: inline-flex;">
+          <div class="logo-icon">N</div>
+          <span class="logo-text" style="margin-left: 10px;">Nexa<span>Pro</span></span>
+        </a>
+        <p>NexaPro est l'éditeur de solutions SaaS pour équipes commerciales B2B qui veulent automatiser, qualifier et accélérer leur croissance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#products">Nos produits</a></li>
+          <li><a href="/leadqualif.html">LeadQualif</a></li>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li>
+            <a href="https://www.leadqualif.com/login">
+              Documentation
+              <span style="
+                font-size:0.68rem;
+                background:rgba(37,99,235,0.15);
+                color:#3B82F6;
+                padding:2px 7px;
+                border-radius:4px;
+                margin-left:6px;
+                font-weight:500;
+              ">Bientôt</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Blog
+              <span style="
+                font-size:0.68rem;
+                background:rgba(37,99,235,0.15);
+                color:#3B82F6;
+                padding:2px 7px;
+                border-radius:4px;
+                margin-left:6px;
+                font-weight:500;
+              ">Bientôt</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Études de cas
+              <span style="
+                font-size:0.68rem;
+                background:rgba(37,99,235,0.15);
+                color:#3B82F6;
+                padding:2px 7px;
+                border-radius:4px;
+                margin-left:6px;
+                font-weight:500;
+              ">Bientôt</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Webinaires
+              <span style="
+                font-size:0.68rem;
+                background:rgba(37,99,235,0.15);
+                color:#3B82F6;
+                padding:2px 7px;
+                border-radius:4px;
+                margin-left:6px;
+                font-weight:500;
+              ">Bientôt</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.leadqualif.com/login">
+              API LeadQualif
+              <span style="
+                font-size:0.68rem;
+                background:rgba(37,99,235,0.15);
+                color:#3B82F6;
+                padding:2px 7px;
+                border-radius:4px;
+                margin-left:6px;
+                font-weight:500;
+              ">Bientôt</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="#mission">À propos</a></li>
+          <li>
+            <a href="mailto:contact@nexapro.tech?subject=Candidature NexaPro">
+              Carrières
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contact@nexapro.tech?subject=Partenariat NexaPro">
+              Partenaires
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contact@nexapro.tech?subject=Demande Presse NexaPro">
+              Presse
+            </a>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-copy">
       <span>© 2025 NexaPro · Tous droits réservés.</span>
       <span class="footer-entity">
