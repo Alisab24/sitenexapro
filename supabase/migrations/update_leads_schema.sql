@@ -1,0 +1,20 @@
+ALTER TABLE leads 
+  ADD COLUMN IF NOT EXISTS first_name TEXT,
+  ADD COLUMN IF NOT EXISTS last_name TEXT,
+  ADD COLUMN IF NOT EXISTS name TEXT,
+  ADD COLUMN IF NOT EXISTS company TEXT,
+  ADD COLUMN IF NOT EXISTS profile TEXT,
+  ADD COLUMN IF NOT EXISTS message TEXT,
+  ADD COLUMN IF NOT EXISTS source TEXT DEFAULT 'direct',
+  ADD COLUMN IF NOT EXISTS status TEXT DEFAULT 'new',
+  ADD COLUMN IF NOT EXISTS score INTEGER DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS priority TEXT DEFAULT 'normal',
+  ADD COLUMN IF NOT EXISTS ip_address TEXT,
+  ADD COLUMN IF NOT EXISTS tenant_id TEXT DEFAULT 'nexapro-default',
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ DEFAULT NOW();
+
+-- Index pour performance
+CREATE INDEX IF NOT EXISTS idx_leads_email ON leads(email);
+CREATE INDEX IF NOT EXISTS idx_leads_tenant ON leads(tenant_id);
+CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status);
+CREATE INDEX IF NOT EXISTS idx_leads_source ON leads(source);

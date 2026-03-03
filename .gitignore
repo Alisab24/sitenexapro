@@ -1,0 +1,25 @@
+# Supabase Edge Functions secrets
+supabase/functions/add-lead/.env.local
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Supabase local
+.supabase/
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

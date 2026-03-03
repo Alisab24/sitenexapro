@@ -2859,69 +2859,73 @@
     }
   });
 
-  // Formulaire de contact fonctionnel
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Validation des champs
-      let isValid = true;
-      const requiredFields = ['prenom', 'nom', 'email', 'entreprise', 'message'];
-      
-      // Nettoyer les erreurs précédentes
-      document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
-      document.querySelectorAll('.error-msg').forEach(el => el.remove());
-      
-      requiredFields.forEach(fieldName => {
-        const field = document.getElementById(fieldName);
-        if (!field || !field.value.trim()) {
-          field.classList.add('field-error');
-          
-          // Ajouter message d'erreur
-          const errorMsg = document.createElement('div');
-          errorMsg.className = 'error-msg';
-          errorMsg.textContent = 'Ce champ est requis';
-          field.parentNode.insertBefore(errorMsg, field.nextSibling);
-          
-          isValid = false;
+  // Formulaire de contact fonctionnel avec Edge Function Supabase
+  const EDGE_FUNCTION_URL = "https://[TON-PROJECT-REF].supabase.co/functions/v1/add-lead";
+  const NEXAPRO_API_KEY = "[NEXAPRO_API_KEY_PUBLIQUE]";
+
+  async function handleContactSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('[type="submit"]');
+    
+    // Reset erreurs
+    form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+    form.querySelectorAll('.error-msg').forEach(el => el.remove());
+    
+    // Récupérer les valeurs
+    const fields = {
+      firstName: form.querySelector('[name="firstName"], #firstName')?.value?.trim(),
+      lastName: form.querySelector('[name="lastName"], #lastName')?.value?.trim(),
+      email: form.querySelector('[name="email"], #email, [type="email"]')?.value?.trim(),
+      company: form.querySelector('[name="company"], #company')?.value?.trim(),
+      profile: form.querySelector('[name="profile"], #profile, select')?.value?.trim(),
+      message: form.querySelector('[name="message"], #message, textarea')?.value?.trim(),
+      website: form.querySelector('[name="website"]')?.value, // honeypot
+    };
+
+    // Validation client-side
+    let hasError = false;
+    const required = ['firstName', 'lastName', 'email', 'company', 'message'];
+    required.forEach(key => {
+      if (!fields[key]) {
+        const input = form.querySelector(`[name="${key}"], #${key}`);
+        if (input) {
+          input.classList.add('field-error');
+          const msg = document.createElement('span');
+          msg.className = 'error-msg';
+          msg.textContent = 'Ce champ est requis';
+          msg.style.cssText = 'color:#EF4444;font-size:0.72rem;margin-top:4px;display:block;';
+          input.parentNode.appendChild(msg);
         }
-      });
-      
-      // Validation email
-      const emailField = document.getElementById('email');
-      if (emailField && emailField.value.trim()) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(emailField.value.trim())) {
-          emailField.classList.add('field-error');
-          
-          const errorMsg = document.createElement('div');
-          errorMsg.className = 'error-msg';
-          errorMsg.textContent = 'Veuillez entrer une adresse email valide';
-          emailField.parentNode.insertBefore(errorMsg, emailField.nextSibling);
-          
-          isValid = false;
-        }
+        hasError = true;
       }
-      
-      if (isValid) {
-        // Construire le body du mail
-        const prenom = document.getElementById('prenom').value.trim();
-        const nom = document.getElementById('nom').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const entreprise = document.getElementById('entreprise').value.trim();
-        const profil = document.getElementById('profil').value.trim();
-        const message = document.getElementById('message').value.trim();
-        
-        const fullName = prenom + ' ' + nom;
-        const body = `Nom: ${fullName}%0AEmail: ${email}%0AEntreprise: ${entreprise}%0AProfil: ${profil}%0AMessage: ${message}`;
-        
-        // Ouvrir le client mail
-        window.location.href = `mailto:contact@nexapro.tech?subject=Contact NexaPro — ${entreprise}&body=${body}`;
-        
-        // Afficher message de succès
-        const successMsg = document.createElement('div');
-        successMsg.style.cssText = `
+    });
+
+    if (hasError) return;
+
+    // UI loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    submitBtn.style.opacity = '0.7';
+
+    try {
+      const response = await fetch(EDGE_FUNCTION_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': NEXAPRO_API_KEY,
+        },
+        body: JSON.stringify(fields),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Succès
+        form.reset();
+        const successEl = document.createElement('div');
+        successEl.innerHTML = '✓ Message envoyé ! Nous vous répondons sous 24h ouvrées.';
+        successEl.style.cssText = `
           background: rgba(16,185,129,0.1);
           border: 1px solid rgba(16,185,129,0.3);
           color: #10B981;
@@ -2930,21 +2934,52 @@
           font-size: 0.9rem;
           font-weight: 500;
           margin-top: 16px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
+          text-align: center;
         `;
-        successMsg.innerHTML = '✓ Message envoyé ! Nous vous répondons sous 24h ouvrées.';
-        
-        contactForm.appendChild(successMsg);
-        
-        // Réinitialiser le formulaire après 2 secondes
-        setTimeout(() => {
-          contactForm.reset();
-          successMsg.remove();
-        }, 2000);
+        form.appendChild(successEl);
+        setTimeout(() => successEl.remove(), 6000);
+      } else {
+        throw new Error(result.error || 'Erreur inconnue');
       }
-    });
+    } catch (err) {
+      const errorEl = document.createElement('div');
+      errorEl.textContent = err.message || 'Erreur. Contactez-nous à contact@nexapro.tech';
+      errorEl.style.cssText = `
+        background: rgba(239,68,68,0.1);
+        border: 1px solid rgba(239,68,68,0.3);
+        color: #EF4444;
+        padding: 16px 20px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        margin-top: 16px;
+        text-align: center;
+      `;
+      form.appendChild(errorEl);
+      setTimeout(() => errorEl.remove(), 5000);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer →';
+      submitBtn.style.opacity = '1';
+    }
+  }
+
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', handleContactSubmit);
+    
+    // Ajouter honeypot anti-spam (champ caché)
+    const honeypot = document.createElement('input');
+    honeypot.type = 'text';
+    honeypot.name = 'website';
+    honeypot.style.cssText = 'position:absolute;left:-9999px;opacity:0;';
+    honeypot.tabIndex = -1;
+    honeypot.autocomplete = 'off';
+    contactForm.appendChild(honeypot);
+
+    // CSS erreurs
+    const style = document.createElement('style');
+    style.textContent = '.field-error{border-color:#EF4444!important;box-shadow:0 0 0 3px rgba(239,68,68,0.1)!important;}';
+    document.head.appendChild(style);
   }
 
 </script>
