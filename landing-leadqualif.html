@@ -8,8 +8,9 @@
 <meta property="og:title" content="LeadQualif — CRM Immobilier avec Scoring IA">
 <meta property="og:description" content="Pipeline commercial, scoring IA et génération de documents en une seule plateforme.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='100' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="/leadqualif-favicon.svg">
+<link rel="shortcut icon" href="/leadqualif-favicon.svg">
+<link rel="apple-touch-icon" href="/leadqualif-favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -940,21 +941,41 @@
   }
 
   @media (max-width: 768px) {
-    .hero {
-      padding: 100px 1rem 80px;
+    /* Nav: hide text links, shrink CTA button */
+    .nav-links .nav-link {
+      display: none;
     }
-    
+
+    nav {
+      padding: 0 1rem;
+      height: 60px;
+    }
+
+    .nav-links .btn-primary {
+      font-size: 0.78rem;
+      padding: 8px 12px;
+      white-space: nowrap;
+    }
+
+    .nav-logo .logo-text {
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 90px 1rem 60px;
+    }
+
     .hero-actions {
       flex-direction: column;
       gap: 12px;
     }
-    
+
     .hero-badges {
       flex-direction: column;
       gap: 12px;
       margin-bottom: 1.5rem;
     }
-    
+
     .target-badge {
       padding: 6px 12px;
     }
@@ -1014,26 +1035,49 @@
     .section-inner {
       padding: 0 1rem;
     }
-    
+
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
-    
+
     .hero-sub {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
-    
+
     .feature-card {
       padding: 1.5rem;
     }
-    
+
     .step-card {
       padding: 1.5rem;
     }
-    
+
     .pipeline-header, .pipeline-row {
       grid-template-columns: 1fr 60px 60px 50px 60px;
       font-size: 0.65rem;
+    }
+
+    /* Footer links */
+    .footer-links {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    footer {
+      padding: 2rem 1rem;
+    }
+
+    /* Pricing cards */
+    .pricing-card {
+      padding: 1.5rem;
+    }
+
+    /* CTA buttons full width */
+    .btn-hero, .btn-outline {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
     }
   }
 </style>

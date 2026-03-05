@@ -8,8 +8,9 @@
 <meta property="og:title" content="NexaPro — Éditeur SaaS B2B">
 <meta property="og:description" content="Éditeur de solutions SaaS pour la performance commerciale B2B. LeadQualif, PipelineAI, SalesFlow.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EN%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%232563EB'/%3E%3Ctext x='50%25' y='50%25' font-family='Syne%2C sans-serif' font-size='100' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1836,7 +1837,7 @@
 
   .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin: 3rem 0;
   }
@@ -2293,9 +2294,59 @@
     .section-inner {
       padding: 0 1.2rem;
     }
-    
+
     body {
       font-size: 14px;
+    }
+
+    /* Grids sections */
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .steps-grid::before {
+      display: none;
+    }
+
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Dashboard mockup */
+    .mockup-body {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .mockup-sidebar {
+      display: none;
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      gap: 1.5rem;
+      padding-top: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    /* Product card flagship */
+    .product-card.flagship {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    /* Blog preview grid */
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Logos section */
+    .logos-grid {
+      gap: 1.5rem;
     }
   }
 
@@ -2316,6 +2367,28 @@
     
     .btn {
       min-height: 44px;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .stat-num {
+      font-size: 1.6rem;
+    }
+
+    section {
+      padding: 50px 1rem;
     }
   }
 </style>

@@ -6,6 +6,9 @@
   <title>Comment qualifier vos leads automatiquement en agence SMMA | NexaPro</title>
   <meta name="description" content="Découvrez comment les agences SMMA utilisent le scoring IA pour qualifier leurs leads en 2025 et multiplier leur taux de closing par 3. Guide pratique NexaPro.">
   <meta name="keywords" content="qualification leads SMMA, CRM agence marketing, scoring IA leads, automatisation lead generation, LeadQualif">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" href="../favicon.svg">
+  <link rel="apple-touch-icon" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -480,18 +483,55 @@
       .container {
         padding: 0 1rem;
       }
-      
+
+      .navbar {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .article-header {
+        padding: 2rem 0 1rem;
+      }
+
       .article-title {
         font-size: 2rem;
       }
-      
+
+      .article-body {
+        padding: 0 1rem;
+      }
+
       .stat-box {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
-      
+
       .article-cta-banner {
         padding: 24px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .article-title {
+        font-size: 1.6rem;
+      }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .article-cta-banner a {
+        font-size: 1rem;
+        padding: 14px 24px;
       }
     }
   </style>

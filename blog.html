@@ -6,6 +6,9 @@
   <title>Le Blog NexaPro - Stratégies, outils et insights pour agences SMMA et immobilières</title>
   <meta name="description" content="Blog NexaPro : stratégies, outils et insights pour agences SMMA et immobilières qui veulent performer. Experts en CRM, scoring IA et automatisation.">
   <meta name="keywords" content="blog agence SMMA, blog immobilier, CRM B2B, scoring IA, automatisation marketing, LeadQualif">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -415,14 +418,70 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
-      
+
       .blog-filters {
         gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-      
+
       .filter-btn {
         padding: 8px 16px;
         font-size: 0.9rem;
+      }
+
+      /* Nav */
+      .navbar {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      /* Blog header */
+      .blog-title {
+        font-size: 2rem;
+      }
+
+      .blog-header {
+        padding: 2rem 0 1rem;
+      }
+
+      /* Footer */
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .footer-copy {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .blog-title {
+        font-size: 1.75rem;
+      }
+
+      .blog-subtitle {
+        font-size: 0.95rem;
       }
     }
   </style>
