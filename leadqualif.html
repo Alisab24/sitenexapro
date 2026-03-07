@@ -1639,33 +1639,14 @@ footer {
       document.getElementById('canceled-banner').style.display = 'block';
     }
 
-    async function startCheckout(plan, btn) {
-      const originalText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = '⏳ Chargement...';
-      btn.style.opacity = '0.75';
-      try {
-        const res = await fetch('https://www.leadqualif.com/api/stripe/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            plan,
-            successUrl: 'https://www.leadqualif.com/dashboard?subscription=success&plan=' + plan,
-            cancelUrl: 'https://nexapro.tech/leadqualif.html?canceled=true',
-          })
-        });
-        const data = await res.json();
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          throw new Error(data.error || 'Erreur inconnue');
-        }
-      } catch(e) {
-        btn.disabled = false;
-        btn.textContent = originalText;
-        btn.style.opacity = '1';
-        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter à contact@nexapro.tech');
+    // Redirige vers l'app qui gère le checkout en same-origin — zéro CORS
+    function startCheckout(plan, btn) {
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '⏳ Redirection...';
+        btn.style.opacity = '0.75';
       }
+      window.location.href = 'https://www.leadqualif.com/settings?tab=facturation&plan=' + plan;
     }
     </script>
   </div>
