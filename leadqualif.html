@@ -835,6 +835,15 @@ td.col-score {
   transform: translateY(-1px);
 }
 
+.pricing-btn:disabled {
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pricing-features li {
+  text-align: left;
+}
+
 /* CTA FINAL */
 .cta-section {
   padding: 100px 2rem;
@@ -1224,7 +1233,7 @@ footer {
     </div>
     <div class="nav-cta">
       <a href="https://www.leadqualif.com/login" class="btn-ghost">Se connecter</a>
-      <a href="https://www.leadqualif.com/login" class="btn-primary">Essai gratuit 14 jours</a>
+      <a href="#pricing" class="btn-primary">Essai gratuit 7 jours →</a>
     </div>
   </div>
 </nav>
@@ -1542,62 +1551,133 @@ footer {
 </section>
 
 <!-- PRICING -->
-<section class="pricing-section">
+<section class="pricing-section" id="pricing">
   <div class="section-inner">
     <div class="section-header">
       <span class="section-tag">Tarifs</span>
       <h2>Choisissez votre plan</h2>
+      <p style="text-align:center; color:#64748b; font-size:0.95rem; margin-top:8px;">
+        🎯 7 jours d'essai gratuit • Sans carte bancaire • Annulation à tout moment • Paiement sécurisé via Stripe
+      </p>
     </div>
-    
+
     <div class="pricing-grid">
+
+      <!-- STARTER -->
       <div class="pricing-card animate-on-scroll">
         <div class="pricing-plan">Starter</div>
-        <div class="pricing-price">49€<span style="font-size: 1rem;">/mois</span></div>
-        <div class="pricing-desc">Pour démarrer</div>
+        <div class="pricing-price">49€<span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span></div>
+        <div class="pricing-desc">Idéal pour lancer votre activité et qualifier vos premiers leads</div>
         <ul class="pricing-features">
-          <li>1 utilisateur</li>
-          <li>100 leads/mois</li>
-          <li>Pipeline + scoring IA</li>
+          <li>1 utilisateur inclus</li>
+          <li>500 leads/mois</li>
+          <li>Pipeline Kanban visuel</li>
+          <li>Scoring IA (chaud / tiède / froid)</li>
+          <li>Génération de documents (devis, mandats)</li>
+          <li>Historique CRM par lead</li>
+          <li>Support par email</li>
         </ul>
-        <button class="pricing-btn" onclick="window.location.href='https://www.leadqualif.com/login'">Commencer</button>
+        <button class="pricing-btn" id="btn-starter" onclick="startCheckout('starter', this)">Démarrer l'essai gratuit →</button>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;">7 jours gratuits · puis 49€/mois</p>
       </div>
-      
+
+      <!-- GROWTH -->
       <div class="pricing-card featured animate-on-scroll">
-        <div class="pricing-badge">Le plus populaire</div>
+        <div class="pricing-badge">⭐ Le plus populaire</div>
         <div class="pricing-plan">Growth</div>
-        <div class="pricing-price">149€<span style="font-size: 1rem;">/mois</span></div>
-        <div class="pricing-desc">Pour les équipes</div>
+        <div class="pricing-price">149€<span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span></div>
+        <div class="pricing-desc">Pour les agences SMMA et IMMO qui veulent scaler</div>
         <ul class="pricing-features">
-          <li>5 utilisateurs</li>
+          <li>3 utilisateurs inclus</li>
           <li>Leads illimités</li>
-          <li>Génération documents</li>
-          <li>Analytics complets</li>
-        </ul>
-        <button class="pricing-btn" onclick="window.location.href='https://www.leadqualif.com/login'">Commencer</button>
-      </div>
-      
-      <div class="pricing-card animate-on-scroll">
-        <div class="pricing-plan">Enterprise</div>
-        <div class="pricing-price">Sur<span style="font-size: 1rem;"> mesure</span></div>
-        <div class="pricing-desc">Pour les grandes entreprises</div>
-        <ul class="pricing-features">
-          <li>Équipes illimitées</li>
-          <li>API complète</li>
-          <li>Onboarding dédié</li>
+          <li>IA avancée + suggestions automatiques</li>
+          <li>Documents Pro (compromis, mandats, devis)</li>
+          <li>Prise de RDV Calendly intégrée</li>
+          <li>Analytics & statistiques détaillées</li>
+          <li>Drag & Drop Kanban</li>
           <li>Support prioritaire</li>
         </ul>
-        <button class="pricing-btn" onclick="window.location.href='mailto:contact@nexapro.tech'">Nous contacter</button>
+        <button class="pricing-btn" id="btn-growth" onclick="startCheckout('growth', this)" style="background: linear-gradient(135deg, #1d4ed8, #2563eb); font-size:1rem; padding:14px 24px;">Démarrer l'essai gratuit →</button>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;">7 jours gratuits · puis 149€/mois</p>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pricing-card animate-on-scroll">
+        <div class="pricing-plan">Enterprise</div>
+        <div class="pricing-price" style="font-size:2rem;">Sur<span style="font-size: 1rem; font-weight:500;"> mesure</span></div>
+        <div class="pricing-desc">Pour les grandes agences et réseaux multi-sites</div>
+        <ul class="pricing-features">
+          <li>Utilisateurs illimités</li>
+          <li>Leads illimités</li>
+          <li>IA personnalisée sur vos données</li>
+          <li>API complète + intégrations sur mesure</li>
+          <li>Manager de compte dédié</li>
+          <li>Onboarding & formation inclus</li>
+          <li>SLA garanti + support 24/7</li>
+        </ul>
+        <button class="pricing-btn" onclick="window.location.href='mailto:contact@nexapro.tech?subject=LeadQualif%20Enterprise%20-%20Demande%20de%20démo'" style="background:#1e293b;">Nous contacter →</button>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;">Démo offerte · Tarif personnalisé</p>
       </div>
     </div>
+
+    <!-- REASSURANCE -->
+    <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top:2.5rem;">
+      <span style="color:#64748b; font-size:0.875rem; display:flex; align-items:center; gap:6px;">🔒 Paiement 100% sécurisé</span>
+      <span style="color:#64748b; font-size:0.875rem; display:flex; align-items:center; gap:6px;">🚫 Sans engagement</span>
+      <span style="color:#64748b; font-size:0.875rem; display:flex; align-items:center; gap:6px;">✉️ Factures automatiques</span>
+      <span style="color:#64748b; font-size:0.875rem; display:flex; align-items:center; gap:6px;">🔁 Résiliation en 1 clic</span>
+    </div>
+
+    <!-- CANCELED BANNER -->
+    <div id="canceled-banner" style="display:none; margin-top:1.5rem; background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:12px 20px; text-align:center; color:#dc2626; font-size:0.9rem;">
+      ⚠️ Le paiement a été annulé. Vous pouvez réessayer à tout moment.
+    </div>
+
+    <script>
+    // Show canceled banner if redirected back
+    if (window.location.search.includes('canceled=true')) {
+      document.getElementById('canceled-banner').style.display = 'block';
+    }
+
+    async function startCheckout(plan, btn) {
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = '⏳ Chargement...';
+      btn.style.opacity = '0.75';
+      try {
+        const res = await fetch('https://www.leadqualif.com/api/stripe/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            plan,
+            successUrl: 'https://www.leadqualif.com/dashboard?subscription=success&plan=' + plan,
+            cancelUrl: 'https://nexapro.tech/leadqualif.html?canceled=true',
+          })
+        });
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error(data.error || 'Erreur inconnue');
+        }
+      } catch(e) {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        btn.style.opacity = '1';
+        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter à contact@nexapro.tech');
+      }
+    }
+    </script>
   </div>
 </section>
 
 <!-- CTA FINAL -->
 <section class="cta-section">
   <div class="section-inner">
-    <h2>Prêt à transformer votre performance ?</h2>
-    <p class="cta-subtitle">14 jours gratuits · Sans carte bancaire · Onboarding guidé</p>
-    <a href="https://www.leadqualif.com/login" class="cta-btn">Démarrer gratuitement →</a>
+    <h2>Prêt à qualifier vos leads avec l'IA ?</h2>
+    <p class="cta-subtitle">7 jours gratuits · Sans carte bancaire · Résiliation en 1 clic</p>
+    <button onclick="startCheckout('growth', this)" class="cta-btn" style="border:none; cursor:pointer; font-family:inherit;">Démarrer gratuitement →</button>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:16px;">Plus de 150 agences SMMA et IMMO nous font confiance</p>
   </div>
 </section>
 
