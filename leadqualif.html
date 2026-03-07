@@ -1646,6 +1646,8 @@ footer {
         btn.textContent = '⏳ Redirection...';
         btn.style.opacity = '0.75';
       }
+      // Sauvegarde en sessionStorage : filet si l'utilisateur doit passer par le login
+      try { sessionStorage.setItem('pendingPlan', plan); } catch(e) {}
       window.location.href = 'https://www.leadqualif.com/settings?tab=facturation&plan=' + plan;
     }
     </script>
