@@ -685,7 +685,7 @@ td.col-score {
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -843,6 +843,49 @@ td.col-score {
 .pricing-features li {
   text-align: left;
 }
+
+/* BILLING TOGGLE */
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 1.5rem 0 2.5rem;
+}
+.billing-toggle-track {
+  background: #E2E8F0;
+  border-radius: 8px;
+  display: inline-flex;
+  padding: 4px;
+  gap: 4px;
+}
+.billing-toggle-btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: #64748B;
+}
+.billing-toggle-btn.active {
+  background: white;
+  color: #0F172A;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.annual-badge {
+  background: #DCFCE7;
+  color: #166534;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.price-display { transition: all 0.25s; }
+.savings-note { font-size: 0.78rem; color: #10B981; font-weight: 500; margin-top: 2px; min-height: 16px; }
 
 /* CTA FINAL */
 .cta-section {
@@ -1241,21 +1284,18 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Le CRM qui qualifie vos leads et génère vos documents automatiquement.</h1>
-    <p class="hero-subtitle">Conçu pour les agences SMMA et les agences immobilières. Pipeline intelligent, scoring IA, devis et mandats en 1 clic.</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#EFF6FF;border:1px solid #BFDBFE;color:#1D4ED8;padding:7px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:1.2rem;">⚡ Nouveau — Recommandations IA + Centre de documents complet</div>
+    <h1>Votre agence mérite<br>des clients sérieux.</h1>
+    <p class="hero-subtitle">LeadQualif qualifie vos prospects 24/7 par IA, génère vos documents en 1 clic et pilote votre CA — pour que vous ne travailliez plus que sur ce qui compte vraiment.</p>
     <div class="hero-cta">
-      <a href="https://www.leadqualif.com/login" class="btn-primary" style="padding: 12px 24px; font-size: 1rem;">Essayer gratuitement 14 jours</a>
-      <a href="https://www.leadqualif.com/login" class="btn-ghost" style="padding: 12px 24px; font-size: 1rem;">Voir la démo</a>
+      <a href="https://www.leadqualif.com/login" class="btn-primary" style="padding: 14px 28px; font-size: 1.05rem; font-weight:700;">🚀 Démarrer — 7 jours gratuits</a>
+      <a href="#pricing" class="btn-ghost" style="padding: 14px 28px; font-size: 1.05rem;">Voir les tarifs →</a>
     </div>
     <div class="hero-badges">
-      <div class="badge">
-        <span>🏢</span>
-        <span>Agences SMMA</span>
-      </div>
-      <div class="badge">
-        <span>🏠</span>
-        <span>Agences Immobilières</span>
-      </div>
+      <div class="badge"><span>✅</span><span>Sans carte bancaire</span></div>
+      <div class="badge"><span>🔒</span><span>Données hébergées en EU</span></div>
+      <div class="badge smma"><span>🏢</span><span>Agences SMMA</span></div>
+      <div class="badge immo"><span>🏠</span><span>Agences Immobilières</span></div>
     </div>
   </div>
 </section>
@@ -1546,6 +1586,43 @@ footer {
           </div>
         </div>
       </div>
+
+      <div class="testimonial-card animate-on-scroll">
+        <p class="testimonial-text">"On est 3 dans l'équipe. Tous nos leads sont centralisés, chacun voit ses dossiers. On a signé 40% de mandats en plus le premier mois."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:#10B981;">AD</div>
+          <div class="author-info">
+            <div class="author-name">Aurélie D.</div>
+            <div class="author-role">Agence Immobilière — Bordeaux</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI SECTION -->
+<section style="padding:80px 2rem; background:#0F172A; color:white;">
+  <div class="section-inner" style="text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.15);color:#34D399;border:1px solid rgba(16,185,129,0.3);padding:7px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:1.5rem;">📈 Calculez votre ROI</div>
+    <h2 style="font-size:2.4rem;font-weight:800;letter-spacing:-1.5px;margin-bottom:1rem;line-height:1.15;">1 client signé grâce à LeadQualif<br><span style="color:#34D399;">= votre abonnement rentabilisé 6 mois.</span></h2>
+    <p style="color:#94A3B8;font-size:1.1rem;max-width:600px;margin:0 auto 3rem;">Combien vous coûte 1 heure à qualifier un mauvais prospect ? LeadQualif vous rend ce temps — et détecte les vraies opportunités.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;max-width:760px;margin:0 auto;">
+      <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#94A3B8;margin-bottom:0.75rem;">Sans LeadQualif</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#F87171;margin-bottom:4px;">2–3h/jour</div>
+        <div style="color:#94A3B8;font-size:0.9rem;">passées à qualifier manuellement</div>
+      </div>
+      <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#94A3B8;margin-bottom:0.75rem;">Avec LeadQualif</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#34D399;margin-bottom:4px;">&lt; 5 min</div>
+        <div style="color:#94A3B8;font-size:0.9rem;">pour traiter un lead scoré</div>
+      </div>
+      <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:14px;padding:1.5rem;">
+        <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#94A3B8;margin-bottom:0.75rem;">Retour sur investissement</div>
+        <div style="font-size:2.2rem;font-weight:800;color:#34D399;margin-bottom:4px;">× 10</div>
+        <div style="color:#94A3B8;font-size:0.9rem;">minimum sur votre temps commercial</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1561,62 +1638,78 @@ footer {
       </p>
     </div>
 
+    <!-- BILLING TOGGLE -->
+    <div class="billing-toggle">
+      <div class="billing-toggle-track">
+        <button class="billing-toggle-btn active" id="toggle-monthly" onclick="setBilling('monthly')">Mensuel</button>
+        <button class="billing-toggle-btn" id="toggle-annual" onclick="setBilling('annual')">Annuel <span class="annual-badge">2 mois offerts</span></button>
+      </div>
+    </div>
+
     <div class="pricing-grid">
 
-      <!-- STARTER -->
+      <!-- SOLO (ex-Starter) -->
       <div class="pricing-card animate-on-scroll">
-        <div class="pricing-plan">Starter</div>
-        <div class="pricing-price">49€<span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span></div>
-        <div class="pricing-desc">Idéal pour lancer votre activité et qualifier vos premiers leads</div>
+        <div class="pricing-plan">Solo</div>
+        <div class="pricing-price">
+          <span class="price-display" id="price-starter">49€</span><span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span>
+        </div>
+        <div class="savings-note" id="savings-starter"></div>
+        <div class="pricing-desc" style="margin-top:0.5rem;">Pour démarrer et qualifier vos premiers leads</div>
         <ul class="pricing-features">
           <li>1 utilisateur inclus</li>
-          <li>500 leads/mois</li>
-          <li>Pipeline Kanban visuel</li>
-          <li>Scoring IA (chaud / tiède / froid)</li>
-          <li>Génération de documents (devis, mandats)</li>
-          <li>Historique CRM par lead</li>
-          <li>Support par email</li>
+          <li>100 leads / mois</li>
+          <li>Scoring IA 0–10</li>
+          <li>Formulaire de qualification public</li>
+          <li>Génération factures & devis</li>
+          <li>Pipeline CRM kanban</li>
+          <li>Support email</li>
         </ul>
-        <button class="pricing-btn" id="btn-starter" onclick="startCheckout('starter', this)">Démarrer l'essai gratuit →</button>
-        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;">7 jours gratuits · puis 49€/mois</p>
+        <button class="pricing-btn" id="btn-starter" onclick="startCheckout(currentBilling === 'annual' ? 'starter_annual' : 'starter', this)">Démarrer l'essai gratuit →</button>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;" id="note-starter">7 jours gratuits · puis 49€/mois</p>
       </div>
 
-      <!-- GROWTH -->
+      <!-- AGENCE (ex-Growth) -->
       <div class="pricing-card featured animate-on-scroll">
         <div class="pricing-badge">⭐ Le plus populaire</div>
-        <div class="pricing-plan">Growth</div>
-        <div class="pricing-price">149€<span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span></div>
-        <div class="pricing-desc">Pour les agences SMMA et IMMO qui veulent scaler</div>
+        <div class="pricing-plan">Agence</div>
+        <div class="pricing-price">
+          <span class="price-display" id="price-growth">149€</span><span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span>
+        </div>
+        <div class="savings-note" id="savings-growth"></div>
+        <div class="pricing-desc" style="margin-top:0.5rem;">La solution complète pour agences ambitieuses</div>
         <ul class="pricing-features">
-          <li>3 utilisateurs inclus</li>
+          <li>5 utilisateurs inclus</li>
           <li>Leads illimités</li>
-          <li>IA avancée + suggestions automatiques</li>
-          <li>Documents Pro (compromis, mandats, devis)</li>
-          <li>Prise de RDV Calendly intégrée</li>
-          <li>Analytics & statistiques détaillées</li>
-          <li>Drag & Drop Kanban</li>
-          <li>Support prioritaire</li>
+          <li>Scoring IA avancé + recommandations</li>
+          <li>Documents illimités (factures, devis, contrats, rapports)</li>
+          <li>Stats & Analytics (CA, ROI, pipeline)</li>
+          <li>Invitations équipe par email</li>
+          <li>Support prioritaire 24/7</li>
         </ul>
-        <button class="pricing-btn" id="btn-growth" onclick="startCheckout('growth', this)" style="background: linear-gradient(135deg, #1d4ed8, #2563eb); font-size:1rem; padding:14px 24px;">Démarrer l'essai gratuit →</button>
-        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;">7 jours gratuits · puis 149€/mois</p>
+        <button class="pricing-btn" id="btn-growth" onclick="startCheckout(currentBilling === 'annual' ? 'growth_annual' : 'growth', this)" style="background: linear-gradient(135deg, #1d4ed8, #2563eb); font-size:1rem; padding:14px 24px;">7 jours gratuits → démarrer</button>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;" id="note-growth">7 jours gratuits · puis 149€/mois</p>
       </div>
 
-      <!-- ENTERPRISE -->
+      <!-- EXPERT (ex-Enterprise) -->
       <div class="pricing-card animate-on-scroll">
-        <div class="pricing-plan">Enterprise</div>
-        <div class="pricing-price" style="font-size:2rem;">Sur<span style="font-size: 1rem; font-weight:500;"> mesure</span></div>
-        <div class="pricing-desc">Pour les grandes agences et réseaux multi-sites</div>
+        <div class="pricing-plan">Expert</div>
+        <div class="pricing-price">
+          <span class="price-display" id="price-enterprise">399€</span><span style="font-size: 1rem; font-weight:500; color:#64748b;">/mois</span>
+        </div>
+        <div class="savings-note" id="savings-enterprise"></div>
+        <div class="pricing-desc" style="margin-top:0.5rem;">Multi-agences, volumes importants, sur-mesure</div>
         <ul class="pricing-features">
           <li>Utilisateurs illimités</li>
           <li>Leads illimités</li>
-          <li>IA personnalisée sur vos données</li>
-          <li>API complète + intégrations sur mesure</li>
-          <li>Manager de compte dédié</li>
-          <li>Onboarding & formation inclus</li>
-          <li>SLA garanti + support 24/7</li>
+          <li>Tout le plan Agence</li>
+          <li>Multi-agences sur un seul compte</li>
+          <li>Onboarding dédié & formation équipe</li>
+          <li>SLA garanti & support téléphonique</li>
+          <li>Intégrations sur-mesure</li>
         </ul>
-        <button class="pricing-btn" onclick="window.location.href='mailto:contact@nexapro.tech?subject=LeadQualif%20Enterprise%20-%20Demande%20de%20démo'" style="background:#1e293b;">Nous contacter →</button>
-        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;">Démo offerte · Tarif personnalisé</p>
+        <button class="pricing-btn" id="btn-enterprise" onclick="startCheckout(currentBilling === 'annual' ? 'enterprise_annual' : 'enterprise', this)" style="background:#1e293b;">Démarrer l'essai gratuit →</button>
+        <p style="font-size:0.78rem; color:#94a3b8; margin-top:10px;" id="note-enterprise">7 jours gratuits · puis 399€/mois</p>
       </div>
     </div>
 
@@ -1634,20 +1727,65 @@ footer {
     </div>
 
     <script>
-    // Show canceled banner if redirected back
+    // ── Canceled banner ──────────────────────────────────────────────────────
     if (window.location.search.includes('canceled=true')) {
       document.getElementById('canceled-banner').style.display = 'block';
     }
 
-    // Redirige vers l'app qui gère le checkout en same-origin — zéro CORS
+    // ── Billing toggle ───────────────────────────────────────────────────────
+    var currentBilling = 'monthly';
+
+    var PRICES = {
+      monthly: { starter: '49€', growth: '149€', enterprise: '399€' },
+      annual:  { starter: '39€', growth: '119€', enterprise: '319€' },
+    };
+    var SAVINGS = {
+      monthly: { starter: '', growth: '', enterprise: '' },
+      annual:  {
+        starter:    'Économie 120€/an — facturé 468€',
+        growth:     'Économie 360€/an — facturé 1 428€',
+        enterprise: 'Économie 960€/an — facturé 3 828€',
+      },
+    };
+    var NOTES = {
+      monthly: {
+        starter:    '7 jours gratuits · puis 49€/mois',
+        growth:     '7 jours gratuits · puis 149€/mois',
+        enterprise: '7 jours gratuits · puis 399€/mois',
+      },
+      annual: {
+        starter:    '7 jours gratuits · puis 468€/an (= 39€/mois)',
+        growth:     '7 jours gratuits · puis 1 428€/an (= 119€/mois)',
+        enterprise: '7 jours gratuits · puis 3 828€/an (= 319€/mois)',
+      },
+    };
+
+    function setBilling(mode) {
+      currentBilling = mode;
+      // Toggle buttons
+      document.getElementById('toggle-monthly').classList.toggle('active', mode === 'monthly');
+      document.getElementById('toggle-annual').classList.toggle('active', mode === 'annual');
+      // Update prices
+      ['starter', 'growth', 'enterprise'].forEach(function(key) {
+        document.getElementById('price-' + key).textContent = PRICES[mode][key];
+        document.getElementById('savings-' + key).textContent = SAVINGS[mode][key];
+        document.getElementById('note-' + key).textContent = NOTES[mode][key];
+      });
+    }
+
+    // ── Checkout redirect ────────────────────────────────────────────────────
     function startCheckout(plan, btn) {
       if (btn) {
         btn.disabled = true;
         btn.textContent = '⏳ Redirection...';
         btn.style.opacity = '0.75';
       }
-      // Sauvegarde en sessionStorage : filet si l'utilisateur doit passer par le login
-      try { sessionStorage.setItem('pendingPlan', plan); } catch(e) {}
+      // Base plan for DB storage (strip _annual suffix)
+      var basePlan = plan.replace('_annual', '');
+      try {
+        sessionStorage.setItem('pendingPlan', basePlan);
+        sessionStorage.setItem('pendingBilling', plan.includes('_annual') ? 'annual' : 'monthly');
+      } catch(e) {}
       window.location.href = 'https://www.leadqualif.com/settings?tab=facturation&plan=' + plan;
     }
     </script>
@@ -1657,10 +1795,11 @@ footer {
 <!-- CTA FINAL -->
 <section class="cta-section">
   <div class="section-inner">
-    <h2>Prêt à qualifier vos leads avec l'IA ?</h2>
-    <p class="cta-subtitle">7 jours gratuits · Sans carte bancaire · Résiliation en 1 clic</p>
-    <button onclick="startCheckout('growth', this)" class="cta-btn" style="border:none; cursor:pointer; font-family:inherit;">Démarrer gratuitement →</button>
-    <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:16px;">Plus de 150 agences SMMA et IMMO nous font confiance</p>
+    <div style="font-size:3rem;margin-bottom:1rem;">🚀</div>
+    <h2>Prêt à ne plus jamais<br>perdre un lead qualifié ?</h2>
+    <p class="cta-subtitle">7 jours gratuits · Sans carte bancaire · Annulation en 1 clic · Données 100% EU</p>
+    <button onclick="startCheckout('growth', this)" class="cta-btn" style="border:none; cursor:pointer; font-family:inherit; font-weight:800;">Démarrer gratuitement — 7 jours →</button>
+    <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-top:16px;">Configurez votre agence en 5 minutes · Vos premiers leads scorés arrivent aujourd'hui</p>
   </div>
 </section>
 
