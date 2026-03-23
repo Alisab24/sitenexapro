@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de Bord Partenaire - LeadQualif</title>
+<meta name="description" content="Tableau de bord partenaire LeadQualif - Suivez vos revenus, parrainages et commissions">
+<link rel="icon" type="image/svg+xml" href="/leadqualif-favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8FAFC;
+  --bg2: #FFFFFF;
+  --bg3: #F1F5F9;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --green: #059669;
+  --green-light: #10B981;
+  --text: #0F172A;
+  --text2: #475569;
+  --text3: #94A3B8;
+  --border: #E2E8F0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-email {
+  color: var(--text2);
+  font-size: 0.9rem;
+}
+
+.logout-btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: var(--blue-light);
+}
+
+/* DASHBOARD */
+.dashboard {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  color: var(--text2);
+  font-size: 1rem;
+}
+
+/* REFERRAL LINK */
+.referral-section {
+  background: var(--bg2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+.referral-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.referral-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.referral-link-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+}
+
+.referral-link {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.copy-btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: var(--blue-light);
+}
+
+.copy-btn.copied {
+  background: var(--green);
+}
+
+/* STATS GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--bg2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.stat-label {
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.stat-change {
+  font-size: 0.9rem;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.stat-change.negative {
+  color: #DC2626;
+}
+
+/* REFERRALS TABLE */
+.referrals-section {
+  background: var(--bg2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.referrals-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.referrals-table th {
+  background: var(--bg3);
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text2);
+  font-size: 0.9rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.referrals-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.referrals-table tr:hover {
+  background: var(--bg3);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-trial {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.status-active {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.status-canceled {
+  background: #F3F4F6;
+  color: #6B7280;
+}
+
+/* LOADING */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text2);
+}
+
+.spinner {
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--blue);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 0 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .referral-link-container {
+    flex-direction: column;
+  }
+  
+  .referrals-table {
+    font-size: 0.85rem;
+  }
+  
+  .referrals-table th,
+  .referrals-table td {
+    padding: 8px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/partner-program.html" class="nav-logo">
+      <span style="color: var(--blue);">L</span>eadQualif Partners
+    </a>
+    <div class="nav-user">
+      <span class="user-email" id="userEmail">chargement...</span>
+      <button class="logout-btn" onclick="logout()">Déconnexion</button>
+    </div>
+  </div>
+</nav>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">Tableau de Bord Partenaire</h1>
+    <p class="dashboard-subtitle">Suivez vos revenus et performances en temps réel</p>
+  </div>
+
+  <!-- LOADING STATE -->
+  <div id="loadingState" class="loading">
+    <div class="spinner"></div>
+    <p>Chargement de vos données...</p>
+  </div>
+
+  <!-- DASHBOARD CONTENT -->
+  <div id="dashboardContent" style="display: none;">
+    <!-- REFERRAL LINK -->
+    <div class="referral-section">
+      <div class="referral-header">
+        <h2 class="referral-title">Votre Lien de Parrainage</h2>
+      </div>
+      <div class="referral-link-container">
+        <input type="text" class="referral-link" id="referralLink" readonly>
+        <button class="copy-btn" onclick="copyReferralLink()">Copier</button>
+      </div>
+    </div>
+
+    <!-- STATS GRID -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Parrainages</div>
+        <div class="stat-value" id="totalReferrals">-</div>
+        <div class="stat-change" id="referralsChange">+0 ce mois</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-label">Abonnements Actifs</div>
+        <div class="stat-value" id="activeSubscriptions">-</div>
+        <div class="stat-change" id="subscriptionsChange">+0 ce mois</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-label">Revenus Mensuels</div>
+        <div class="stat-value" id="monthlyEarnings">-</div>
+        <div class="stat-change" id="earningsChange">+0% vs mois dernier</div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-label">Total Gagné</div>
+        <div class="stat-value" id="totalPaid">-</div>
+        <div class="stat-change" id="paidChange">Depuis le début</div>
+      </div>
+    </div>
+
+    <!-- REFERRALS TABLE -->
+    <div class="referrals-section">
+      <h2 class="section-title">Parrainages Récents</h2>
+      <table class="referrals-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Email Client</th>
+            <th>Entreprise</th>
+            <th>Statut</th>
+            <th>Commission</th>
+          </tr>
+        </thead>
+        <tbody id="referralsTableBody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========================================
+// PARTNER DASHBOARD JAVASCRIPT
+// ========================================
+
+let partnerData = null;
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadPartnerData();
+  await loadDashboardData();
+});
+
+// ========================================
+// DATA LOADING
+// ========================================
+
+async function loadPartnerData() {
+  try {
+    // Get partner info from token or session
+    const token = localStorage.getItem('partner_token');
+    if (!token) {
+      window.location.href = '/partner-program.html';
+      return;
+    }
+
+    // Decode token to get partner info
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    document.getElementById('userEmail').textContent = payload.email;
+    
+  } catch (error) {
+    console.error('Error loading partner data:', error);
+    logout();
+  }
+}
+
+async function loadDashboardData() {
+  try {
+    const token = localStorage.getItem('partner_token');
+    
+    const response = await fetch('/api/partner/dashboard', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to load dashboard data');
+    }
+
+    const data = await response.json();
+    partnerData = data;
+    
+    updateDashboardUI(data);
+    
+  } catch (error) {
+    console.error('Error loading dashboard:', error);
+    showError('Erreur de chargement des données');
+  }
+}
+
+// ========================================
+// UI UPDATES
+// ========================================
+
+function updateDashboardUI(data) {
+  // Hide loading, show content
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('dashboardContent').style.display = 'block';
+
+  // Update referral link
+  const referralLink = `https://nexapro.tech/leadqualif?ref=${data.partner.referral_code}`;
+  document.getElementById('referralLink').value = referralLink;
+
+  // Update stats
+  document.getElementById('totalReferrals').textContent = data.stats.total_referrals || 0;
+  document.getElementById('activeSubscriptions').textContent = data.stats.active_subscriptions || 0;
+  document.getElementById('monthlyEarnings').textContent = formatCurrency(data.stats.monthly_earnings);
+  document.getElementById('totalPaid').textContent = formatCurrency(data.stats.total_paid);
+
+  // Update referrals table
+  updateReferralsTable(data.recent_referrals);
+}
+
+function updateReferralsTable(referrals) {
+  const tbody = document.getElementById('referralsTableBody');
+  tbody.innerHTML = '';
+
+  referrals.forEach(referral => {
+    const row = document.createElement('tr');
+    
+    const statusClass = getStatusClass(referral.status);
+    const commission = referral.commission_amount ? formatCurrency(referral.commission_amount) : '-';
+    
+    row.innerHTML = `
+      <td>${formatDate(referral.created_at)}</td>
+      <td>${referral.user_email || '-'}</td>
+      <td>${referral.user_company || '-'}</td>
+      <td><span class="status-badge ${statusClass}">${getStatusText(referral.status)}</span></td>
+      <td>${commission}</td>
+    `;
+    
+    tbody.appendChild(row);
+  });
+}
+
+// ========================================
+// UTILITY FUNCTIONS
+// ========================================
+
+function copyReferralLink() {
+  const input = document.getElementById('referralLink');
+  const button = event.target;
+  
+  input.select();
+  document.execCommand('copy');
+  
+  // Visual feedback
+  button.textContent = 'Copié!';
+  button.classList.add('copied');
+  
+  setTimeout(() => {
+    button.textContent = 'Copier';
+    button.classList.remove('copied');
+  }, 2000);
+}
+
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR'
+  }).format(amount || 0);
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+}
+
+function getStatusClass(status) {
+  switch (status) {
+    case 'trial': return 'status-trial';
+    case 'active': return 'status-active';
+    case 'canceled': return 'status-canceled';
+    default: return 'status-trial';
+  }
+}
+
+function getStatusText(status) {
+  switch (status) {
+    case 'trial': return 'Essai';
+    case 'active': return 'Actif';
+    case 'canceled': return 'Annulé';
+    default: return 'Inconnu';
+  }
+}
+
+function showError(message) {
+  // Simple error display
+  const errorDiv = document.createElement('div');
+  errorDiv.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #FEE2E2;
+    color: #DC2626;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #FCA5A5;
+    z-index: 1000;
+  `;
+  errorDiv.textContent = message;
+  document.body.appendChild(errorDiv);
+  
+  setTimeout(() => {
+    document.body.removeChild(errorDiv);
+  }, 5000);
+}
+
+function logout() {
+  localStorage.removeItem('partner_token');
+  window.location.href = '/partner-program.html';
+}
+
+// ========================================
+// AUTO REFRESH (optional)
+// ========================================
+
+// Refresh data every 5 minutes
+setInterval(() => {
+  if (partnerData) {
+    loadDashboardData();
+  }
+}, 5 * 60 * 1000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration Partenaires - LeadQualif</title>
+<meta name="description" content="Panneau d'administration du programme partenaire LeadQualif">
+<link rel="icon" type="image/svg+xml" href="/leadqualif-favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8FAFC;
+  --bg2: #FFFFFF;
+  --bg3: #F1F5F9;
+  --blue: #2563EB;
+  --blue-light: #3B82F6;
+  --green: #059669;
+  --red: #DC2626;
+  --orange: #F59E0B;
+  --text: #0F172A;
+  --text2: #475569;
+  --text3: #94A3B8;
+  --border: #E2E8F0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--blue-light);
+}
+
+.btn-secondary {
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--border);
+}
+
+.btn-success {
+  background: var(--green);
+  color: white;
+}
+
+.btn-success:hover {
+  background: #047857;
+}
+
+.btn-danger {
+  background: var(--red);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #B91C1C;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* FILTERS */
+.filters {
+  background: var(--bg2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.filter-input,
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* TABLE */
+.table-container {
+  background: var(--bg2);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.partners-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.partners-table th {
+  background: var(--bg3);
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text2);
+  font-size: 0.85rem;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+.partners-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.partners-table tr:hover {
+  background: var(--bg3);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.status-approved {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.status-rejected {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+/* ACTIONS COLUMN */
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg2);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 5% auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text3);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* STATS */
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--bg2);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text2);
+  font-size: 0.9rem;
+}
+
+/* LOADING */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text2);
+}
+
+.spinner {
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--blue);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .partners-table {
+    min-width: 800px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/partner-program.html" class="nav-logo">
+      <span style="color: var(--blue);">L</span>eadQualif Admin
+    </a>
+    <div class="actions">
+      <a href="/partner-dashboard.html" class="btn btn-secondary">Voir Dashboard</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTAINER -->
+<div class="container">
+  <!-- HEADER -->
+  <div class="header">
+    <h1 class="title">Administration des Partenaires</h1>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="openAddPartnerModal()">
+        ➕ Ajouter un partenaire
+      </button>
+    </div>
+  </div>
+
+  <!-- STATS SUMMARY -->
+  <div class="stats-summary">
+    <div class="stat-card">
+      <div class="stat-value" id="totalPartners">-</div>
+      <div class="stat-label">Total Partenaires</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="pendingPartners">-</div>
+      <div class="stat-label">En Attente</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="approvedPartners">-</div>
+      <div class="stat-label">Approuvés</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="totalRevenue">-</div>
+      <div class="stat-label">Revenus Totaux</div>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <div class="filter-grid">
+      <div class="filter-group">
+        <label class="filter-label">Recherche</label>
+        <input type="text" class="filter-input" id="searchInput" placeholder="Nom, email, entreprise...">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Statut</label>
+        <select class="filter-select" id="statusFilter">
+          <option value="">Tous</option>
+          <option value="pending">En attente</option>
+          <option value="approved">Approuvé</option>
+          <option value="rejected">Rejeté</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Type d'audience</label>
+        <select class="filter-select" id="audienceFilter">
+          <option value="">Tous</option>
+          <option value="marketing_agency">Agence Marketing</option>
+          <option value="crm_consultant">Consultant CRM</option>
+          <option value="lead_generation">Lead Generation</option>
+          <option value="growth_consultant">Consultant Croissance</option>
+          <option value="sales_coach">Coach Commercial</option>
+          <option value="b2b_influencer">Influenceur B2B</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTNERS TABLE -->
+  <div class="table-container">
+    <table class="partners-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Partenaire</th>
+          <th>Email</th>
+          <th>Entreprise</th>
+          <th>Type</th>
+          <th>Code</th>
+          <th>Commission</th>
+          <th>Parrainages</th>
+          <th>Revenus</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="partnersTableBody">
+        <!-- Populated by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LOADING STATE -->
+  <div id="loadingState" class="loading" style="display: none;">
+    <div class="spinner"></div>
+    <p>Chargement des partenaires...</p>
+  </div>
+</div>
+
+<!-- EDIT PARTNER MODAL -->
+<div id="editPartnerModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Modifier le Partenaire</h2>
+      <button class="close-btn" onclick="closeEditModal()">&times;</button>
+    </div>
+    <form id="editPartnerForm">
+      <input type="hidden" id="editPartnerId">
+      
+      <div class="form-group">
+        <label class="form-label">Commission (%)</label>
+        <input type="number" class="form-input" id="editCommissionRate" min="0" max="100" step="0.01">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Statut</label>
+        <select class="form-input" id="editStatus">
+          <option value="pending">En attente</option>
+          <option value="approved">Approuvé</option>
+          <option value="rejected">Rejeté</option>
+        </select>
+      </div>
+      
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Annuler</button>
+        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+// ========================================
+// ADMIN PANEL JAVASCRIPT
+// ========================================
+
+let partnersData = [];
+let filteredPartners = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadPartners();
+  setupEventListeners();
+});
+
+// ========================================
+// DATA LOADING
+// ========================================
+
+async function loadPartners() {
+  try {
+    showLoading(true);
+    
+    const response = await fetch('/api/admin/partners');
+    const data = await response.json();
+    
+    if (data.success) {
+      partnersData = data.partners;
+      filteredPartners = [...partnersData];
+      updateStats();
+      renderPartnersTable();
+    } else {
+      showError('Erreur de chargement des partenaires');
+    }
+  } catch (error) {
+    console.error('Error loading partners:', error);
+    showError('Erreur de connexion');
+  } finally {
+    showLoading(false);
+  }
+}
+
+// ========================================
+// UI FUNCTIONS
+// ========================================
+
+function updateStats() {
+  const total = partnersData.length;
+  const pending = partnersData.filter(p => p.status === 'pending').length;
+  const approved = partnersData.filter(p => p.status === 'approved').length;
+  const totalRevenue = partnersData.reduce((sum, p) => sum + (p.total_revenue || 0), 0);
+  
+  document.getElementById('totalPartners').textContent = total;
+  document.getElementById('pendingPartners').textContent = pending;
+  document.getElementById('approvedPartners').textContent = approved;
+  document.getElementById('totalRevenue').textContent = formatCurrency(totalRevenue);
+}
+
+function renderPartnersTable() {
+  const tbody = document.getElementById('partnersTableBody');
+  tbody.innerHTML = '';
+  
+  filteredPartners.forEach(partner => {
+    const row = document.createElement('tr');
+    
+    row.innerHTML = `
+      <td>${formatDate(partner.created_at)}</td>
+      <td><strong>${partner.name}</strong></td>
+      <td>${partner.email}</td>
+      <td>${partner.company || '-'}</td>
+      <td>${getAudienceTypeLabel(partner.audience_type)}</td>
+      <td><code>${partner.referral_code}</code></td>
+      <td>${(partner.commission_rate * 100).toFixed(0)}%</td>
+      <td>${partner.referral_count || 0}</td>
+      <td>${formatCurrency(partner.total_revenue || 0)}</td>
+      <td>${getStatusBadge(partner.status)}</td>
+      <td class="actions-cell">
+        <button class="btn btn-sm btn-secondary" onclick="editPartner('${partner.id}')">✏️</button>
+        ${partner.status === 'pending' ? 
+          `<button class="btn btn-sm btn-success" onclick="approvePartner('${partner.id}')">✅</button>` : ''
+        }
+        ${partner.status === 'pending' ? 
+          `<button class="btn btn-sm btn-danger" onclick="rejectPartner('${partner.id}')">❌</button>` : ''
+        }
+      </td>
+    `;
+    
+    tbody.appendChild(row);
+  });
+}
+
+function filterPartners() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const statusFilter = document.getElementById('statusFilter').value;
+  const audienceFilter = document.getElementById('audienceFilter').value;
+  
+  filteredPartners = partnersData.filter(partner => {
+    const matchesSearch = !searchTerm || 
+      partner.name.toLowerCase().includes(searchTerm) ||
+      partner.email.toLowerCase().includes(searchTerm) ||
+      (partner.company && partner.company.toLowerCase().includes(searchTerm));
+    
+    const matchesStatus = !statusFilter || partner.status === statusFilter;
+    const matchesAudience = !audienceFilter || partner.audience_type === audienceFilter;
+    
+    return matchesSearch && matchesStatus && matchesAudience;
+  });
+  
+  renderPartnersTable();
+}
+
+// ========================================
+// PARTNER ACTIONS
+// ========================================
+
+async function approvePartner(partnerId) {
+  if (!confirm('Approuver ce partenaire ?')) return;
+  
+  try {
+    const response = await fetch(`/api/admin/partners/${partnerId}/approve`, {
+      method: 'POST'
+    });
+    
+    if (response.ok) {
+      showSuccess('Partenaire approuvé avec succès');
+      await loadPartners();
+    } else {
+      showError('Erreur lors de l\'approbation');
+    }
+  } catch (error) {
+    console.error('Error approving partner:', error);
+    showError('Erreur de connexion');
+  }
+}
+
+async function rejectPartner(partnerId) {
+  if (!confirm('Rejeter ce partenaire ?')) return;
+  
+  try {
+    const response = await fetch(`/api/admin/partners/${partnerId}/reject`, {
+      method: 'POST'
+    });
+    
+    if (response.ok) {
+      showSuccess('Partenaire rejeté');
+      await loadPartners();
+    } else {
+      showError('Erreur lors du rejet');
+    }
+  } catch (error) {
+    console.error('Error rejecting partner:', error);
+    showError('Erreur de connexion');
+  }
+}
+
+function editPartner(partnerId) {
+  const partner = partnersData.find(p => p.id === partnerId);
+  if (!partner) return;
+  
+  document.getElementById('editPartnerId').value = partner.id;
+  document.getElementById('editCommissionRate').value = partner.commission_rate;
+  document.getElementById('editStatus').value = partner.status;
+  
+  document.getElementById('editPartnerModal').style.display = 'block';
+}
+
+async function savePartnerEdits(event) {
+  event.preventDefault();
+  
+  const partnerId = document.getElementById('editPartnerId').value;
+  const commissionRate = parseFloat(document.getElementById('editCommissionRate').value) / 100;
+  const status = document.getElementById('editStatus').value;
+  
+  try {
+    const response = await fetch(`/api/admin/partners/${partnerId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ commission_rate: commissionRate, status })
+    });
+    
+    if (response.ok) {
+      showSuccess('Modifications sauvegardées');
+      closeEditModal();
+      await loadPartners();
+    } else {
+      showError('Erreur lors de la sauvegarde');
+    }
+  } catch (error) {
+    console.error('Error saving partner:', error);
+    showError('Erreur de connexion');
+  }
+}
+
+function openAddPartnerModal() {
+  // Could open a different modal for adding partners
+  // For now, redirect to application form
+  window.open('/partner-application-form.html', '_blank');
+}
+
+// ========================================
+// MODAL FUNCTIONS
+// ========================================
+
+function closeEditModal() {
+  document.getElementById('editPartnerModal').style.display = 'none';
+}
+
+// ========================================
+// UTILITY FUNCTIONS
+// ========================================
+
+function setupEventListeners() {
+  // Search and filters
+  document.getElementById('searchInput').addEventListener('input', filterPartners);
+  document.getElementById('statusFilter').addEventListener('change', filterPartners);
+  document.getElementById('audienceFilter').addEventListener('change', filterPartners);
+  
+  // Edit form
+  document.getElementById('editPartnerForm').addEventListener('submit', savePartnerEdits);
+  
+  // Close modal on outside click
+  document.getElementById('editPartnerModal').addEventListener('click', (e) => {
+    if (e.target.id === 'editPartnerModal') {
+      closeEditModal();
+    }
+  });
+}
+
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR'
+  }).format(amount || 0);
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+}
+
+function getAudienceTypeLabel(type) {
+  const labels = {
+    'marketing_agency': 'Agence Marketing',
+    'crm_consultant': 'Consultant CRM',
+    'lead_generation': 'Lead Generation',
+    'growth_consultant': 'Consultant Croissance',
+    'sales_coach': 'Coach Commercial',
+    'b2b_influencer': 'Influenceur B2B'
+  };
+  return labels[type] || type;
+}
+
+function getStatusBadge(status) {
+  const badges = {
+    'pending': '<span class="status-badge status-pending">En attente</span>',
+    'approved': '<span class="status-badge status-approved">Approuvé</span>',
+    'rejected': '<span class="status-badge status-rejected">Rejeté</span>'
+  };
+  return badges[status] || status;
+}
+
+function showLoading(show) {
+  document.getElementById('loadingState').style.display = show ? 'block' : 'none';
+}
+
+function showSuccess(message) {
+  // Simple success notification
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #DCFCE7;
+    color: #166534;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #BBF7D0;
+    z-index: 1000;
+  `;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 3000);
+}
+
+function showError(message) {
+  // Simple error notification
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #FEE2E2;
+    color: #DC2626;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #FCA5A5;
+    z-index: 1000;
+  `;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 5000);
+}
+</script>
+
+</body>
+</html>
