@@ -380,10 +380,28 @@ body {
       </select>
     </div>
 
-    <!-- Submit Button -->
-    <button type="submit" class="form-submit" id="submitBtn">
-      <span id="submitText">Postuler au Programme</span>
-    </button>
+    <!-- SUBMIT BUTTONS -->
+    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+      <button type="submit" class="form-submit" id="submitBtn">
+        <span id="submitText">📧 Postuler par Email</span>
+      </button>
+      <button type="button" class="form-submit" id="apiSubmitBtn" style="background: var(--green);" onclick="handleApiSubmit()">
+        <span id="apiSubmitText">🚀 Postuler Directement</span>
+      </button>
+    </div>
+
+    <!-- LOGIN SECTION -->
+    <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+      <p style="color: var(--text2); margin-bottom: 1rem;">Déjà partenaire ?</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button type="button" class="btn-secondary" onclick="showLoginModal()" style="padding: 10px 20px; border: 1px solid var(--border); background: var(--bg2); border-radius: 6px; cursor: pointer;">
+          🔑 Se Connecter
+        </button>
+        <a href="/partner-dashboard.html" class="btn-secondary" style="padding: 10px 20px; text-decoration: none; border: 1px solid var(--border); background: var(--bg2); border-radius: 6px; display: inline-block;">
+          📊 Tableau de Bord
+        </a>
+      </div>
+    </div>
   </form>
 
   <!-- SUCCESS MESSAGE (Hidden by default) -->
@@ -402,6 +420,33 @@ body {
       </ol>
     </div>
   </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Connexion Partenaire</h2>
+        <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="loginEmail" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Mot de passe</label>
+          <input type="password" class="form-input" id="loginPassword" required>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeLoginModal()">Annuler</button>
+          <button type="submit" class="btn btn-primary">Se Connecter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -413,8 +458,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('partnerApplicationForm');
   const submitBtn = document.getElementById('submitBtn');
   const submitText = document.getElementById('submitText');
+  const loginForm = document.getElementById('loginForm');
 
   form.addEventListener('submit', handleFormSubmit);
+  if (loginForm) {
+    loginForm.addEventListener('submit', handleLogin);
+  }
 });
 
 // ========================================
@@ -618,6 +667,99 @@ function getAudienceSizeLabel(size) {
 
 function formatReferralCode(code) {
  return code.toUpperCase();
+}
+
+// ========================================
+// API SUBMISSION
+// ========================================
+
+async function handleApiSubmit() {
+  const form = document.getElementById('partnerApplicationForm');
+  const apiBtn = document.getElementById('apiSubmitBtn');
+  const apiBtnText = document.getElementById('apiSubmitText');
+  
+  // Validate form
+  if (!validateForm(form)) {
+    return;
+  }
+
+  // Show loading state
+  apiBtn.disabled = true;
+  apiBtnText.innerHTML = '<div class="loading"><div class="spinner"></div> Envoi API...</div>';
+
+  try {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch('/api/partners/apply', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      showSuccessMessage(result.partner.referral_code);
+    } else {
+      showError(result.error || 'Erreur lors de la soumission API');
+    }
+
+  } catch (error) {
+    console.error('API submission error:', error);
+    showError('Erreur de connexion API. Veuillez réessayer.');
+  } finally {
+    // Reset button state
+    setTimeout(() => {
+      apiBtn.disabled = false;
+      apiBtnText.textContent = '🚀 Postuler Directement';
+    }, 2000);
+  }
+}
+
+// ========================================
+// LOGIN FUNCTIONS
+// ========================================
+
+function showLoginModal() {
+  document.getElementById('loginModal').style.display = 'block';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginModal').style.display = 'none';
+}
+
+async function handleLogin(event) {
+  event.preventDefault();
+  
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  try {
+    const response = await fetch('/api/partners/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      // Store token and redirect
+      localStorage.setItem('partner_token', result.token);
+      window.location.href = '/partner-dashboard.html';
+    } else {
+      showError(result.error || 'Email ou mot de passe incorrect');
+    }
+
+  } catch (error) {
+    console.error('Login error:', error);
+    showError('Erreur de connexion. Veuillez réessayer.');
+  }
 }
 
 function showError(message) {
