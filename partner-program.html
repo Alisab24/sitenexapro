@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme Partenaire LeadQualif - Générez des Revenus Récurrents</title>
+<meta name="description" content="Devenez partenaire LeadQualif et gagnez des commissions récurrentes en aidant les agences à qualifier leurs leads et signer plus de contrats.">
+<link rel="icon" type="image/svg+xml" href="/leadqualif-favicon.svg">
+<link rel="shortcut icon" href="/leadqualif-favicon.svg">
+<link rel="apple-touch-icon" href="/leadqualif-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Backgrounds */
+  --bg:          #F8FAFC;
+  --bg2:         #FFFFFF;
+  --bg3:         #F1F5F9;
+  --bg-dark:     #1A2540;
+
+  /* Couleurs principales */
+  --blue:        #2563EB;
+  --blue-light:  #3B82F6;
+  --blue-glow:   rgba(37,99,235,0.12);
+  --green:       #059669;
+  --green-light: #10B981;
+
+  /* Textes */
+  --text:        #0F172A;
+  --text2:       #475569;
+  --text3:       #94A3B8;
+  --white:       #FFFFFF;
+
+  /* Bordures */
+  --border:      rgba(37,99,235,0.15);
+  --border2:     #E2E8F0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  letter-spacing: -0.1px;
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--blue);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+}
+
+.logo-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text);
+}
+
+.back-link {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-ghost {
+  color: var(--text2);
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: color 0.2s;
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--blue-light);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+.hero {
+  padding: 120px 2rem 80px;
+  background: linear-gradient(135deg, var(--bg) 0%, #EFF6FF 100%);
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text2);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--white);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text2);
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 2rem;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-tag {
+  color: var(--blue);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1rem;
+  letter-spacing: -1.5px;
+}
+
+/* CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.card-desc {
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* COMMISSION TABLE */
+.commission-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  background: var(--bg2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.commission-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.commission-table th {
+  background: var(--blue);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.commission-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border2);
+  font-size: 0.95rem;
+}
+
+.commission-table tr:last-child td {
+  border-bottom: none;
+}
+
+.commission-highlight {
+  background: #EFF6FF;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+/* STEPS */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg2);
+  border-radius: 16px;
+  border: 1px solid var(--border2);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  background: var(--blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 auto 1rem;
+}
+
+.step-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.step-desc {
+  color: var(--text2);
+  font-size: 0.9rem;
+}
+
+/* BENEFITS */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg2);
+  border-radius: 12px;
+  border: 1px solid var(--border2);
+}
+
+.benefit-icon {
+  width: 24px;
+  height: 24px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.benefit-text {
+  flex: 1;
+}
+
+.benefit-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.benefit-desc {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+/* CTA SECTION */
+.cta-section {
+  padding: 100px 2rem;
+  background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #3B82F6 100%);
+  color: white;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+}
+
+.cta-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 16px 32px;
+  background: var(--blue);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.cta-btn:hover {
+  background: var(--blue-light);
+  transform: translateY(-1px);
+}
+
+.cta-btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+}
+
+.cta-btn-secondary:hover {
+  background: white;
+  color: var(--blue);
+}
+
+/* FAQ */
+.faq-section {
+  background: var(--bg3);
+}
+
+.faq-grid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--bg2);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--border2);
+}
+
+.faq-question {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text);
+  transition: background 0.2s;
+}
+
+.faq-question:hover {
+  background: var(--bg3);
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text2);
+  line-height: 1.6;
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-icon {
+  transition: transform 0.2s;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 1rem 60px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hero-cta .btn {
+    width: 100%;
+  }
+  
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.75rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="/leadqualif.html" class="nav-logo">
+        <div class="logo-icon">L</div>
+        <span class="logo-text">LeadQualif</span>
+      </a>
+      <a href="/leadqualif.html" class="back-link">← Retour</a>
+    </div>
+    <div class="nav-cta">
+      <a href="mailto:contact@nexapro.tech?subject=Candidature Partenaire LeadQualif" class="btn-primary">Postuler maintenant</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#EFF6FF;border:1px solid #BFDBFE;color:#1D4ED8;padding:7px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:1.2rem;">💰 PROGRAMME PARTENAIRE</div>
+    <h1>Générez des Revenus Récurrents en Aident les Agences à Croître</h1>
+    <p class="hero-subtitle">Devenez partenaire LeadQualif et touchez jusqu'à <strong>30% de commissions récurrentes</strong> sur chaque abonnement vendu. Aidez les agences à qualifier leurs leads et signer plus de contrats.</p>
+    <div class="hero-cta">
+      <a href="#apply" class="btn-primary" style="padding: 14px 28px; font-size: 1.05rem; font-weight:700;">💰 Devenir Partenaire</a>
+      <a href="#commission" class="btn-ghost" style="padding: 14px 28px; font-size: 1.05rem;">Voir les commissions →</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><span>✅</span><span>Commissions récurrentes</span></div>
+      <div class="badge"><span>📈</span><span>SaaS en croissance</span></div>
+      <div class="badge"><span>🎯</span><span>Produit demandé</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PARTNER -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Pourquoi devenir partenaire</span>
+      <h2>L'Opportunité de Revenu que Vous Attendiez</h2>
+    </div>
+    
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <h3 class="card-title">Commissions Récurrentes</h3>
+        <p class="card-desc">Gagnez jusqu'à 30% de commissions sur chaque abonnement mensuel. Tant que le client reste abonné, vous continuez à percevoir vos revenus.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3 class="card-title">Marché SaaS en Croissance</h3>
+        <p class="card-desc">Le marché des CRM et outils de qualification explose. Les agences cherchent activement des solutions pour améliorer leur conversion.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">Demande Élevée</h3>
+        <p class="card-desc">Chaque agence perd des leads et cherche à optimiser son processus. LeadQualif répond à un besoin critique et urgent.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3 class="card-title">Facile à Vendre</h3>
+        <p class="card-desc">ROI visible immédiatement, onboarding en 5 minutes, et valeur claire. Votre argumentaire est déjà prêt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="section" style="background: var(--bg3);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Pour qui</span>
+      <h2>Nos Partenaires Idéaux</h2>
+    </div>
+    
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <h3 class="card-title">Agences Marketing</h3>
+        <p class="card-desc">Vous gérez déjà des clients qui ont besoin de qualifier leurs leads. Complétez votre offre avec LeadQualif.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3 class="card-title">Consultants CRM</h3>
+        <p class="card-desc">Aidez vos clients à implémenter la meilleure solution de qualification et générez des revenus récurrents.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">Agences de Lead Gen</h3>
+        <p class="card-desc">Générez des leads qualifiés et monétisez-les avec la solution parfaite de suivi et conversion.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3 class="card-title">Consultants en Croissance</h3>
+        <p class="card-desc">Proposez LeadQualif comme outil essentiel dans vos stratégies de croissance pour vos clients.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3 class="card-title">Coachs Commerciaux</h3>
+        <p class="card-desc">Formez les équipes à utiliser LeadQualif et devenez partenaire pour générer des revenus passifs.</p>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3 class="card-title">Influenceurs B2B</h3>
+        <p class="card-desc">Votre audience d'agences cherche activement des solutions pour optimiser leurs processus commerciaux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMISSION STRUCTURE -->
+<section class="section" id="commission">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Structure de commission</span>
+      <h2>Des Revenus Transparents et Croissants</h2>
+    </div>
+    
+    <div class="commission-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Plan LeadQualif</th>
+            <th>Prix Mensuel</th>
+            <th>Votre Commission</th>
+            <th>Vos Gains Mensuels</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Solo</strong></td>
+            <td>49€</td>
+            <td>20%</td>
+            <td>9,80€</td>
+          </tr>
+          <tr class="commission-highlight">
+            <td><strong>Agence</strong> ⭐</td>
+            <td>149€</td>
+            <td><strong>30%</strong></td>
+            <td><strong>44,70€</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Expert</strong></td>
+            <td>399€</td>
+            <td>25%</td>
+            <td>99,75€</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+      <p style="color: var(--text2); font-size: 1.1rem;">
+        <strong>10 clients Agence = 447€ de revenus mensuels récurrents</strong>
+      </p>
+      <p style="color: var(--text3); margin-top: 0.5rem;">
+        Commissions payées chaque mois via Stripe ou virement bancaire
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background: var(--bg3);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Comment ça marche</span>
+      <h2>Devenir Partenaire en 3 Étapes Simples</h2>
+    </div>
+    
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Rejoignez le Programme</h3>
+        <p class="step-desc">Postulez au programme partenaire. Validation sous 48h. Accès immédiat à votre espace partenaire.</p>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Obtenez Votre Lien Partenaire</h3>
+        <p class="step-desc">Générez votre lien d'affiliation unique. Accédez aux assets marketing et au dashboard de suivi.</p>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Générez des Revenus</h3>
+        <p class="step-desc">Chaque inscription via votre lien génère des commissions récurrentes. Suivez tout en temps réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT SELLING POINTS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Points de vente</span>
+      <h2>Pourquoi LeadQualif se Vend Facilement</h2>
+    </div>
+    
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">✓</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Problème Universel</div>
+          <div class="benefit-desc">Toutes les agences perdent des leads et cherchent à optimiser leur conversion.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">✓</div>
+        <div class="benefit-text">
+          <div class="benefit-title">ROI Immédiat</div>
+          <div class="benefit-desc">1 client signé = abonnement rentabilisé 6 mois. Le calcul est simple et convaincant.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">✓</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Onboarding Rapide</div>
+          <div class="benefit-desc">Configuré en 5 minutes. Premiers résultats visibles dès la première semaine.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">✓</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Revenus SaaS</div>
+          <div class="benefit-desc">Modèle d'abonnement récurrent. Pas de vente unique, des revenus chaque mois.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">✓</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Support Dédié</div>
+          <div class="benefit-desc">Nous vous aidons à conclure vos ventes. Support prioritaire pour tous les partenaires.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">✓</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Marché en Croissance</div>
+          <div class="benefit-desc">Le CRM et l'automatisation commerciale sont des marchés qui explosent.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER BENEFITS -->
+<section class="section" style="background: var(--bg3);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Bénéfices partenaires</span>
+      <h2>Tout ce Dont Vous Avez Besoin pour Réussir</h2>
+    </div>
+    
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">📊</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Dashboard Partenaire</div>
+          <div class="benefit-desc">Suivez vos clics, inscriptions, commissions et revenus en temps réel.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Tracking Précis</div>
+          <div class="benefit-desc">Cookies 90 jours. Suivi multi-appareils. Attribution juste et transparente.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">📦</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Assets Marketing</div>
+          <div class="benefit-desc">Bannières, emails, études de cas. Tout ce qu'il faut pour convertir.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">🎥</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Accès Démo</div>
+          <div class="benefit-desc">Compte démo illimité pour présenter LeadQualif à vos prospects.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Support Prioritaire</div>
+          <div class="benefit-desc">Équipe dédiée pour vous aider. Réponse sous 2h pour tous les partenaires.</div>
+        </div>
+      </div>
+      
+      <div class="benefit-item">
+        <div class="benefit-icon">📈</div>
+        <div class="benefit-text">
+          <div class="benefit-title">Formations Mensuelles</div>
+          <div class="benefit-desc">Webinaires exclusifs, nouvelles fonctionnalités, meilleures pratiques.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Cas d'usage</span>
+      <h2>Votre Potentiel de Revenus Réels</h2>
+    </div>
+    
+    <div style="max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, #EFF6FF, #DBEAFE); padding: 2.5rem; border-radius: 16px; text-align: center;">
+      <div style="font-size: 1.1rem; color: var(--text2); margin-bottom: 1.5rem;">
+        <strong>Scénario réel :</strong> Vous apportez 10 agences
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 2rem;">
+        <div style="background: white; padding: 1.5rem; border-radius: 12px;">
+          <div style="font-size: 0.9rem; color: var(--text3); margin-bottom: 0.5rem;">Chaque agence choisit le plan</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--blue); margin-bottom: 0.5rem;">Agence</div>
+          <div style="font-size: 1.2rem; color: var(--text);">149€/mois</div>
+        </div>
+        
+        <div style="background: white; padding: 1.5rem; border-radius: 12px;">
+          <div style="font-size: 0.9rem; color: var(--text3); margin-bottom: 0.5rem;">Votre commission (30%)</div>
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--green); margin-bottom: 0.5rem;">44,70€</div>
+          <div style="font-size: 1.2rem; color: var(--text);">par agence/mois</div>
+        </div>
+      </div>
+      
+      <div style="background: var(--green); color: white; padding: 1.5rem; border-radius: 12px;">
+        <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">Vos revenus mensuels totaux</div>
+        <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">447€</div>
+        <div style="font-size: 1.1rem;">5 364€ par an • Récurrent chaque mois</div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+      <p style="color: var(--text2); font-size: 1rem;">
+        <strong>20 agences = 894€/mois<br>50 agences = 2 235€/mois</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER TYPES -->
+<section class="section" style="background: var(--bg3);">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Types de partenariat</span>
+      <h2>Choisissez Votre Niveau de Partenariat</h2>
+    </div>
+    
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3 class="card-title">Affilié</h3>
+        <p class="card-desc"><strong>20% de commission</strong> sur tous les plans. Idéal pour les influenceurs et blogueurs qui souhaitent recommander LeadQualif.</p>
+        <ul style="margin-top: 1rem; color: var(--text2); font-size: 0.9rem;">
+          <li>✓ Lien d'affiliation unique</li>
+          <li>✓ Dashboard de suivi</li>
+          <li>✓ Assets marketing de base</li>
+          <li>✓ Support email</li>
+        </ul>
+      </div>
+      
+      <div class="card" style="border-color: var(--blue); box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);">
+        <div class="card-icon" style="background: var(--green);">🤝</div>
+        <h3 class="card-title">Partenaire</h3>
+        <p class="card-desc"><strong>30% de commission</strong> sur le plan Agence. Pour consultants et agences qui vendent activement LeadQualif.</p>
+        <ul style="margin-top: 1rem; color: var(--text2); font-size: 0.9rem;">
+          <li>✓ Commission prioritaire</li>
+          <li>✓ Dashboard avancé</li>
+          <li>✓ Assets marketing complets</li>
+          <li>✓ Support prioritaire</li>
+          <li>✓ Compte démo illimité</li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3 class="card-title">Partenaire Stratégique</h3>
+        <p class="card-desc"><strong>25% + bonus</strong> sur tous les plans. Pour les grandes agences et intégrateurs avec volume important.</p>
+        <ul style="margin-top: 1rem; color: var(--text2); font-size: 0.9rem;">
+          <li>✓ Commission sur mesure</li>
+          <li>✓ Co-branding possible</li>
+          <li>✓ Intégrations API</li>
+          <li>✓ Support dédié</li>
+          <li>✓ Formation équipe</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-tag">Questions fréquentes</span>
+      <h2>Tout ce que Vous Devez Savoir</h2>
+    </div>
+    
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment suis-je payé ?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Les commissions sont payées chaque mois via virement bancaire ou Stripe. Dès que votre solde atteint 50€, vous pouvez demander un paiement. Les paiements sont traités sous 5-7 jours ouvrés.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Quand est-ce que je reçois mes commissions ?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Vous recevez vos commissions chaque mois tant que le client reste abonné. C'est un revenu récurrent : la première commission est payée après 30 jours d'abonnement du client, puis tous les mois.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Y a-t-il un minimum de clients ?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Non, il n'y a pas de minimum. Vous pouvez commencer avec un seul client et développer votre portefeuille progressivement. Plus vous avez de clients, plus vos revenus augmentent.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Ai-je besoin de compétences techniques ?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Non. Nous fournissons tous les outils marketing et le support technique. Vous devez juste comprendre le besoin des agences et savoir présenter la solution. Notre équipe vous aide pour le reste.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Les agences peuvent-elles revendre LeadQualif ?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Oui ! C'est même encouragé. Les agences peuvent revendre LeadQualif à leurs clients avec une marge. C'est un excellent modèle de revenus additionnels pour elles.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Comment fonctionne le suivi des conversions ?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          Chaque partenaire reçoit un lien unique avec tracking cookies 90 jours. Vous pouvez suivre tous vos clics, inscriptions, conversions et revenus en temps réel dans votre dashboard.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section" id="apply">
+  <div class="section-inner">
+    <h2>Commencez à Générer des Revenus avec LeadQualif</h2>
+    <p class="cta-subtitle">Rejoignez les partenaires qui gagnent déjà des milliers d'euros chaque mois</p>
+    <div class="cta-buttons">
+      <a href="mailto:contact@nexapro.tech?subject=Candidature Partenaire LeadQualif" class="cta-btn">Postuler Maintenant</a>
+      <a href="https://calendly.com/leadqualif/partner-call" class="cta-btn cta-btn-secondary">Prendre RDV Partenaire</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleFaq(element) {
+  const faqItem = element.parentElement;
+  const allFaqItems = document.querySelectorAll('.faq-item');
+  
+  // Close all other items
+  allFaqItems.forEach(item => {
+    if (item !== faqItem) {
+      item.classList.remove('active');
+    }
+  });
+  
+  // Toggle current item
+  faqItem.classList.toggle('active');
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
