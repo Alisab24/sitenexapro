@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadQualif pour l'Immobilier — Qualifiez vendeurs et acheteurs automatiquement</title>
+  <meta name="description" content="LeadQualif pour l'immobilier : identifiez vendeurs et acheteurs, qualification automatique, booking visites et signature mandats électronique.">
+  <meta property="og:title" content="LeadQualif pour l'Immobilier">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../../leadqualif-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="lang-fr">
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="nav-logo-icon">LQ</div><span>LeadQualif</span>
+    </a>
+    <div class="nav-links">
+      <a href="../features.html">Fonctionnalités</a>
+      <a href="index.html" class="active">Secteurs</a>
+      <a href="../pricing.html">Tarifs</a>
+      <a href="../about.html">À propos</a>
+    </div>
+    <div class="nav-right">
+      <button class="lang-toggle" onclick="toggleLang(this)">EN</button>
+      <a href="#" class="nav-signin">Se connecter</a>
+      <a href="../pricing.html" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.88rem;">Essai gratuit</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="../features.html">Fonctionnalités</a>
+    <a href="index.html">Secteurs</a>
+    <a href="../pricing.html">Tarifs</a>
+    <a href="../about.html">À propos</a>
+    <a href="#">Se connecter</a>
+    <a href="../pricing.html" style="color:var(--blue);font-weight:700;">Essai gratuit →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="sector-hero">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem">
+      <a href="index.html" style="font-size:0.83rem;color:var(--text2);" data-fr>← Secteurs</a>
+      <a href="index.html" style="font-size:0.83rem;color:var(--text2);" data-en style="display:none">← Industries</a>
+      <span style="color:var(--text3)">·</span>
+      <span class="badge badge-green" data-fr>Immobilier</span>
+      <span class="badge badge-green" data-en style="display:none">Real Estate</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+      <div>
+        <h1 data-fr>LeadQualif pour <span style="color:var(--green)">l'immobilier</span></h1>
+        <h1 data-en style="display:none">LeadQualif for <span style="color:var(--green)">real estate</span></h1>
+        <p style="font-size:1.05rem;margin:1.1rem 0 2rem" data-fr>Identifiez, qualifiez et convertissez acheteurs et vendeurs potentiels — automatiquement, 24h/7j.</p>
+        <p style="font-size:1.05rem;margin:1.1rem 0 2rem" data-en style="display:none">Identify, qualify, and convert potential buyers and sellers — automatically, 24/7.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="../pricing.html" class="btn btn-primary btn-lg" data-fr>Essayer gratuitement</a>
+          <a href="../pricing.html" class="btn btn-primary btn-lg" data-en style="display:none">Start free trial</a>
+          <a href="../features.html" class="btn btn-secondary btn-lg" data-fr>Voir les fonctionnalités</a>
+          <a href="../features.html" class="btn btn-secondary btn-lg" data-en style="display:none">See features</a>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:var(--shadow-lg);padding:1.5rem">
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);margin-bottom:1rem" data-fr>Pipeline Immobilier</div>
+          <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);margin-bottom:1rem" data-en style="display:none">Real Estate Pipeline</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:var(--bg);border-radius:6px">
+              <span style="font-size:0.8rem;font-weight:600" data-fr>🏠 Vendeurs identifiés</span>
+              <span style="font-size:0.8rem;font-weight:600" data-en style="display:none">🏠 Sellers identified</span>
+              <span style="font-weight:800;color:var(--blue)">47</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:var(--bg);border-radius:6px">
+              <span style="font-size:0.8rem;font-weight:600" data-fr>👥 Acheteurs qualifiés</span>
+              <span style="font-size:0.8rem;font-weight:600" data-en style="display:none">👥 Qualified buyers</span>
+              <span style="font-weight:800;color:var(--green)">31</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:var(--bg);border-radius:6px">
+              <span style="font-size:0.8rem;font-weight:600" data-fr>📅 Visites bookées auto</span>
+              <span style="font-size:0.8rem;font-weight:600" data-en style="display:none">📅 Auto-booked visits</span>
+              <span style="font-weight:800;color:var(--blue)">12</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:rgba(26,122,74,0.08);border-radius:6px">
+              <span style="font-size:0.8rem;font-weight:700;color:var(--green)" data-fr>✍️ Mandats signés</span>
+              <span style="font-size:0.8rem;font-weight:700;color:var(--green)" data-en style="display:none">✍️ Signed mandates</span>
+              <span style="font-weight:800;font-size:1rem;color:var(--green)">8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="section section-alt fade-in">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label" data-fr>Cas d'usage Immobilier</span>
+      <span class="pre-label" data-en style="display:none">Real estate use cases</span>
+      <h2 data-fr>Tout ce dont un agent immobilier a besoin</h2>
+      <h2 data-en style="display:none">Everything a real estate agent needs</h2>
+    </div>
+    <div class="use-case-grid">
+      <div class="use-case-card fade-in">
+        <div class="uc-icon">🔍</div>
+        <h3 data-fr>Identifie vendeurs et acheteurs potentiels</h3>
+        <h3 data-en style="display:none">Identify potential sellers and buyers</h3>
+        <p data-fr>LeadQualif détecte automatiquement les propriétaires susceptibles de vendre et les acheteurs actifs sur votre zone géographique.</p>
+        <p data-en style="display:none">LeadQualif automatically detects homeowners likely to sell and active buyers in your geographic area.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="uc-icon">📊</div>
+        <h3 data-fr>Qualification automatique (budget, zone, timing)</h3>
+        <h3 data-en style="display:none">Automatic qualification (budget, zone, timing)</h3>
+        <p data-fr>L'IA qualifie chaque contact selon son budget estimé, sa zone de recherche et son timing d'achat ou de vente — sans appel de qualification.</p>
+        <p data-en style="display:none">AI qualifies each contact by estimated budget, search zone, and buy/sell timing — no qualification calls needed.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="uc-icon">🏡</div>
+        <h3 data-fr>Booking visites automatique</h3>
+        <h3 data-en style="display:none">Automatic visit booking</h3>
+        <p data-fr>Les prospects bookent directement leurs visites dans votre agenda. Rappels automatiques envoyés 24h avant pour réduire les no-shows.</p>
+        <p data-en style="display:none">Prospects directly book visits in your calendar. Automatic reminders sent 24h before to reduce no-shows.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="uc-icon">✍️</div>
+        <h3 data-fr>Signature mandats électronique</h3>
+        <h3 data-en style="display:none">Electronic mandate signing</h3>
+        <p data-fr>Envoyez vos mandats directement depuis LeadQualif et recevez les signatures électroniques en quelques minutes — conforme RGPD.</p>
+        <p data-en style="display:none">Send mandates directly from LeadQualif and receive electronic signatures in minutes — GDPR compliant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section fade-in">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label" data-fr>Comment ça marche</span>
+      <span class="pre-label" data-en style="display:none">How it works</span>
+      <h2 data-fr>De la prospection à la signature en 4 étapes</h2>
+      <h2 data-en style="display:none">From prospecting to signing in 4 steps</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem">
+      <div style="text-align:center;padding:1.5rem;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="width:48px;height:48px;background:rgba(46,117,182,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.2rem">1️⃣</div>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem" data-fr>Scraping</h3>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem" data-en style="display:none">Scraping</h3>
+        <p style="font-size:0.83rem" data-fr>LeadQualif identifie les contacts dans ta zone</p>
+        <p style="font-size:0.83rem" data-en style="display:none">LeadQualif identifies contacts in your area</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="width:48px;height:48px;background:rgba(46,117,182,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.2rem">2️⃣</div>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem" data-fr>Score IA</h3>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem" data-en style="display:none">AI Score</h3>
+        <p style="font-size:0.83rem" data-fr>Chaque contact est scoré selon son profil immobilier</p>
+        <p style="font-size:0.83rem" data-en style="display:none">Each contact is scored based on their real estate profile</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)">
+        <div style="width:48px;height:48px;background:rgba(46,117,182,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.2rem">3️⃣</div>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem" data-fr>Auto-Contact</h3>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem" data-en style="display:none">Auto-Contact</h3>
+        <p style="font-size:0.83rem" data-fr>L'IA envoie un message personnalisé en moins de 5 min</p>
+        <p style="font-size:0.83rem" data-en style="display:none">AI sends a personalized message in under 5 min</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:rgba(26,122,74,0.05);border-radius:var(--radius);border:1px solid rgba(26,122,74,0.2);box-shadow:var(--shadow)">
+        <div style="width:48px;height:48px;background:rgba(26,122,74,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.2rem">✅</div>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem;color:var(--green)" data-fr>Signature</h3>
+        <h3 style="font-size:0.95rem;margin-bottom:0.4rem;color:var(--green)" data-en style="display:none">Signing</h3>
+        <p style="font-size:0.83rem" data-fr>Visite bookée, mandat signé électroniquement</p>
+        <p style="font-size:0.83rem" data-en style="display:none">Visit booked, mandate signed electronically</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <h2 data-fr>Remplis ton agenda de visites automatiquement</h2>
+    <h2 data-en style="display:none">Fill your calendar with visits automatically</h2>
+    <p data-fr>14 jours gratuits — sans carte bancaire</p>
+    <p data-en style="display:none">14 days free — no credit card</p>
+    <a href="../pricing.html" class="btn btn-primary btn-lg" data-fr>Commencer gratuitement</a>
+    <a href="../pricing.html" class="btn btn-primary btn-lg" data-en style="display:none">Start for free</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo"><div class="footer-logo-icon">LQ</div><span>LeadQualif</span></div>
+      <p class="footer-tagline" data-fr>Le CRM IA de référence pour les agences FR/EU.</p>
+      <p class="footer-tagline" data-en style="display:none">The reference AI CRM for FR/EU agencies.</p>
+      <div class="footer-social"><div class="social-btn">in</div><div class="social-btn">𝕏</div><div class="social-btn">f</div></div>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Produit</h4><h4 data-en style="display:none">Product</h4>
+      <ul><li><a href="../features.html" data-fr>Fonctionnalités</a><a href="../features.html" data-en style="display:none">Features</a></li><li><a href="../pricing.html" data-fr>Tarifs</a><a href="../pricing.html" data-en style="display:none">Pricing</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Secteurs</h4><h4 data-en style="display:none">Industries</h4>
+      <ul><li><a href="smma.html">SMMA</a></li><li><a href="immobilier.html" data-fr>Immobilier</a><a href="immobilier.html" data-en style="display:none">Real Estate</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Légal</h4><h4 data-en style="display:none">Legal</h4>
+      <ul><li><a href="../../cgu.html">CGU</a></li><li><a href="../../rgpd.html">RGPD</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-fr>© 2026 LeadQualif. Tous droits réservés.</p>
+    <p data-en style="display:none">© 2026 LeadQualif. All rights reserved.</p>
+    <span class="ai-mention" data-fr>Rapport généré par LeadQualif IA</span>
+    <span class="ai-mention" data-en style="display:none">Report generated by LeadQualif AI</span>
+  </div>
+</footer>
+
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p data-fr>Nous utilisons des cookies. <a href="../../politique-confidentialite.html">En savoir plus</a></p>
+    <p data-en style="display:none">We use cookies. <a href="../../politique-confidentialite.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-fr>Accepter</button>
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-en style="display:none">Accept</button>
+      <button class="cookie-btn cookie-refuse" onclick="refuseCookies()" data-fr>Refuser</button>
+      <button class="cookie-btn cookie-refuse" onclick="refuseCookies()" data-en style="display:none">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleLang(btn){const b=document.body;if(b.classList.contains('lang-fr')){b.classList.replace('lang-fr','lang-en');btn.textContent='FR';}else{b.classList.replace('lang-en','lang-fr');btn.textContent='EN';}}
+function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open');}
+function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').classList.add('hidden');}
+function refuseCookies(){localStorage.setItem('cookieConsent','refused');document.getElementById('cookie-banner').classList.add('hidden');}
+window.addEventListener('DOMContentLoaded',()=>{if(localStorage.getItem('cookieConsent'))document.getElementById('cookie-banner').classList.add('hidden');});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

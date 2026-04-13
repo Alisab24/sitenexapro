@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarifs LeadQualif — À partir de 97€/mois</title>
+  <meta name="description" content="Découvrez les tarifs LeadQualif. Plans Solo, Agency et Growth à partir de 97€/mois. Essai gratuit 14 jours, sans carte bancaire.">
+  <meta property="og:title" content="Tarifs LeadQualif — À partir de 97€/mois">
+  <meta property="og:description" content="Plans flexibles pour agences SMMA et immobilier. Essai gratuit 14 jours.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../leadqualif-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="lang-fr">
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">LQ</div>
+      <span>LeadQualif</span>
+    </a>
+    <div class="nav-links">
+      <a href="features.html">Fonctionnalités</a>
+      <a href="secteurs/index.html">Secteurs</a>
+      <a href="pricing.html" class="active">Tarifs</a>
+      <a href="about.html">À propos</a>
+    </div>
+    <div class="nav-right">
+      <button class="lang-toggle" onclick="toggleLang(this)">EN</button>
+      <a href="#" class="nav-signin">Se connecter</a>
+      <a href="#" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.88rem;">Essai gratuit</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="features.html">Fonctionnalités</a>
+    <a href="secteurs/index.html">Secteurs</a>
+    <a href="pricing.html">Tarifs</a>
+    <a href="about.html">À propos</a>
+    <a href="#">Se connecter</a>
+    <a href="#" style="color:var(--blue);font-weight:700;">Essai gratuit →</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section style="padding-top:120px;padding-bottom:3rem;background:linear-gradient(160deg,var(--bg) 0%,#EBF3FF 100%);text-align:center;">
+  <div class="container">
+    <span class="pre-label" data-fr>Tarifs</span>
+    <span class="pre-label" data-en style="display:none">Pricing</span>
+    <h1 style="margin:0.5rem auto 1rem;max-width:600px" data-fr>Simple, transparent, sans surprise</h1>
+    <h1 style="margin:0.5rem auto 1rem;max-width:600px" data-en style="display:none">Simple, transparent, no surprises</h1>
+    <p style="font-size:1.05rem;max-width:480px;margin:0 auto" data-fr>Commence gratuitement 14 jours. Aucune carte requise.</p>
+    <p style="font-size:1.05rem;max-width:480px;margin:0 auto" data-en style="display:none">Start free for 14 days. No credit card required.</p>
+  </div>
+</section>
+
+<!-- PRICING SECTION -->
+<section class="section section-alt">
+  <div class="container">
+
+    <!-- Toggle -->
+    <div class="pricing-toggle">
+      <span class="toggle-label" id="lbl-monthly" data-fr>Mensuel</span>
+      <span class="toggle-label" id="lbl-monthly" data-en style="display:none">Monthly</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billing-toggle" onchange="toggleBilling(this)">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="toggle-label" id="lbl-annual" data-fr>Annuel</span>
+      <span class="toggle-label" id="lbl-annual" data-en style="display:none">Annual</span>
+      <span class="save-badge" data-fr>-20%</span>
+      <span class="save-badge" data-en style="display:none">-20%</span>
+    </div>
+
+    <!-- Plans Grid -->
+    <div class="pricing-grid">
+
+      <!-- SOLO -->
+      <div class="pricing-card fade-in">
+        <div class="plan-badge-wrap"><span class="plan-badge solo" data-fr>Pour démarrer</span><span class="plan-badge solo" data-en style="display:none">Starter</span></div>
+        <div class="plan-name">Solo</div>
+        <div class="plan-price">
+          <span class="amount" id="price-solo">97</span>
+          <span class="per" data-fr>€/mois</span>
+          <span class="per" data-en style="display:none">€/mo</span>
+          <span class="annual-note" id="note-solo" style="display:none" data-fr>Économie 233€/an</span>
+          <span class="annual-note" id="note-solo-en" style="display:none" data-en>Save €233/yr</span>
+        </div>
+        <p class="plan-desc" data-fr>Idéal pour démarrer et tester LeadQualif sur tes premiers clients.</p>
+        <p class="plan-desc" data-en style="display:none">Ideal to get started and test LeadQualif with your first clients.</p>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> <span data-fr>300 leads/mois</span><span data-en style="display:none">300 leads/month</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>CRM complet</span><span data-en style="display:none">Full CRM</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Score IA</span><span data-en style="display:none">AI Score</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>WhatsApp + Email</span><span data-en style="display:none">WhatsApp + Email</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>1 utilisateur</span><span data-en style="display:none">1 user</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Support email</span><span data-en style="display:none">Email support</span></li>
+        </ul>
+        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" data-fr>Commencer</a>
+        <a href="#" class="btn btn-secondary" style="width:100%;justify-content:center;" data-en style="display:none">Get started</a>
+      </div>
+
+      <!-- AGENCY (featured) -->
+      <div class="pricing-card featured fade-in">
+        <div class="plan-badge-wrap"><span class="plan-badge popular" data-fr>⭐ Le plus populaire</span><span class="plan-badge popular" data-en style="display:none">⭐ Most popular</span></div>
+        <div class="plan-name" style="color:var(--blue)">Agency</div>
+        <div class="plan-price">
+          <span class="amount" id="price-agency">197</span>
+          <span class="per" data-fr>€/mois</span>
+          <span class="per" data-en style="display:none">€/mo</span>
+          <span class="annual-note" id="note-agency" style="display:none" data-fr>Économie 473€/an</span>
+          <span class="annual-note" id="note-agency-en" style="display:none" data-en>Save €473/yr</span>
+        </div>
+        <p class="plan-desc" data-fr>La solution complète pour les agences qui veulent de vrais résultats.</p>
+        <p class="plan-desc" data-en style="display:none">The complete solution for agencies that want real results.</p>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> <span data-fr>1 000 leads/mois</span><span data-en style="display:none">1,000 leads/month</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Tout Solo +</span><span data-en style="display:none">Everything in Solo +</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Agent Auto-Contact IA</span><span data-en style="display:none">AI Auto-Contact Agent</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Booking automatique</span><span data-en style="display:none">Automatic booking</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Rapports clients</span><span data-en style="display:none">Client reports</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>3 utilisateurs</span><span data-en style="display:none">3 users</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Support prioritaire</span><span data-en style="display:none">Priority support</span></li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;" data-fr>Commencer — 14j gratuits</a>
+        <a href="#" class="btn btn-primary" style="width:100%;justify-content:center;" data-en style="display:none">Start — 14 days free</a>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="pricing-card premium fade-in">
+        <div class="plan-badge-wrap"><span class="plan-badge premium-b" data-fr>Pour les agences</span><span class="plan-badge premium-b" data-en style="display:none">For agencies</span></div>
+        <div class="plan-name" style="color:#7c3aed">Growth</div>
+        <div class="plan-price">
+          <span class="amount" id="price-growth">297</span>
+          <span class="per" data-fr>€/mois</span>
+          <span class="per" data-en style="display:none">€/mo</span>
+          <span class="annual-note" id="note-growth" style="display:none" data-fr>Économie 713€/an</span>
+          <span class="annual-note" id="note-growth-en" style="display:none" data-en>Save €713/yr</span>
+        </div>
+        <p class="plan-desc" data-fr>White label et multi-workspace pour les agences à fort volume.</p>
+        <p class="plan-desc" data-en style="display:none">White label and multi-workspace for high-volume agencies.</p>
+        <ul class="plan-features">
+          <li><span class="check-icon">✓</span> <span data-fr>3 000 leads/mois</span><span data-en style="display:none">3,000 leads/month</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Tout Agency +</span><span data-en style="display:none">Everything in Agency +</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>White label</span><span data-en style="display:none">White label</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Multi-workspace</span><span data-en style="display:none">Multi-workspace</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>10 utilisateurs</span><span data-en style="display:none">10 users</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Support dédié</span><span data-en style="display:none">Dedicated support</span></li>
+          <li><span class="check-icon">✓</span> <span data-fr>Onboarding personnalisé</span><span data-en style="display:none">Personalized onboarding</span></li>
+        </ul>
+        <a href="mailto:contact@leadqualif.com" class="btn btn-secondary" style="width:100%;justify-content:center;border-color:#7c3aed;color:#7c3aed;" data-fr>Contacter l'équipe</a>
+        <a href="mailto:contact@leadqualif.com" class="btn btn-secondary" style="width:100%;justify-content:center;border-color:#7c3aed;color:#7c3aed;" data-en style="display:none">Contact the team</a>
+      </div>
+    </div>
+
+    <!-- Crédits supplémentaires -->
+    <div style="text-align:center;margin-top:2.5rem;padding:1.5rem;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);max-width:480px;margin-left:auto;margin-right:auto;">
+      <h3 style="margin-bottom:0.4rem;" data-fr>Besoin de plus de leads ?</h3>
+      <h3 style="margin-bottom:0.4rem;" data-en style="display:none">Need more leads?</h3>
+      <p style="font-size:0.9rem;" data-fr>Crédits supplémentaires disponibles : <strong style="color:var(--blue)">29 € / 500 leads</strong></p>
+      <p style="font-size:0.9rem;" data-en style="display:none">Additional credits available: <strong style="color:var(--blue)">€29 / 500 leads</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label">FAQ</span>
+      <h2 data-fr>Questions fréquentes</h2>
+      <h2 data-en style="display:none">Frequently asked questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span data-fr>Est-ce que je peux annuler à tout moment ?</span>
+          <span data-en style="display:none">Can I cancel at any time?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a" data-fr>Oui, sans engagement ni frais d'annulation. Vous pouvez annuler votre abonnement quand vous le souhaitez depuis votre espace client.</div>
+        <div class="faq-a" data-en style="display:none">Yes, with no commitment or cancellation fees. You can cancel your subscription at any time from your account.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span data-fr>Y a-t-il une période d'essai gratuite ?</span>
+          <span data-en style="display:none">Is there a free trial?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a" data-fr>Oui, 14 jours gratuits sur les plans Solo et Agency. Aucune carte bancaire requise pour commencer.</div>
+        <div class="faq-a" data-en style="display:none">Yes, 14 days free on the Solo and Agency plans. No credit card required to get started.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span data-fr>Comment fonctionne le scraping ?</span>
+          <span data-en style="display:none">How does scraping work?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a" data-fr>LeadQualif extrait automatiquement les contacts depuis Facebook Pages et Pages Jaunes selon vos critères de recherche (secteur, localisation, taille d'entreprise). Les données sont enrichies et importées directement dans votre CRM.</div>
+        <div class="faq-a" data-en style="display:none">LeadQualif automatically extracts contacts from Facebook Pages and Yellow Pages based on your search criteria (sector, location, company size). The data is enriched and imported directly into your CRM.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span data-fr>Le Score IA est-il fiable ?</span>
+          <span data-en style="display:none">Is the AI Score reliable?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a" data-fr>Notre Score IA analyse 12 critères et atteint 67% de leads chauds en moyenne sur nos clients actifs. Le modèle s'améliore au fil du temps grâce aux interactions de votre équipe.</div>
+        <div class="faq-a" data-en style="display:none">Our AI Score analyzes 12 criteria and achieves 67% hot leads on average across our active clients. The model improves over time thanks to your team's interactions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span data-fr>Puis-je connecter mon email et calendrier existants ?</span>
+          <span data-en style="display:none">Can I connect my existing email and calendar?</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a" data-fr>Oui, Google Workspace et Microsoft 365 se connectent en un clic via OAuth. Les autres hébergeurs se connectent via SMTP. La synchronisation est bidirectionnelle.</div>
+        <div class="faq-a" data-en style="display:none">Yes, Google Workspace and Microsoft 365 connect in one click via OAuth. Other hosts connect via SMTP. Synchronization is bidirectional.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<section class="cta-band">
+  <div class="container">
+    <h2 data-fr>Commence dès aujourd'hui</h2>
+    <h2 data-en style="display:none">Start today</h2>
+    <p data-fr>14 jours gratuits — Aucune carte bancaire requise</p>
+    <p data-en style="display:none">14 days free — No credit card required</p>
+    <a href="#" class="btn btn-primary btn-lg" data-fr>Essayer gratuitement</a>
+    <a href="#" class="btn btn-primary btn-lg" data-en style="display:none">Start free trial</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">LQ</div>
+        <span>LeadQualif</span>
+      </div>
+      <p class="footer-tagline" data-fr>Le CRM IA de référence pour les agences FR/EU.</p>
+      <p class="footer-tagline" data-en style="display:none">The reference AI CRM for FR/EU agencies.</p>
+      <div class="footer-social">
+        <div class="social-btn">in</div>
+        <div class="social-btn">𝕏</div>
+        <div class="social-btn">f</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Produit</h4><h4 data-en style="display:none">Product</h4>
+      <ul>
+        <li><a href="features.html" data-fr>Fonctionnalités</a><a href="features.html" data-en style="display:none">Features</a></li>
+        <li><a href="pricing.html" data-fr>Tarifs</a><a href="pricing.html" data-en style="display:none">Pricing</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Secteurs</h4><h4 data-en style="display:none">Industries</h4>
+      <ul>
+        <li><a href="secteurs/smma.html">SMMA</a></li>
+        <li><a href="secteurs/immobilier.html" data-fr>Immobilier</a><a href="secteurs/immobilier.html" data-en style="display:none">Real Estate</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Légal</h4><h4 data-en style="display:none">Legal</h4>
+      <ul>
+        <li><a href="../cgu.html">CGU</a></li>
+        <li><a href="../politique-confidentialite.html" data-fr>Confidentialité</a><a href="../politique-confidentialite.html" data-en style="display:none">Privacy</a></li>
+        <li><a href="../rgpd.html">RGPD</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-fr>© 2026 LeadQualif. Tous droits réservés.</p>
+    <p data-en style="display:none">© 2026 LeadQualif. All rights reserved.</p>
+    <span class="ai-mention" data-fr>Rapport généré par LeadQualif IA</span>
+    <span class="ai-mention" data-en style="display:none">Report generated by LeadQualif AI</span>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p data-fr>Nous utilisons des cookies pour améliorer votre expérience. <a href="../politique-confidentialite.html">En savoir plus</a></p>
+    <p data-en style="display:none">We use cookies to improve your experience. <a href="../politique-confidentialite.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-fr>Accepter</button>
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-en style="display:none">Accept</button>
+      <button class="cookie-btn cookie-refuse" onclick="refuseCookies()" data-fr>Refuser</button>
+      <button class="cookie-btn cookie-refuse" onclick="refuseCookies()" data-en style="display:none">Decline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleLang(btn) {
+  const body = document.body;
+  if (body.classList.contains('lang-fr')) { body.classList.replace('lang-fr','lang-en'); btn.textContent='FR'; }
+  else { body.classList.replace('lang-en','lang-fr'); btn.textContent='EN'; }
+}
+function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('open'); }
+function acceptCookies() { localStorage.setItem('cookieConsent','accepted'); document.getElementById('cookie-banner').classList.add('hidden'); }
+function refuseCookies() { localStorage.setItem('cookieConsent','refused'); document.getElementById('cookie-banner').classList.add('hidden'); }
+window.addEventListener('DOMContentLoaded',()=>{ if(localStorage.getItem('cookieConsent')) document.getElementById('cookie-banner').classList.add('hidden'); });
+
+// Billing toggle
+const prices = { solo:[97,78], agency:[197,158], growth:[297,238] };
+function toggleBilling(el) {
+  const annual = el.checked;
+  document.getElementById('price-solo').textContent   = annual ? prices.solo[1]   : prices.solo[0];
+  document.getElementById('price-agency').textContent = annual ? prices.agency[1] : prices.agency[0];
+  document.getElementById('price-growth').textContent = annual ? prices.growth[1] : prices.growth[0];
+  ['note-solo','note-agency','note-growth'].forEach(id=>{ document.getElementById(id).style.display = annual?'inline':'none'; });
+}
+
+// FAQ
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+// Scroll animations
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadQualif — CRM IA pour agences SMMA et Immobilier</title>
+  <meta name="description" content="LeadQualif génère des leads qualifiés, les score par IA et les suit automatiquement via WhatsApp et Email — pour les agences SMMA et l'immobilier.">
+  <meta property="og:title" content="LeadQualif — CRM IA pour agences SMMA et Immobilier">
+  <meta property="og:description" content="Trouve, qualifie et convertis tes clients automatiquement. Score IA, scraping auto, inbox unifiée.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://leadqualif.com">
+  <meta property="og:image" content="https://leadqualif.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="../leadqualif-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="lang-fr">
+
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">LQ</div>
+      <span>LeadQualif</span>
+    </a>
+    <div class="nav-links">
+      <a href="features.html">Fonctionnalités</a>
+      <a href="secteurs/index.html">Secteurs</a>
+      <a href="pricing.html">Tarifs</a>
+      <a href="about.html">À propos</a>
+    </div>
+    <div class="nav-right">
+      <button class="lang-toggle" onclick="toggleLang(this)">EN</button>
+      <a href="#" class="nav-signin">Se connecter</a>
+      <a href="#" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.88rem;">Essai gratuit</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="features.html">Fonctionnalités</a>
+    <a href="secteurs/index.html">Secteurs</a>
+    <a href="pricing.html">Tarifs</a>
+    <a href="about.html">À propos</a>
+    <a href="#">Se connecter</a>
+    <a href="#" style="color:var(--blue);font-weight:700;">Essai gratuit →</a>
+  </div>
+</nav>
+
+<!-- =========================================================
+     SECTION 1 — HERO
+     ========================================================= -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left -->
+      <div>
+        <div class="hero-tag">
+          <span></span>
+          <span data-fr>Nouveau — Score IA v2 disponible</span>
+          <span data-en style="display:none">New — AI Score v2 available</span>
+        </div>
+        <h1 data-fr>Trouve, qualifie et <span>convertis tes clients</span> automatiquement</h1>
+        <h1 data-en style="display:none">Find, qualify and <span>convert your clients</span> automatically</h1>
+        <p data-fr>LeadQualif génère des leads qualifiés, les score par IA et les suit automatiquement via WhatsApp et Email — pour les agences SMMA et l'immobilier.</p>
+        <p data-en style="display:none">LeadQualif generates qualified leads, scores them with AI, and follows up automatically via WhatsApp and Email — for SMMA agencies and real estate.</p>
+        <div class="hero-ctas">
+          <a href="pricing.html" class="btn btn-primary btn-lg" data-fr>Essayer gratuitement 14 jours</a>
+          <a href="pricing.html" class="btn btn-primary btn-lg" data-en style="display:none">Start free trial — 14 days</a>
+          <a href="#demo" class="btn btn-secondary btn-lg" data-fr>Voir une démo</a>
+          <a href="#demo" class="btn btn-secondary btn-lg" data-en style="display:none">Watch a demo</a>
+        </div>
+        <div class="hero-social-proof">
+          <div class="dot"></div>
+          <span data-fr><strong>500+</strong> leads générés &nbsp;•&nbsp; <strong>67%</strong> leads chauds &nbsp;•&nbsp; <strong>6 000 $</strong> CA ce mois</span>
+          <span data-en style="display:none"><strong>500+</strong> leads generated &nbsp;•&nbsp; <strong>67%</strong> hot leads &nbsp;•&nbsp; <strong>$6,000</strong> revenue this month</span>
+        </div>
+      </div>
+      <!-- Right — Dashboard Mockup -->
+      <div class="hero-visual">
+        <div class="float-badge badge-tl">✅ 15 leads chauds détectés</div>
+        <div class="dashboard-mockup">
+          <div class="mockup-topbar">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <span>app.leadqualif.com</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-stats">
+              <div class="mockup-stat">
+                <div class="label">Leads totaux</div>
+                <div class="value">284</div>
+                <div class="change">↑ +23 cette semaine</div>
+              </div>
+              <div class="mockup-stat">
+                <div class="label">Leads chauds</div>
+                <div class="value">67%</div>
+                <div class="change">↑ Score IA actif</div>
+              </div>
+              <div class="mockup-stat">
+                <div class="label">CA généré</div>
+                <div class="value">6 000$</div>
+                <div class="change">↑ Avril 2026</div>
+              </div>
+            </div>
+            <div class="mockup-leads">
+              <div class="mockup-leads-title">Derniers leads qualifiés</div>
+              <div class="lead-row">
+                <div class="lead-avatar">MR</div>
+                <div style="flex:1">
+                  <div class="lead-name">Martin Renaud</div>
+                  <div class="lead-company">Agence Digitale Paris</div>
+                </div>
+                <div class="lead-score score-hot">🔥 Chaud</div>
+              </div>
+              <div class="lead-row">
+                <div class="lead-avatar" style="background:#00B0F0">SL</div>
+                <div style="flex:1">
+                  <div class="lead-name">Sophie Laurent</div>
+                  <div class="lead-company">Immo Côte d'Azur</div>
+                </div>
+                <div class="lead-score score-hot">🔥 Chaud</div>
+              </div>
+              <div class="lead-row">
+                <div class="lead-avatar" style="background:#7c3aed">AB</div>
+                <div style="flex:1">
+                  <div class="lead-name">Alex Bourgeois</div>
+                  <div class="lead-company">SMMA Lyon</div>
+                </div>
+                <div class="lead-score score-warm">🌡 Tiède</div>
+              </div>
+              <div class="lead-row">
+                <div class="lead-avatar" style="background:#64748b">CL</div>
+                <div style="flex:1">
+                  <div class="lead-name">Camille Lefèvre</div>
+                  <div class="lead-company">Marketing Bordeaux</div>
+                </div>
+                <div class="lead-score score-cold">❄ Froid</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="float-badge badge-br">🤖 Auto-contact envoyé · 2 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 2 — PROBLÈME / SOLUTION
+     ========================================================= -->
+<section class="section section-alt fade-in">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label" data-fr>Le constat</span>
+      <span class="pre-label" data-en style="display:none">The reality</span>
+      <h2 data-fr>La prospection manuelle te coûte cher</h2>
+      <h2 data-en style="display:none">Manual prospecting is costing you</h2>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card fade-in">
+        <div class="ps-icon ps-icon-red">😤</div>
+        <h3 data-fr>Le problème</h3>
+        <h3 data-en style="display:none">The problem</h3>
+        <p data-fr>Tu passes des heures à chercher des prospects, les contacter manuellement et les relancer. Résultat : des leads perdus et du temps gaspillé.</p>
+        <p data-en style="display:none">You spend hours finding prospects, contacting them manually, and following up. The result: lost leads and wasted time.</p>
+      </div>
+      <div class="ps-card fade-in" style="border-top: 3px solid var(--blue);">
+        <div class="ps-icon ps-icon-blue">⚡</div>
+        <h3 data-fr>La solution LeadQualif</h3>
+        <h3 data-en style="display:none">The LeadQualif solution</h3>
+        <p data-fr>LeadQualif scrape automatiquement les prospects, les qualifie par IA et les contacte via WhatsApp sans intervention manuelle.</p>
+        <p data-en style="display:none">LeadQualif automatically scrapes prospects, qualifies them with AI, and contacts them via WhatsApp — no manual work needed.</p>
+      </div>
+      <div class="ps-card fade-in" style="border-top: 3px solid var(--green);">
+        <div class="ps-icon ps-icon-green">🎯</div>
+        <h3 data-fr>Le résultat</h3>
+        <h3 data-en style="display:none">The result</h3>
+        <p data-fr>Tes commerciaux se concentrent uniquement sur les leads chauds, prêts à signer. Plus de temps perdu, plus de revenus.</p>
+        <p data-en style="display:none">Your sales team focuses exclusively on hot leads, ready to close. Less wasted time, more revenue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 3 — FONCTIONNALITÉS
+     ========================================================= -->
+<section class="section fade-in">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label" data-fr>Fonctionnalités</span>
+      <span class="pre-label" data-en style="display:none">Features</span>
+      <h2 data-fr>Tout ce dont tu as besoin pour prospecter</h2>
+      <h2 data-en style="display:none">Everything you need to prospect</h2>
+      <p data-fr>Une plateforme complète, pensée pour les agences qui veulent des résultats — pas des outils complexes.</p>
+      <p data-en style="display:none">A complete platform, built for agencies that want results — not complex tools.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card fade-in">
+        <div class="feat-icon">📡</div>
+        <h3 data-fr>Scraping automatique</h3>
+        <h3 data-en style="display:none">Automatic scraping</h3>
+        <p data-fr>Trouve automatiquement des prospects qualifiés sur Facebook Pages et Pages Jaunes selon tes critères.</p>
+        <p data-en style="display:none">Automatically find qualified prospects on Facebook Pages and Yellow Pages based on your criteria.</p>
+      </div>
+      <div class="feat-card fade-in">
+        <div class="feat-icon">🧠</div>
+        <h3 data-fr>Score IA</h3>
+        <h3 data-en style="display:none">AI Score</h3>
+        <p data-fr>Chaque lead reçoit un score IA (Chaud / Tiède / Froid) dès l'import — priorise ton énergie sur les bons prospects.</p>
+        <p data-en style="display:none">Each lead receives an AI score (Hot / Warm / Cold) upon import — focus your energy on the right prospects.</p>
+      </div>
+      <div class="feat-card fade-in">
+        <div class="feat-icon">💬</div>
+        <h3 data-fr>Inbox unifiée</h3>
+        <h3 data-en style="display:none">Unified inbox</h3>
+        <p data-fr>WhatsApp, Email et SMS centralisés dans une seule interface. Plus besoin de jongler entre les onglets.</p>
+        <p data-en style="display:none">WhatsApp, Email and SMS centralized in one interface. No more tab-switching.</p>
+      </div>
+      <div class="feat-card fade-in">
+        <div class="feat-icon">🤖</div>
+        <h3 data-fr>Agent Auto-Contact</h3>
+        <h3 data-en style="display:none">Auto-Contact Agent</h3>
+        <p data-fr>L'IA contacte automatiquement chaque lead chaud dans les 5 minutes — 24h/7j, sans intervention humaine.</p>
+        <p data-en style="display:none">AI automatically contacts each hot lead within 5 minutes — 24/7, no human intervention needed.</p>
+      </div>
+      <div class="feat-card fade-in">
+        <div class="feat-icon">📅</div>
+        <h3 data-fr>Calendrier & RDV</h3>
+        <h3 data-en style="display:none">Calendar & Appointments</h3>
+        <p data-fr>Booking automatique synchronisé avec Google Calendar et Outlook. Tes RDV se remplissent seuls.</p>
+        <p data-en style="display:none">Automatic booking synced with Google Calendar and Outlook. Your appointments fill themselves.</p>
+      </div>
+      <div class="feat-card fade-in">
+        <div class="feat-icon">📊</div>
+        <h3 data-fr>Rapports & Stats</h3>
+        <h3 data-en style="display:none">Reports & Stats</h3>
+        <p data-fr>Dashboard complet : leads, conversions, CA généré, ROI par source. Tout en un coup d'œil.</p>
+        <p data-en style="display:none">Full dashboard: leads, conversions, revenue generated, ROI by source. Everything at a glance.</p>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="features.html" class="btn btn-secondary" data-fr>Voir toutes les fonctionnalités →</a>
+      <a href="features.html" class="btn btn-secondary" data-en style="display:none">See all features →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 4 — COMPARAISON
+     ========================================================= -->
+<section class="section section-alt fade-in">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label" data-fr>Comparaison</span>
+      <span class="pre-label" data-en style="display:none">Comparison</span>
+      <h2 data-fr>LeadQualif vs GoHighLevel</h2>
+      <h2 data-en style="display:none">LeadQualif vs GoHighLevel</h2>
+      <p data-fr>Conçu pour le marché français et européen, avec les fonctionnalités que GHL n'a pas.</p>
+      <p data-en style="display:none">Built for the French and European market, with the features GHL doesn't have.</p>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th data-fr>Fonctionnalité</th>
+            <th data-en style="display:none">Feature</th>
+            <th class="col-lq">LeadQualif</th>
+            <th>GoHighLevel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-fr>Scraping automatique</td>
+            <td data-en style="display:none">Automatic scraping</td>
+            <td class="col-lq"><span class="check">✅</span></td>
+            <td><span class="cross">❌</span></td>
+          </tr>
+          <tr>
+            <td data-fr>Score IA natif</td>
+            <td data-en style="display:none">Native AI Score</td>
+            <td class="col-lq"><span class="check">✅</span></td>
+            <td><span class="cross">❌</span></td>
+          </tr>
+          <tr>
+            <td data-fr>Agent Auto-Contact IA</td>
+            <td data-en style="display:none">AI Auto-Contact Agent</td>
+            <td class="col-lq"><span class="check">✅</span></td>
+            <td><span class="cross">❌</span></td>
+          </tr>
+          <tr>
+            <td data-fr>Prix mensuel</td>
+            <td data-en style="display:none">Monthly price</td>
+            <td class="col-lq" data-fr>97–249 €/mois</td>
+            <td class="col-lq" data-en style="display:none">€97–249/month</td>
+            <td data-fr>297 $/mois</td>
+            <td data-en style="display:none">$297/month</td>
+          </tr>
+          <tr>
+            <td data-fr>Marché FR/EU</td>
+            <td data-en style="display:none">FR/EU market</td>
+            <td class="col-lq"><span class="check">✅</span></td>
+            <td><span class="cross">❌</span></td>
+          </tr>
+          <tr>
+            <td data-fr>Support français</td>
+            <td data-en style="display:none">French support</td>
+            <td class="col-lq"><span class="check">✅</span></td>
+            <td><span class="cross">❌</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 5 — PREUVE SOCIALE
+     ========================================================= -->
+<section class="section fade-in">
+  <div class="container">
+    <div class="section-header">
+      <span class="pre-label" data-fr>Résultats réels</span>
+      <span class="pre-label" data-en style="display:none">Real results</span>
+      <h2 data-fr>Des chiffres qui parlent d'eux-mêmes</h2>
+      <h2 data-en style="display:none">Numbers that speak for themselves</h2>
+    </div>
+    <div class="stats-row fade-in">
+      <div class="stat-item">
+        <span class="stat-value">1</span>
+        <span class="stat-label" data-fr>client actif</span>
+        <span class="stat-label" data-en style="display:none">active client</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">6 000$</span>
+        <span class="stat-label" data-fr>CA généré</span>
+        <span class="stat-label" data-en style="display:none">revenue generated</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">67%</span>
+        <span class="stat-label" data-fr>leads chauds</span>
+        <span class="stat-label" data-en style="display:none">hot leads</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">48h</span>
+        <span class="stat-label" data-fr>pour les 1ers résultats</span>
+        <span class="stat-label" data-en style="display:none">to first results</span>
+      </div>
+    </div>
+    <div class="testimonial-card fade-in">
+      <blockquote data-fr>"LeadQualif nous a permis d'identifier 15 leads chauds en 48h. L'agent IA a contacté chacun d'eux automatiquement et 3 ont signé en une semaine."</blockquote>
+      <blockquote data-en style="display:none">"LeadQualif helped us identify 15 hot leads in 48 hours. The AI agent contacted each of them automatically and 3 signed within a week."</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">NP</div>
+        <div>
+          <div style="font-weight:700;font-size:0.9rem;color:var(--text)">NEXAPRO</div>
+          <div style="font-size:0.8rem;color:var(--text3)" data-fr>Agence SMMA — Avril 2026</div>
+          <div style="font-size:0.8rem;color:var(--text3)" data-en style="display:none">SMMA Agency — April 2026</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:4px;">
+          <span style="color:#f59e0b;font-size:0.9rem">★★★★★</span>
+        </div>
+      </div>
+    </div>
+    <div class="sector-tags fade-in">
+      <div class="sector-tag">🏢 <span data-fr>Agences SMMA</span><span data-en style="display:none">SMMA Agencies</span></div>
+      <div class="sector-tag">🏠 <span data-fr>Immobilier</span><span data-en style="display:none">Real Estate</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     SECTION 6 — CTA FINAL
+     ========================================================= -->
+<section class="cta-band fade-in">
+  <div class="container">
+    <h2 data-fr>Prêt à automatiser ta prospection ?</h2>
+    <h2 data-en style="display:none">Ready to automate your prospecting?</h2>
+    <p data-fr>Rejoins les agences qui génèrent des leads qualifiés pendant qu'elles dorment.</p>
+    <p data-en style="display:none">Join the agencies generating qualified leads while they sleep.</p>
+    <a href="pricing.html" class="btn btn-primary btn-lg" data-fr>Commencer gratuitement — 14 jours</a>
+    <a href="pricing.html" class="btn btn-primary btn-lg" data-en style="display:none">Start for free — 14 days</a>
+    <div class="sub" data-fr>Sans carte bancaire &nbsp;•&nbsp; Annulation à tout moment &nbsp;•&nbsp; Support français inclus</div>
+    <div class="sub" data-en style="display:none">No credit card required &nbsp;•&nbsp; Cancel anytime &nbsp;•&nbsp; French support included</div>
+  </div>
+</section>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">LQ</div>
+        <span>LeadQualif</span>
+      </div>
+      <p class="footer-tagline" data-fr>Le CRM IA de référence pour les agences FR/EU.</p>
+      <p class="footer-tagline" data-en style="display:none">The reference AI CRM for FR/EU agencies.</p>
+      <div class="footer-social">
+        <div class="social-btn" title="LinkedIn">in</div>
+        <div class="social-btn" title="Twitter">𝕏</div>
+        <div class="social-btn" title="Facebook">f</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Produit</h4>
+      <h4 data-en style="display:none">Product</h4>
+      <ul>
+        <li><a href="features.html" data-fr>Fonctionnalités</a><a href="features.html" data-en style="display:none">Features</a></li>
+        <li><a href="pricing.html" data-fr>Tarifs</a><a href="pricing.html" data-en style="display:none">Pricing</a></li>
+        <li><a href="#" data-fr>Changelog</a><a href="#" data-en style="display:none">Changelog</a></li>
+        <li><a href="#">API</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Secteurs</h4>
+      <h4 data-en style="display:none">Industries</h4>
+      <ul>
+        <li><a href="secteurs/smma.html">SMMA</a></li>
+        <li><a href="secteurs/immobilier.html" data-fr>Immobilier</a><a href="secteurs/immobilier.html" data-en style="display:none">Real Estate</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-fr>Légal</h4>
+      <h4 data-en style="display:none">Legal</h4>
+      <ul>
+        <li><a href="../cgu.html" data-fr>CGU</a><a href="../cgu.html" data-en style="display:none">Terms of Service</a></li>
+        <li><a href="../politique-confidentialite.html" data-fr>Politique de confidentialité</a><a href="../politique-confidentialite.html" data-en style="display:none">Privacy Policy</a></li>
+        <li><a href="../rgpd.html">RGPD</a></li>
+        <li><a href="../mentions-legales.html" data-fr>Mentions légales</a><a href="../mentions-legales.html" data-en style="display:none">Legal notice</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-fr>© 2026 LeadQualif. Tous droits réservés.</p>
+    <p data-en style="display:none">© 2026 LeadQualif. All rights reserved.</p>
+    <span class="ai-mention" data-fr>Rapport généré par LeadQualif IA</span>
+    <span class="ai-mention" data-en style="display:none">Report generated by LeadQualif AI</span>
+  </div>
+</footer>
+
+<!-- =========================================================
+     COOKIE BANNER RGPD
+     ========================================================= -->
+<div id="cookie-banner">
+  <div class="cookie-inner">
+    <p data-fr>Nous utilisons des cookies pour améliorer votre expérience. <a href="../politique-confidentialite.html">En savoir plus</a></p>
+    <p data-en style="display:none">We use cookies to improve your experience. <a href="../politique-confidentialite.html">Learn more</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-fr>Accepter</button>
+      <button class="cookie-btn cookie-accept" onclick="acceptCookies()" data-en style="display:none">Accept</button>
+      <button class="cookie-btn cookie-refuse" onclick="refuseCookies()" data-fr>Refuser</button>
+      <button class="cookie-btn cookie-refuse" onclick="refuseCookies()" data-en style="display:none">Decline</button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     SCRIPTS
+     ========================================================= -->
+<script>
+// ---- Language Toggle ----
+function toggleLang(btn) {
+  const body = document.body;
+  if (body.classList.contains('lang-fr')) {
+    body.classList.replace('lang-fr', 'lang-en');
+    btn.textContent = 'FR';
+  } else {
+    body.classList.replace('lang-en', 'lang-fr');
+    btn.textContent = 'EN';
+  }
+}
+
+// ---- Mobile Menu ----
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ---- Cookie Banner ----
+function acceptCookies() {
+  localStorage.setItem('cookieConsent', 'accepted');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+function refuseCookies() {
+  localStorage.setItem('cookieConsent', 'refused');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('cookieConsent')) {
+    document.getElementById('cookie-banner').classList.add('hidden');
+  }
+});
+
+// ---- Scroll Animations ----
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
