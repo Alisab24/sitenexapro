@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Se connecter — LeadQualif</title>
+  <meta name="description" content="Connectez-vous à votre espace LeadQualif.">
+  <link rel="icon" type="image/svg+xml" href="../leadqualif-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #2E75B6; --blue-dark: #1E3A5F; --green: #1A7A4A;
+      --bg: #F8FAFF; --white: #FFFFFF; --text: #1E3A5F; --text2: #4A6080; --text3: #8FA3BC;
+      --border: #E2EAF4; --shadow: 0 4px 24px rgba(46,117,182,0.10); --shadow-lg: 0 12px 48px rgba(46,117,182,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(160deg, var(--bg) 0%, #EBF3FF 100%); min-height: 100vh; display: flex; flex-direction: column; color: var(--text); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .topbar { padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .nav-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 14px; }
+    .topbar-link { font-size: 0.88rem; color: var(--text2); }
+    .topbar-link a { color: var(--blue); font-weight: 600; }
+    .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; }
+    .card { background: var(--white); border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid var(--border); padding: 2.5rem; width: 100%; max-width: 420px; }
+    .card-header { text-align: center; margin-bottom: 2rem; }
+    .card-header h1 { font-size: 1.7rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .card-header p { font-size: 0.9rem; color: var(--text2); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+    .form-group input { width: 100%; padding: 0.75rem 0.9rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: inherit; color: var(--text); background: var(--bg); transition: 0.2s; outline: none; }
+    .form-group input:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(46,117,182,0.1); }
+    .form-group input.error { border-color: #ef4444; }
+    .err-msg { font-size: 0.75rem; color: #ef4444; margin-top: 4px; display: none; }
+    .err-msg.show { display: block; }
+    .pwd-wrapper { position: relative; }
+    .pwd-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text3); font-size: 0.85rem; }
+    .forgot-link { display: block; text-align: right; font-size: 0.78rem; color: var(--blue); font-weight: 500; margin-top: 0.35rem; }
+    .btn-submit { width: 100%; padding: 0.9rem; background: var(--blue); color: white; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.2s; margin-top: 0.5rem; }
+    .btn-submit:hover { background: #2560a0; transform: translateY(-1px); }
+    .btn-submit:disabled { background: #93b8d8; cursor: not-allowed; transform: none; }
+    .alert { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
+    .alert.show { display: block; }
+    .alert-success { background: rgba(26,122,74,0.1); color: var(--green); border: 1px solid rgba(26,122,74,0.2); }
+    .alert-error { background: rgba(239,68,68,0.08); color: #dc2626; border: 1px solid rgba(239,68,68,0.2); }
+    .form-footer { text-align: center; margin-top: 1.25rem; font-size: 0.83rem; color: var(--text2); }
+    .form-footer a { color: var(--blue); font-weight: 600; }
+    .divider { display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .divider span { font-size: 0.78rem; color: var(--text3); font-weight: 500; }
+    /* Forgot password modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--white); border-radius: 16px; padding: 2rem; max-width: 380px; width: 90%; }
+    .modal-box h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .modal-box p { font-size: 0.85rem; color: var(--text2); margin-bottom: 1.25rem; }
+    .modal-close { float: right; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text3); }
+    @media (max-width: 480px) { .card { padding: 1.75rem 1.25rem; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="../leadqualif.html" class="nav-logo">
+      <div class="nav-logo-icon">LQ</div>
+      <span>LeadQualif</span>
+    </a>
+    <span class="topbar-link">Pas de compte ? <a href="register.html">Essai gratuit 14j</a></span>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <div class="card-header">
+        <h1>👋 Bon retour</h1>
+        <p>Connectez-vous à votre espace LeadQualif</p>
+      </div>
+
+      <div id="alert-success" class="alert alert-success">✅ Connexion réussie ! Redirection...</div>
+      <div id="alert-error" class="alert alert-error">❌ <span id="error-text">Email ou mot de passe incorrect.</span></div>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="jean@monagence.com" autocomplete="email">
+          <div class="err-msg" id="err-email">Email invalide</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div class="pwd-wrapper">
+            <input type="password" id="password" placeholder="Votre mot de passe" autocomplete="current-password">
+            <button type="button" class="pwd-toggle" onclick="togglePwd()">👁</button>
+          </div>
+          <div class="err-msg" id="err-password">Champ requis</div>
+          <a href="#" class="forgot-link" onclick="openForgot(event)">Mot de passe oublié ?</a>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">Se connecter →</button>
+      </form>
+
+      <div class="form-footer">
+        Pas encore de compte ? <a href="register.html">Essai gratuit 14 jours</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot password modal -->
+  <div class="modal-overlay" id="forgot-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeForgot()">×</button>
+      <h3>🔑 Mot de passe oublié</h3>
+      <p>Entrez votre email pour recevoir un lien de réinitialisation.</p>
+      <div class="form-group">
+        <label for="forgot-email">Email</label>
+        <input type="email" id="forgot-email" placeholder="jean@monagence.com">
+      </div>
+      <button class="btn-submit" id="forgot-btn" onclick="sendReset()" style="margin-top:0">Envoyer le lien</button>
+      <div id="forgot-success" style="display:none;margin-top:0.75rem;font-size:0.85rem;color:var(--green)">✅ Email envoyé ! Vérifiez votre boîte mail.</div>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL  = 'https://rscjrpisvorapbopagox.supabase.co';
+    const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzY2pycGlzdm9yYXBib3BhZ294Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDg4MzUsImV4cCI6MjA4MTEyNDgzNX0.DhtSn5sk3mtyFdk9_i4oE35w7mjomYJtG5uQHJc3ckw';
+
+    function togglePwd() {
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+    function openForgot(e) { e.preventDefault(); document.getElementById('forgot-modal').classList.add('open'); }
+    function closeForgot() { document.getElementById('forgot-modal').classList.remove('open'); }
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      let valid = true;
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      document.getElementById('err-email').classList.toggle('show', !emailOk);
+      document.getElementById('email').classList.toggle('error', !emailOk);
+      if (!emailOk) valid = false;
+      document.getElementById('err-password').classList.toggle('show', !password);
+      document.getElementById('password').classList.toggle('error', !password);
+      if (!password) valid = false;
+      if (!valid) return;
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true; btn.textContent = 'Connexion…';
+
+      try {
+        const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error_description || data.msg || 'Identifiants incorrects');
+
+        // Store session
+        localStorage.setItem('lq_session', JSON.stringify({ access_token: data.access_token, user: data.user }));
+        document.getElementById('alert-success').classList.add('show');
+        setTimeout(() => { window.location.href = '../index.html'; }, 1500);
+      } catch (err) {
+        document.getElementById('error-text').textContent = err.message;
+        document.getElementById('alert-error').classList.add('show');
+        btn.disabled = false; btn.textContent = 'Se connecter →';
+      }
+    });
+
+    async function sendReset() {
+      const email = document.getElementById('forgot-email').value.trim();
+      if (!email) return;
+      const btn = document.getElementById('forgot-btn');
+      btn.disabled = true; btn.textContent = 'Envoi…';
+      try {
+        await fetch(`${SUPABASE_URL}/auth/v1/recover`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON },
+          body: JSON.stringify({ email })
+        });
+        document.getElementById('forgot-success').style.display = 'block';
+        btn.style.display = 'none';
+      } catch { btn.disabled = false; btn.textContent = 'Envoyer le lien'; }
+    }
+  </script>
+</body>
+</html>

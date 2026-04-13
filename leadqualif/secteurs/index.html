@@ -20,11 +20,12 @@
       <a href="../features.html">Fonctionnalités</a>
       <a href="index.html" class="active">Secteurs</a>
       <a href="../pricing.html">Tarifs</a>
+      <a href="../partenaires.html">Partenaires</a>
       <a href="../about.html">À propos</a>
     </div>
     <div class="nav-right">
       <button class="lang-toggle" onclick="toggleLang(this)">EN</button>
-      <a href="#" class="nav-signin">Se connecter</a>
+      <a href="../login.html" class="nav-signin">Se connecter</a>
       <a href="../pricing.html" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.88rem;">Essai gratuit</a>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -34,7 +35,7 @@
     <a href="index.html">Secteurs</a>
     <a href="../pricing.html">Tarifs</a>
     <a href="../about.html">À propos</a>
-    <a href="#">Se connecter</a>
+    <a href="../login.html">Se connecter</a>
     <a href="../pricing.html" style="color:var(--blue);font-weight:700;">Essai gratuit →</a>
   </div>
 </nav>
@@ -137,6 +138,34 @@ function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('o
 function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').classList.add('hidden');}
 function refuseCookies(){localStorage.setItem('cookieConsent','refused');document.getElementById('cookie-banner').classList.add('hidden');}
 window.addEventListener('DOMContentLoaded',()=>{if(localStorage.getItem('cookieConsent'))document.getElementById('cookie-banner').classList.add('hidden');});
+</script>
+
+<!-- Demo Modal -->
+<div id="demo-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:1rem">
+  <div style="background:white;border-radius:20px;padding:2rem;max-width:440px;width:100%;position:relative;font-family:Inter,sans-serif">
+    <button onclick="document.getElementById('demo-modal').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#8FA3BC">x</button>
+    <h3 style="margin-bottom:0.4rem;color:#1E3A5F">Demander une demo</h3>
+    <p style="font-size:0.88rem;color:#4A6080;margin-bottom:1.25rem">Un expert LeadQualif vous contacte sous 24h pour une demo personnalisee.</p>
+    <div id="demo-success" style="display:none;padding:1rem;background:rgba(26,122,74,0.1);border-radius:8px;color:#1A7A4A;font-weight:600;margin-bottom:1rem">Demande envoyee ! Nous vous contactons sous 24h.</div>
+    <form id="demo-form" onsubmit="submitDemo(event)">
+      <div style="margin-bottom:0.75rem"><input type="text" id="demo-name" placeholder="Prenom Nom *" required style="width:100%;padding:0.7rem;border:1.5px solid #E2EAF4;border-radius:8px;font-family:inherit;font-size:0.9rem;outline:none"></div>
+      <div style="margin-bottom:0.75rem"><input type="email" id="demo-email" placeholder="Email professionnel *" required style="width:100%;padding:0.7rem;border:1.5px solid #E2EAF4;border-radius:8px;font-family:inherit;font-size:0.9rem;outline:none"></div>
+      <div style="margin-bottom:1rem"><input type="tel" id="demo-phone" placeholder="Telephone" style="width:100%;padding:0.7rem;border:1.5px solid #E2EAF4;border-radius:8px;font-family:inherit;font-size:0.9rem;outline:none"></div>
+      <button type="submit" style="width:100%;padding:0.85rem;background:#2E75B6;color:white;border:none;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:inherit">Demander ma demo</button>
+    </form>
+  </div>
+</div>
+<script>
+async function submitDemo(e){
+  e.preventDefault();
+  var name=document.getElementById('demo-name').value.trim();
+  var email=document.getElementById('demo-email').value.trim();
+  var phone=document.getElementById('demo-phone').value.trim();
+  if(!name||!email)return;
+  try{await fetch('https://rscjrpisvorapbopagox.supabase.co/rest/v1/partner_applications',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzY2pycGlzdm9yYXBib3BhZ294Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDg4MzUsImV4cCI6MjA4MTEyNDgzNX0.DhtSn5sk3mtyFdk9_i4oE35w7mjomYJtG5uQHJc3ckw','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzY2pycGlzdm9yYXBib3BhZ294Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDg4MzUsImV4cCI6MjA4MTEyNDgzNX0.DhtSn5sk3mtyFdk9_i4oE35w7mjomYJtG5uQHJc3ckw','Prefer':'return=minimal'},body:JSON.stringify({full_name:name,email:email,phone:phone,profile_type:'other',potential_clients:'1-5',message:'Demande de demo'})});}catch(err){}
+  document.getElementById('demo-success').style.display='block';
+  document.getElementById('demo-form').style.display='none';
+}
 </script>
 </body>
 </html>
