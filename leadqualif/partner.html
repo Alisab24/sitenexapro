@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord Partenaire — LeadQualif</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="../leadqualif-favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:       #2E75B6;
+      --blue-dark:  #1E3A5F;
+      --blue-light: #00B0F0;
+      --green:      #1A7A4A;
+      --bg:         #F8FAFF;
+      --white:      #FFFFFF;
+      --text:       #1E3A5F;
+      --text2:      #4A6080;
+      --text3:      #8FA3BC;
+      --border:     #E2EAF4;
+      --shadow:     0 4px 24px rgba(46,117,182,0.10);
+      --shadow-lg:  0 12px 48px rgba(46,117,182,0.18);
+      --radius:     12px;
+      --radius-lg:  20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
+    h2 { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; }
+    h3 { font-size: 1.1rem; font-weight: 600; }
+    p  { color: var(--text2); }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ===== LOADING / ERROR / PENDING SCREENS ===== */
+    .full-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem; text-align: center;
+    }
+    .screen-card {
+      background: var(--white); border-radius: var(--radius-lg); padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+      max-width: 480px; width: 100%;
+    }
+    .screen-card .icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+    .screen-card h2 { margin-bottom: 0.75rem; }
+    .screen-card p { font-size: 0.95rem; }
+
+    /* ===== TOPBAR ===== */
+    .topbar {
+      background: var(--blue-dark); color: white;
+      padding: 0.9rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1rem; text-decoration: none; color: white; }
+    .topbar-logo-icon { width: 30px; height: 30px; background: var(--blue); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; }
+    .partner-badge { background: rgba(26,122,74,0.25); color: #6ee8a2; border-radius: 20px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; margin-left: 8px; }
+    .topbar-name { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+
+    /* ===== HERO ===== */
+    .partner-hero {
+      background: linear-gradient(160deg, var(--blue-dark) 0%, #234d8a 100%);
+      color: white; padding: 3rem 0 3.5rem; position: relative; overflow: hidden;
+    }
+    .partner-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 80% 30%, rgba(0,176,240,0.12) 0%, transparent 70%); }
+    .partner-hero-inner { position: relative; }
+    .approved-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(26,122,74,0.25); color: #6ee8a2; border: 1px solid rgba(110,232,162,0.3); padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .partner-hero h1 { color: white; margin-bottom: 0.6rem; }
+    .partner-hero p  { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 0; }
+
+    /* ===== REFERRAL LINK WIDGET ===== */
+    .referral-widget {
+      background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius-lg);
+      padding: 1.75rem; margin-top: 2rem;
+    }
+    .referral-widget-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.55); margin-bottom: 0.75rem; }
+    .referral-link-row { display: flex; gap: 0.75rem; align-items: center; }
+    .referral-link-box {
+      flex: 1; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px; padding: 0.85rem 1rem; font-size: 0.9rem; font-weight: 600;
+      color: white; font-family: monospace; word-break: break-all;
+    }
+    .btn-copy-hero {
+      padding: 0.85rem 1.5rem; background: var(--green); color: white; border: none;
+      border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+      transition: 0.2s; white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-copy-hero:hover { background: #14643d; transform: translateY(-1px); }
+    .btn-copy-hero.copied { background: #14643d; }
+    .referral-hint { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.6rem; }
+    .referral-code-display { margin-top: 1rem; padding: 0.65rem 1rem; background: rgba(255,255,255,0.06); border-radius: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+    .referral-code-display strong { color: rgba(255,255,255,0.9); font-family: monospace; font-size: 1rem; letter-spacing: 0.05em; }
+
+    /* ===== MAIN CONTENT ===== */
+    .main { padding: 3rem 0; }
+    .section { padding: 2.5rem 0; }
+    .section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 0.6rem; display: block; }
+
+    /* ===== COMMISSIONS CARD ===== */
+    .commissions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.25rem; }
+    .commission-plan {
+      background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+      border: 2px solid var(--border); text-align: center; transition: 0.2s;
+    }
+    .commission-plan:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .commission-plan.featured { border-color: var(--blue); box-shadow: var(--shadow); }
+    .plan-name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text2); margin-bottom: 0.35rem; }
+    .plan-price-small { font-size: 0.78rem; color: var(--text3); margin-bottom: 0.75rem; }
+    .commission-amount { font-size: 2rem; font-weight: 900; color: var(--green); line-height: 1; }
+    .commission-period { font-size: 0.72rem; color: var(--text3); margin-top: 3px; font-weight: 600; }
+
+    /* ===== CALCULATOR ===== */
+    .calc-card { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 2rem; box-shadow: var(--shadow); }
+    .slider-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .slider-label span { font-size: 0.88rem; font-weight: 600; color: var(--text2); }
+    .slider-label strong { font-size: 1.1rem; font-weight: 800; color: var(--blue); }
+    input[type="range"] { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; background: var(--bg); border-radius: 6px; outline: none; cursor: pointer; margin-bottom: 1rem; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--blue); cursor: pointer; box-shadow: 0 2px 8px rgba(46,117,182,0.4); }
+    .plan-radio-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .plan-radio-row label { font-size: 0.82rem; cursor: pointer; color: var(--text2); font-weight: 500; }
+    .calc-results-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .result-box { background: var(--bg); border-radius: var(--radius); padding: 1.25rem; text-align: center; border: 1px solid var(--border); }
+    .result-box .label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); margin-bottom: 0.3rem; }
+    .result-box .value { font-size: 1.9rem; font-weight: 900; color: var(--blue); }
+    .result-box.highlight { background: rgba(26,122,74,0.07); border-color: rgba(26,122,74,0.2); }
+    .result-box.highlight .value { color: var(--green); }
+
+    /* ===== KIT DE VENTE ===== */
+    .kit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.25rem; }
+    .kit-card {
+      background: var(--white); border-radius: var(--radius); padding: 1.25rem;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      display: flex; align-items: flex-start; gap: 0.85rem;
+    }
+    .kit-icon { font-size: 1.75rem; flex-shrink: 0; }
+    .kit-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .kit-card p { font-size: 0.8rem; color: var(--text2); }
+    .kit-btn {
+      display: inline-flex; align-items: center; gap: 5px; margin-top: 0.6rem;
+      padding: 4px 10px; background: rgba(46,117,182,0.08); color: var(--blue);
+      border-radius: 6px; font-size: 0.75rem; font-weight: 700; border: none; cursor: pointer;
+      text-decoration: none; transition: 0.2s;
+    }
+    .kit-btn:hover { background: rgba(46,117,182,0.15); }
+
+    /* ===== HOW TO ===== */
+    .steps-list { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .step-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--white); border-radius: var(--radius); padding: 1.25rem; border: 1px solid var(--border); }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(46,117,182,0.1); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 800; flex-shrink: 0; }
+    .step-item h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .step-item p { font-size: 0.82rem; color: var(--text2); }
+
+    /* ===== SUPPORT ===== */
+    .support-card {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      color: white; border-radius: var(--radius-lg); padding: 2rem; margin-top: 2.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .support-card h3 { color: white; font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .support-card p  { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+    .btn-support {
+      padding: 0.75rem 1.5rem; background: white; color: var(--blue);
+      border: none; border-radius: 8px; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer; white-space: nowrap; text-decoration: none;
+      display: inline-flex; align-items: center; transition: 0.2s;
+    }
+    .btn-support:hover { background: #EBF3FF; }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--blue-dark); color: rgba(255,255,255,0.45); text-align: center; padding: 1.5rem; font-size: 0.78rem; margin-top: 3rem; }
+
+    /* ===== TOAST ===== */
+    .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 3000; background: var(--green); color: white; padding: 0.85rem 1.25rem; border-radius: 10px; font-size: 0.88rem; font-weight: 700; box-shadow: var(--shadow-lg); transform: translateY(100px); opacity: 0; transition: 0.35s; pointer-events: none; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    @media (max-width: 640px) {
+      .commissions-grid { grid-template-columns: 1fr; }
+      .calc-results-row { grid-template-columns: 1fr; }
+      .kit-grid { grid-template-columns: 1fr; }
+      .referral-link-row { flex-direction: column; }
+      .btn-copy-hero { width: 100%; text-align: center; justify-content: center; }
+      .container { padding: 0 1rem; }
+      .partner-hero { padding: 2rem 0 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="full-screen" id="screen-loading">
+  <div class="screen-card">
+    <span class="icon">⏳</span>
+    <h2>Chargement…</h2>
+    <p>Récupération de votre espace partenaire.</p>
+  </div>
+</div>
+
+<!-- Error / Not found -->
+<div class="full-screen" id="screen-error" style="display:none">
+  <div class="screen-card">
+    <span class="icon">🔒</span>
+    <h2>Lien invalide</h2>
+    <p style="margin-top:0.5rem">Ce lien de parrainage est incorrect ou n'existe pas.<br>Vérifiez le lien reçu par email ou contactez-nous.</p>
+    <a href="mailto:contact@leadqualif.com" style="display:inline-block;margin-top:1.5rem;padding:0.75rem 1.5rem;background:var(--blue);color:white;border-radius:8px;font-weight:700;font-size:0.9rem;text-decoration:none">Contacter le support</a>
+  </div>
+</div>
+
+<!-- Pending -->
+<div class="full-screen" id="screen-pending" style="display:none">
+  <div class="screen-card">
+    <span class="icon">🕐</span>
+    <h2>Candidature en cours d'examen</h2>
+    <p style="margin-top:0.5rem">Votre candidature a bien été reçue. Notre équipe l'examine et vous contactera sous <strong>48h</strong> pour vous transmettre votre lien de parrainage.</p>
+    <div style="margin-top:1.5rem;padding:1rem;background:rgba(46,117,182,0.06);border-radius:10px;font-size:0.82rem;color:var(--text2)">
+      📧 Vous recevrez un email dès l'approbation de votre dossier.
+    </div>
+    <a href="partenaires.html" style="display:inline-block;margin-top:1.5rem;color:var(--blue);font-weight:600;font-size:0.9rem">← Retour au programme partenaires</a>
+  </div>
+</div>
+
+<!-- Main Dashboard -->
+<div id="dashboard" style="display:none">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <a href="https://www.leadqualif.com" class="topbar-logo" target="_blank" rel="noopener">
+      <div class="topbar-logo-icon">LQ</div>
+      <span>LeadQualif</span>
+      <span class="partner-badge">Partenaire</span>
+    </a>
+    <span class="topbar-name" id="topbar-name"></span>
+  </div>
+
+  <!-- Hero with referral link -->
+  <div class="partner-hero">
+    <div class="container">
+      <div class="partner-hero-inner">
+        <div class="approved-badge">✅ Partenaire approuvé</div>
+        <h1>Bienvenue, <span id="hero-firstname">Partenaire</span> 👋</h1>
+        <p>Voici votre espace personnel. Partagez votre lien unique et suivez vos commissions récurrentes.</p>
+
+        <div class="referral-widget">
+          <div class="referral-widget-label">🔗 Votre lien de parrainage personnel</div>
+          <div class="referral-link-row">
+            <div class="referral-link-box" id="ref-link-display">—</div>
+            <button class="btn-copy-hero" id="copy-btn" onclick="copyLink()">📋 Copier</button>
+          </div>
+          <div class="referral-hint">Partagez ce lien à vos clients. Chaque abonnement via ce lien génère 30% de commission récurrente pour vous.</div>
+          <div class="referral-code-display">Code partenaire : <strong id="ref-code-display">—</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard body -->
+  <div class="main">
+    <div class="container">
+
+      <!-- Commissions -->
+      <div class="section">
+        <span class="section-title">💶 Vos commissions</span>
+        <h2>30% récurrent sur chaque abonnement</h2>
+        <p style="margin-top:0.5rem">Vous touchez 30% du montant HT de chaque abonnement actif, <strong>tous les mois</strong>, tant que votre client est abonné.</p>
+        <div class="commissions-grid">
+          <div class="commission-plan">
+            <div class="plan-name">Solo</div>
+            <div class="plan-price-small">97 €/mois</div>
+            <div class="commission-amount">29 €</div>
+            <div class="commission-period">/mois récurrent</div>
+          </div>
+          <div class="commission-plan featured">
+            <div class="plan-name">Agency ⭐</div>
+            <div class="plan-price-small">197 €/mois</div>
+            <div class="commission-amount">59 €</div>
+            <div class="commission-period">/mois récurrent</div>
+          </div>
+          <div class="commission-plan">
+            <div class="plan-name">Growth</div>
+            <div class="plan-price-small">297 €/mois</div>
+            <div class="commission-amount">89 €</div>
+            <div class="commission-period">/mois récurrent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculator -->
+      <div class="section">
+        <span class="section-title">📊 Calculateur de revenus</span>
+        <h2>Combien pouvez-vous gagner ?</h2>
+        <div class="calc-card" style="margin-top:1.25rem">
+          <div class="slider-label">
+            <span>Clients recommandés</span>
+            <strong id="calc-val">5</strong>
+          </div>
+          <input type="range" min="1" max="50" value="5" id="calc-slider" oninput="calcUpdate(this.value)">
+          <div class="plan-radio-row">
+            <label style="font-weight:600;color:var(--text)">Plan moyen :</label>
+            <label><input type="radio" name="cp" value="97" onchange="calcUpdate()"> Solo (97€)</label>
+            <label><input type="radio" name="cp" value="197" onchange="calcUpdate()" checked> Agency (197€)</label>
+            <label><input type="radio" name="cp" value="297" onchange="calcUpdate()"> Growth (297€)</label>
+          </div>
+          <div class="calc-results-row">
+            <div class="result-box">
+              <div class="label">Mensuel</div>
+              <div class="value" id="calc-monthly">295 €</div>
+            </div>
+            <div class="result-box highlight">
+              <div class="label">Annuel</div>
+              <div class="value" id="calc-annual">3 540 €</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comment ça marche -->
+      <div class="section">
+        <span class="section-title">🚀 Comment ça marche</span>
+        <h2>3 étapes pour générer vos revenus</h2>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div>
+              <h4>Partagez votre lien</h4>
+              <p>Envoyez votre lien personnel à vos clients agences ou immobilier. Par email, WhatsApp, LinkedIn ou lors de vos appels.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div>
+              <h4>Votre client s'abonne</h4>
+              <p>Votre client souscrit à un abonnement LeadQualif via votre lien. Vous êtes crédité automatiquement dès le 1er paiement.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div>
+              <h4>Vous recevez 30% chaque mois</h4>
+              <p>Votre commission est versée le 1er du mois par virement bancaire. Elle est récurrente tant que votre client reste abonné.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kit de vente -->
+      <div class="section">
+        <span class="section-title">🎁 Kit de vente</span>
+        <h2>Vos ressources pour convaincre</h2>
+        <p style="margin-top:0.4rem">Tout le matériel pour présenter LeadQualif à vos clients sans effort.</p>
+        <div class="kit-grid">
+          <div class="kit-card">
+            <div class="kit-icon">📊</div>
+            <div>
+              <h4>Slides de présentation</h4>
+              <p>Deck complet pour présenter LeadQualif à vos clients — prêt à l'emploi.</p>
+              <a href="mailto:contact@leadqualif.com?subject=Kit partenaire - Slides" class="kit-btn">📧 Demander</a>
+            </div>
+          </div>
+          <div class="kit-card">
+            <div class="kit-icon">🎬</div>
+            <div>
+              <h4>Démo vidéo</h4>
+              <p>Vidéo de démonstration de 3 min à partager à vos prospects.</p>
+              <a href="mailto:contact@leadqualif.com?subject=Kit partenaire - Demo video" class="kit-btn">📧 Demander</a>
+            </div>
+          </div>
+          <div class="kit-card">
+            <div class="kit-icon">✉️</div>
+            <div>
+              <h4>Templates emails</h4>
+              <p>Séquence de 3 emails de prospection prête à copier-coller.</p>
+              <a href="mailto:contact@leadqualif.com?subject=Kit partenaire - Templates emails" class="kit-btn">📧 Demander</a>
+            </div>
+          </div>
+          <div class="kit-card">
+            <div class="kit-icon">❓</div>
+            <div>
+              <h4>FAQ clients</h4>
+              <p>Réponses aux 10 objections les plus courantes de vos prospects.</p>
+              <a href="mailto:contact@leadqualif.com?subject=Kit partenaire - FAQ" class="kit-btn">📧 Demander</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support -->
+      <div class="support-card">
+        <div>
+          <h3>💬 Besoin d'aide ?</h3>
+          <p>Notre équipe partenaires est disponible pour vous accompagner et répondre à vos questions.</p>
+        </div>
+        <a href="mailto:contact@leadqualif.com" class="btn-support">Contacter le support →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2026 LeadQualif — Espace partenaire confidentiel. Ne pas partager cette page.
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  const SUPABASE_URL  = 'https://rscjrpisvorapbopagox.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzY2pycGlzdm9yYXBib3BhZ294Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDg4MzUsImV4cCI6MjA4MTEyNDgzNX0.DhtSn5sk3mtyFdk9_i4oE35w7mjomYJtG5uQHJc3ckw';
+
+  let refLink = '';
+
+  // ===== INIT =====
+  window.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const code   = params.get('code');
+
+    if (!code) { showScreen('error'); return; }
+
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/partner_applications?referral_code=eq.${encodeURIComponent(code)}&select=full_name,email,profile_type,referral_code,status,approved_at`,
+        { headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}` } }
+      );
+      const data = await res.json();
+
+      if (!Array.isArray(data) || data.length === 0) { showScreen('error'); return; }
+
+      const partner = data[0];
+
+      if (partner.status === 'approved') {
+        renderDashboard(partner);
+      } else {
+        showScreen('pending');
+      }
+    } catch (err) {
+      showScreen('error');
+    }
+  });
+
+  function showScreen(name) {
+    document.getElementById('screen-loading').style.display = 'none';
+    document.getElementById('screen-error').style.display   = name === 'error'   ? 'flex' : 'none';
+    document.getElementById('screen-pending').style.display = name === 'pending' ? 'flex' : 'none';
+    document.getElementById('dashboard').style.display      = name === 'dash'    ? 'block': 'none';
+  }
+
+  function renderDashboard(p) {
+    const firstname = (p.full_name || 'Partenaire').split(' ')[0];
+    const code = p.referral_code;
+    refLink = `https://www.leadqualif.com/?ref=${code}`;
+
+    document.getElementById('topbar-name').textContent     = p.full_name || '';
+    document.getElementById('hero-firstname').textContent  = firstname;
+    document.getElementById('ref-link-display').textContent = refLink;
+    document.getElementById('ref-code-display').textContent = code;
+
+    showScreen('dash');
+    calcUpdate(5);
+  }
+
+  // ===== COPY LINK =====
+  function copyLink() {
+    if (!refLink) return;
+    navigator.clipboard.writeText(refLink).then(() => {
+      const btn = document.getElementById('copy-btn');
+      btn.textContent = '✅ Copié !';
+      btn.classList.add('copied');
+      showToast('🔗 Lien copié dans le presse-papier !');
+      setTimeout(() => { btn.textContent = '📋 Copier'; btn.classList.remove('copied'); }, 2500);
+    });
+  }
+
+  // ===== CALCULATOR =====
+  function calcUpdate(val) {
+    const clients = parseInt(val || document.getElementById('calc-slider').value);
+    document.getElementById('calc-val').textContent = clients;
+    document.getElementById('calc-slider').value = clients;
+    const radio = document.querySelector('input[name="cp"]:checked');
+    const price = parseInt(radio ? radio.value : 197);
+    const monthly = Math.round(clients * price * 0.30);
+    const annual  = monthly * 12;
+    document.getElementById('calc-monthly').textContent = monthly.toLocaleString('fr-FR') + ' €';
+    document.getElementById('calc-annual').textContent  = annual.toLocaleString('fr-FR') + ' €';
+  }
+
+  // ===== TOAST =====
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+</script>
+</body>
+</html>
