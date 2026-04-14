@@ -105,15 +105,25 @@
 
     @media (max-width: 900px) {
       .partner-hero-inner { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; gap: 1.25rem; }
       .steps-grid::before { display: none; }
-      .profiles-grid { grid-template-columns: 1fr; }
-      .benefits-grid { grid-template-columns: 1fr; }
+      .profiles-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .benefits-grid { grid-template-columns: 1fr; gap: 1.25rem; }
       .calc-results { grid-template-columns: 1fr; }
       .pf-row { grid-template-columns: 1fr; }
+      .partner-hero { padding-top: 90px; padding-bottom: 3rem; }
     }
     @media (max-width: 640px) {
-      .partner-form-wrap { padding: 1.5rem; }
+      .partner-form-wrap { padding: 1.25rem; }
+      .partner-hero h1 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+      .calc-section { padding: 1.5rem; }
+      .calc-result-card .result-value { font-size: 1.6rem; }
+      .commission-card { padding: 1.25rem; }
+      .step-card { padding: 1.5rem; }
+      .benefit-card { padding: 1.25rem; }
+      .profile-card { padding: 1.25rem; }
+      .earnings-table th, .earnings-table td { padding: 0.65rem 0.85rem; font-size: 0.82rem; }
+      .partner-form-wrap h2 { font-size: 1.3rem; }
     }
   </style>
 </head>
@@ -135,8 +145,8 @@
     </div>
     <div class="nav-right">
       <button class="lang-toggle" onclick="toggleLang(this)">EN</button>
-      <a href="login.html" class="nav-signin">Se connecter</a>
-      <a href="register.html" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.88rem;">Essai gratuit</a>
+      <a href="https://www.leadqualif.com/dashboard" class="nav-signin">Se connecter</a>
+      <a href="https://www.leadqualif.com/" class="btn btn-primary" style="padding:0.5rem 1.1rem;font-size:0.88rem;">Essai gratuit</a>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -148,8 +158,8 @@
     <a href="pricing.html">Tarifs</a>
     <a href="partenaires.html">Partenaires</a>
     <a href="about.html">À propos</a>
-    <a href="login.html">Se connecter</a>
-    <a href="register.html" style="color:var(--blue);font-weight:700;">Essai gratuit →</a>
+    <a href="https://www.leadqualif.com/dashboard">Se connecter</a>
+    <a href="https://www.leadqualif.com/" style="color:var(--blue);font-weight:700;">Essai gratuit →</a>
   </div>
 </nav>
 
@@ -631,8 +641,17 @@
 
     const btn = document.getElementById('partner-submit-btn');
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
+    document.getElementById('alert-form-error').classList.remove('show');
 
     try {
+      const payload = {
+        full_name: `${firstname} ${lastname}`,
+        email,
+        phone: phone || null,
+        profile_type: profile,
+        potential_clients: clients,
+        message: message || null
+      };
       const res = await fetch(`${SUPABASE_URL}/rest/v1/partner_applications`, {
         method: 'POST',
         headers: {
@@ -641,15 +660,15 @@
           'Authorization': `Bearer ${SUPABASE_ANON}`,
           'Prefer': 'return=minimal'
         },
-        body: JSON.stringify({
-          full_name: `${firstname} ${lastname}`,
-          email, phone, profile_type: profile,
-          potential_clients: clients, message
-        })
+        body: JSON.stringify(payload)
       });
       if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.message || 'Erreur lors de l\'envoi');
+        let errMsg = `Erreur ${res.status}`;
+        try {
+          const errData = await res.json();
+          errMsg = errData.message || errData.error_description || errData.msg || errMsg;
+        } catch (_) {}
+        throw new Error(errMsg);
       }
       // Show success
       document.getElementById('form-container').style.display = 'none';
