@@ -1,0 +1,13 @@
+version: '3'
+services:
+  docuseal:
+    image: docuseal/docuseal:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/data
+    environment:
+      - DATABASE_URL=sqlite3:/data/docuseal.sqlite3
+      - SECRET_KEY_BASE=CHANGE_THIS_TO_A_RANDOM_64_CHAR_STRING
+      - FORCE_SSL=false
+    restart: unless-stopped
