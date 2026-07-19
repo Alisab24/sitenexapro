@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
+<title>BNLsoft — Logiciel de Comptabilité SYSCBNL pour ONG et Organisations à But Non Lucratif</title>
+<meta name="description" content="BNLsoft est le logiciel de gestion comptable SYSCBNL conçu pour les ONG, coopératives et associations en Afrique de l'Ouest. Conforme OHADA. Développé par NexaProp Bénin.">
+<meta name="keywords" content="logiciel comptabilité SYSCBNL, logiciel ONG Bénin, gestion comptable association OHADA, logiciel coopérative Afrique de l'Ouest, SYSCBNL desktop, gestion budgétaire ONG, états financiers SYSCBNL, logiciel comptable Bénin, NexaProp">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://nexapro.tech/produits/bnlsoft">
+
+<!-- Open Graph -->
+<meta property="og:title" content="BNLsoft — Logiciel de Comptabilité SYSCBNL pour ONG">
+<meta property="og:description" content="Premier logiciel desktop SYSCBNL pour ONG, coopératives et associations en Afrique de l'Ouest. Conforme OHADA. Développé au Bénin par NexaProp.">
+<meta property="og:url" content="https://nexapro.tech/produits/bnlsoft">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="NexaPro">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --blue-glow: rgba(37, 99, 235, 0.35);
+    --bg: #07090F;
+    --bg2: #0C1120;
+    --bg3: #111827;
+    --surface: #141E30;
+    --surface2: #1A2540;
+    --border: rgba(37, 99, 235, 0.18);
+    --border2: rgba(255,255,255,0.07);
+    --text: #EDF2FF;
+    --text2: #8FA3BF;
+    --text3: #64748B;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.1px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.6;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 2rem; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(7, 9, 15, 0.85);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 34px; width: auto; }
+
+  .logo-icon {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, var(--blue) 0%, #1D4ED8 100%);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; color: white;
+    box-shadow: 0 0 20px var(--blue-glow);
+  }
+  .logo-text { font-weight: 800; font-size: 18px; color: var(--white); letter-spacing: -0.3px; }
+  .logo-text span { color: var(--blue-light); }
+
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text2); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+  .nav-cta { display: flex; align-items: center; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 20px; border-radius: 8px; font-size: 0.875rem;
+    font-weight: 600; cursor: pointer; border: none;
+    text-decoration: none; transition: all .2s; font-family: 'Inter', sans-serif;
+  }
+  .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border2); }
+  .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.15); }
+  .btn-primary { background: var(--blue); color: var(--white); box-shadow: 0 0 20px rgba(37,99,235,0.3); }
+  .btn-primary:hover { background: #1D4ED8; transform: translateY(-1px); box-shadow: 0 0 30px rgba(37,99,235,0.5); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15); }
+  .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    max-width: 1160px; margin: 0 auto;
+    padding: 96px 2rem 0;
+    font-size: 0.82rem; color: var(--text3);
+    display: flex; gap: 8px; align-items: center;
+  }
+  .breadcrumb a { color: var(--text3); text-decoration: none; transition: color .2s; }
+  .breadcrumb a:hover { color: var(--text2); }
+  .breadcrumb .sep { color: var(--text3); }
+  .breadcrumb .current { color: var(--blue-light); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1160px; margin: 0 auto;
+    padding: 48px 2rem 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.25);
+    color: var(--blue-light); padding: 5px 14px; border-radius: 100px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    font-weight: 900; line-height: 1.15;
+    letter-spacing: -0.04em; margin-bottom: 20px; color: var(--white);
+  }
+  .hero h1 .accent { color: var(--blue-light); }
+
+  .hero p {
+    font-size: 1.05rem; color: var(--text2); line-height: 1.8;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-actions .btn { padding: 14px 28px; font-size: 0.95rem; border-radius: 10px; }
+
+  /* ── HERO VISUAL (card) ── */
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 0 60px rgba(37,99,235,0.08);
+  }
+  .hero-card::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 70%);
+    pointer-events: none;
+  }
+  .card-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 22px; padding-bottom: 18px;
+    border-bottom: 1px solid var(--border2);
+  }
+  .card-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue), #1D4ED8);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    box-shadow: 0 0 16px rgba(37,99,235,0.35);
+  }
+  .card-title { font-weight: 700; font-size: 1rem; color: var(--white); }
+  .card-sub { font-size: 0.78rem; color: var(--text3); }
+
+  .card-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; border-radius: 8px;
+    background: rgba(255,255,255,0.025);
+    margin-bottom: 8px; font-size: 0.85rem;
+  }
+  .card-row:last-child { margin-bottom: 0; }
+  .card-row .label { color: var(--text2); }
+  .card-row .value { font-weight: 600; color: var(--blue-light); }
+  .badge {
+    font-size: 0.72rem; font-weight: 600; padding: 3px 9px;
+    border-radius: 6px;
+  }
+  .badge-green { background: rgba(16,185,129,0.1); color: #10B981; border: 1px solid rgba(16,185,129,0.2); }
+  .badge-red { background: rgba(239,68,68,0.1); color: #F87171; border: 1px solid rgba(239,68,68,0.2); }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip {
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+    background: var(--bg2); padding: 18px 2rem;
+  }
+  .trust-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: flex; gap: 36px; align-items: center; flex-wrap: wrap; justify-content: center;
+  }
+  .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text2); }
+  .trust-item .icon { color: #10B981; font-size: 0.95rem; }
+
+  /* ── SECTION ── */
+  .section { max-width: 1160px; margin: 0 auto; padding: 80px 2rem; }
+
+  .section-eyebrow {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--blue-light); margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .section-sub { color: var(--text2); font-size: 1rem; max-width: 540px; }
+
+  /* ── FEATURES GRID ── */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+    margin-top: 48px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 16px; padding: 28px;
+    transition: border-color .25s, transform .25s;
+  }
+  .feature-card:hover {
+    border-color: var(--border);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(37,99,235,0.08);
+  }
+  .feat-icon { font-size: 1.8rem; margin-bottom: 14px; }
+  .feat-title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .feat-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.7; }
+
+  /* ── STATS ── */
+  .stats-section {
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+    padding: 80px 2rem;
+  }
+  .stats-inner { max-width: 1160px; margin: 0 auto; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 48px;
+  }
+  .stat-card {
+    text-align: center; padding: 36px 20px;
+    background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--border2);
+  }
+  .stat-number {
+    font-size: 2.6rem; font-weight: 900; color: var(--blue-light);
+    letter-spacing: -0.04em; margin-bottom: 8px;
+  }
+  .stat-label { font-size: 0.9rem; color: var(--text2); line-height: 1.5; }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1160px; margin: 0 auto; padding: 80px 2rem; text-align: center; }
+  .cta-box {
+    background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(29,78,216,0.04));
+    border: 1px solid var(--border);
+    border-radius: 24px; padding: 72px 48px;
+    position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(37,99,235,0.1), transparent 70%);
+    pointer-events: none;
+  }
+  .cta-box h2 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    color: var(--white); margin-bottom: 14px;
+  }
+  .cta-box p { color: var(--text2); margin-bottom: 40px; font-size: 1rem; }
+  .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-actions .btn { padding: 16px 36px; font-size: 1rem; border-radius: 12px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #030407;
+    border-top: 1px solid var(--border2);
+    padding: 40px 2rem;
+  }
+  .footer-inner {
+    max-width: 1160px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  footer .logo-text { font-size: 16px; }
+  footer p { color: var(--text3); font-size: 0.82rem; }
+  footer a { color: var(--text3); text-decoration: none; font-size: 0.82rem; transition: color .2s; }
+  footer a:hover { color: var(--text2); }
+  .footer-links { display: flex; gap: 20px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 32px 1.5rem 60px; }
+    .features-grid, .stats-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .cta-box { padding: 40px 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BNLsoft",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows",
+  "offers": { "@type": "Offer", "priceCurrency": "XOF" },
+  "description": "Logiciel de gestion comptable SYSCBNL pour ONG, coopératives et associations en Afrique de l'Ouest. Conforme OHADA.",
+  "downloadUrl": "https://nexapro.tech/bnlsoft/BNLsoft_Setup_v4.0.1.exe",
+  "creator": {
+    "@type": "Organization",
+    "name": "NexaProp",
+    "url": "https://nexapro.tech",
+    "address": { "@type": "PostalAddress", "addressCountry": "BJ" }
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/nexapro_logo_white.svg" alt="NexaPro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="logo-icon" style="display:none">N</div>
+    <span class="logo-text" style="display:none">Nexa<span>Pro</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Accueil</a></li>
+    <li><a href="/#produits" class="active">Produits</a></li>
+    <li><a href="/leadqualif.html">LeadQualif</a></li>
+    <li><a href="/#mission">Mission</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="/#contact" class="btn btn-ghost">Contact</a>
+    <a href="/bnlsoft/BNLsoft_Setup_v4.0.1.exe" class="btn btn-primary" download>⬇ Télécharger</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">NexaPro</a>
+  <span class="sep">›</span>
+  <a href="/#produits">Produits</a>
+  <span class="sep">›</span>
+  <span class="current">BNLsoft</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">📦 Logiciel Desktop · Windows</div>
+    <h1>BNLsoft — Logiciel de Comptabilité <span class="accent">SYSCBNL</span> pour ONG et Organisations à But Non Lucratif</h1>
+    <p>BNLsoft est le premier logiciel desktop spécialisé SYSCBNL, développé par NexaProp pour répondre aux besoins réels des ONG, coopératives et organisations professionnelles en Afrique de l'Ouest. Gérez votre comptabilité, budgets, opérations financières et générez automatiquement vos états financiers conformes OHADA — sans connexion internet requise.</p>
+    <div class="hero-actions">
+      <a href="/bnlsoft/BNLsoft_Setup_v4.0.1.exe" class="btn btn-primary" download>⬇ Télécharger BNLsoft</a>
+      <a href="/#contact" class="btn btn-outline">Contacter NexaProp</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="card-header">
+      <div class="card-icon">📒</div>
+      <div>
+        <div class="card-title">BNLsoft v4.0.1</div>
+        <div class="card-sub">SYSCBNL · Exercice 2025</div>
+      </div>
+    </div>
+    <div class="card-row">
+      <span class="label">Plan de comptes</span>
+      <span class="badge badge-green">SYSCBNL officiel</span>
+    </div>
+    <div class="card-row">
+      <span class="label">Norme comptable</span>
+      <span class="value">OHADA</span>
+    </div>
+    <div class="card-row">
+      <span class="label">Connexion internet</span>
+      <span class="badge badge-red">Non requise</span>
+    </div>
+    <div class="card-row">
+      <span class="label">Export états financiers</span>
+      <span class="value">PDF</span>
+    </div>
+    <div class="card-row">
+      <span class="label">Système</span>
+      <span class="label">Windows 10 / 11</span>
+    </div>
+    <div class="card-row">
+      <span class="label">Support</span>
+      <span class="badge badge-green">Inclus</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="icon">✅</span> Conforme OHADA</div>
+    <div class="trust-item"><span class="icon">✅</span> Référentiel SYSCBNL</div>
+    <div class="trust-item"><span class="icon">✅</span> Développé au Bénin</div>
+    <div class="trust-item"><span class="icon">✅</span> Fonctionne sans internet</div>
+    <div class="trust-item"><span class="icon">✅</span> Support inclus</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-eyebrow">Fonctionnalités</div>
+  <h2 class="section-title">Tout ce dont votre ONG a besoin</h2>
+  <p class="section-sub">Un logiciel complet, conçu spécifiquement pour la gestion comptable des organisations à but non lucratif selon le référentiel SYSCBNL.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feat-icon">📒</div>
+      <div class="feat-title">Comptabilité SYSCBNL</div>
+      <div class="feat-desc">Plan de comptes officiel SYSCBNL intégré. Journaux comptables, grand-livre, balance de vérification — toute la chaîne comptable dans un seul outil.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">💰</div>
+      <div class="feat-title">Gestion Budgétaire</div>
+      <div class="feat-desc">Élaborez vos PTA (Plan de Travail Annuel), suivez l'exécution budgétaire en temps réel et recevez des alertes automatiques en cas de dépassement.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">💳</div>
+      <div class="feat-title">Opérations Financières</div>
+      <div class="feat-desc">Gérez vos DRF, DPD, subventions et bons de commande. Traçabilité complète de chaque flux financier de votre organisation.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">États Financiers</div>
+      <div class="feat-desc">Générez automatiquement votre bilan, compte de résultat et flux de trésorerie conformes OHADA — export PDF prêt à soumettre aux partenaires.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="section-eyebrow">Pourquoi BNLsoft</div>
+    <h2 class="section-title">Le logiciel SYSCBNL fait pour le terrain</h2>
+    <p class="section-sub">Conçu avec et pour les équipes comptables d'ONG et d'associations en Afrique de l'Ouest.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Conforme SYSCBNL<br>et normes OHADA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">0G</div>
+        <div class="stat-label">Dépendance internet<br>Fonctionne hors ligne</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">🇧🇯</div>
+        <div class="stat-label">Développé au Bénin<br>par NexaProp</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Prêt à moderniser votre comptabilité ?</h2>
+    <p>Téléchargez BNLsoft et commencez à gérer votre comptabilité SYSCBNL dès aujourd'hui.</p>
+    <div class="cta-actions">
+      <a href="/bnlsoft/BNLsoft_Setup_v4.0.1.exe" class="btn btn-primary" download>⬇ Télécharger BNLsoft</a>
+      <a href="/#contact" class="btn btn-outline">Contacter NexaProp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="nav-logo">
+      <img src="/nexapro_logo_white.svg" alt="NexaPro" style="height:28px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="logo-text" style="display:none;font-size:16px">Nexa<span>Pro</span></span>
+    </a>
+    <p>BNLsoft est un produit de <strong>NexaProp</strong> · Bénin, Afrique de l'Ouest</p>
+    <div class="footer-links">
+      <a href="/">Accueil</a>
+      <a href="/#contact">Contact</a>
+      <a href="/mentions-legales.html">Mentions légales</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
