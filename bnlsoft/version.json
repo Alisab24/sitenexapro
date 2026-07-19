@@ -1,1 +1,6 @@
-{"version": "4.0.1", "date": "2026-07-19", "url_setup": "https://nexapro.tech/bnlsoft/BNLsoft_Setup_v4.0.1.exe", "notes": "Correctifs et améliorations de stabilité"}
+{
+  "version": "4.0.2",
+  "date": "2026-07-19",
+  "url_setup": "https://nexapro.tech/bnlsoft/BNLsoft_Setup_v4.0.2.exe",
+  "notes": "Plan comptable SYSCEBNL chargé automatiquement à l'installation. Échange du budget avec Excel (modèle, import, export). Licences multi-postes. Guide d'utilisation intégré (F1). Suppression d'une pièce entière depuis la ligne TOTAL et gestion complète du personnel. Codes et matricules modifiables."
+}
