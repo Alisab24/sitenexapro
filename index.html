@@ -34,7 +34,7 @@
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
   body {
     font-family: 'Inter', sans-serif;
@@ -2933,6 +2933,12 @@
 <!-- Exemples : Formspree, Netlify Forms, Getform, etc. -->
 
 <script>
+  // Arriving from another page with /#section: the native jump fires before layout settles
+  window.addEventListener('load', () => {
+    const target = location.hash && document.getElementById(location.hash.slice(1));
+    if (target) setTimeout(() => target.scrollIntoView({ block: 'start', behavior: 'instant' }), 50);
+  });
+
   // Scroll progress bar
   window.addEventListener('scroll', () => {
     const scrollLine = document.getElementById('scrollLine');
