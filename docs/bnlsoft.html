@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation BNLsoft — Comptabilité SYSCEBNL pour ONG | NexaPro</title>
+  <meta name="description" content="Guide BNLsoft v4.0.2 : installation, plan comptable SYSCEBNL, gestion budgétaire et PTA, opérations financières DRF et DPD, états financiers OHADA, licences multi-postes et échange Excel.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="canonical" href="https://nexapro.tech/docs/bnlsoft.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/brand/nexapro_logo_white.svg" alt="NexaPro">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#products">Produits</a></li>
+    <li><a href="/docs/" class="active">Documentation</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/produits/bnlsoft/" class="btn-primary">Télécharger</a>
+</nav>
+
+<div class="docs-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-title">Documentation</div>
+      <a href="/docs/">Vue d'ensemble</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-title">Produits</div>
+      <a href="/docs/leadqualif.html">LeadQualif</a>
+      <a href="/docs/nexactiv.html">NexaActiv</a>
+      <a href="/docs/bnlsoft.html" class="active">BNLsoft</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-title">Sur cette page</div>
+      <a href="#installation">Installation</a>
+      <a href="#comptabilite">Comptabilité SYSCEBNL</a>
+      <a href="#budget">Gestion budgétaire</a>
+      <a href="#operations">Opérations financières</a>
+      <a href="#etats">États financiers</a>
+      <a href="#personnel">Personnel</a>
+      <a href="#licences">Licences</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="breadcrumb"><a href="/">Accueil</a> › <a href="/docs/">Documentation</a> › BNLsoft</div>
+
+    <div class="doc-badge"><span class="dot"></span> Version 4.0.2 · Disponible</div>
+
+    <h1>BNLsoft</h1>
+    <p class="lead">
+      Le premier logiciel desktop SYSCEBNL développé au Bénin. Comptabilité, budgets, opérations
+      financières et états financiers conformes OHADA pour les ONG et associations —
+      sans connexion internet.
+    </p>
+
+    <h2 id="installation">Installation</h2>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Vérifiez la configuration requise</h3>
+        <p>
+          BNLsoft fonctionne sur <strong>Windows 10 et Windows 11</strong>. Aucune connexion
+          internet n'est nécessaire pour utiliser le logiciel au quotidien.
+        </p>
+      </div>
+      <div class="step">
+        <h3>Téléchargez l'installeur</h3>
+        <p>
+          Récupérez <code>BNLsoft_Setup_v4.0.2.exe</code> depuis la
+          <a href="/produits/bnlsoft/" class="inline">page BNLsoft</a>.
+        </p>
+      </div>
+      <div class="step">
+        <h3>Lancez l'installation</h3>
+        <p>
+          Exécutez l'installeur et suivez l'assistant. Le
+          <strong>plan comptable SYSCEBNL est chargé automatiquement</strong> à l'installation —
+          vous n'avez aucune saisie initiale de comptes à effectuer.
+        </p>
+      </div>
+      <div class="step">
+        <h3>Créez votre exercice</h3>
+        <p>
+          Au premier lancement, renseignez les informations de votre organisation et ouvrez
+          votre exercice comptable. Vous pouvez démarrer votre saisie immédiatement.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>
+        <strong>Guide intégré.</strong> Appuyez sur <code>F1</code> à tout moment dans le logiciel
+        pour ouvrir le guide d'utilisation. Il est embarqué dans l'application et reste accessible
+        hors ligne.
+      </p>
+    </div>
+
+    <h2 id="comptabilite">Comptabilité SYSCEBNL</h2>
+    <p>
+      BNLsoft couvre l'ensemble de la chaîne comptable selon le référentiel SYSCEBNL&nbsp;:
+    </p>
+    <ul>
+      <li><strong>Plan de comptes officiel</strong> — intégré et chargé dès l'installation.</li>
+      <li><strong>Journaux comptables</strong> — saisie des écritures par journal.</li>
+      <li><strong>Grand-livre</strong> — consultation détaillée par compte.</li>
+      <li><strong>Balance de vérification</strong> — contrôle de l'équilibre de vos comptes.</li>
+    </ul>
+
+    <h3>Supprimer une pièce comptable</h3>
+    <p>
+      Depuis la version 4.0.2, une pièce entière se supprime directement depuis sa
+      <strong>ligne TOTAL</strong>, sans devoir retirer les écritures une par une.
+    </p>
+
+    <h3>Codes et matricules</h3>
+    <p>
+      Les codes et matricules sont <strong>modifiables</strong> après création, ce qui vous permet
+      de corriger une saisie sans recréer l'enregistrement concerné.
+    </p>
+
+    <h2 id="budget">Gestion budgétaire et PTA</h2>
+    <p>
+      Élaborez votre <strong>Plan de Travail Annuel</strong>, suivez son exécution en temps réel
+      et recevez des <strong>alertes automatiques en cas de dépassement</strong> budgétaire.
+    </p>
+
+    <h3>Échange avec Excel</h3>
+    <p>
+      Le budget s'échange avec Excel dans les deux sens&nbsp;:
+    </p>
+    <ul>
+      <li><strong>Modèle</strong> — exportez un gabarit Excel prêt à remplir.</li>
+      <li><strong>Import</strong> — chargez un budget préparé dans Excel.</li>
+      <li><strong>Export</strong> — récupérez votre budget pour le partager ou le retravailler.</li>
+    </ul>
+    <p>
+      C'est le moyen le plus rapide de saisir un budget conséquent, ou de repartir d'un budget
+      élaboré avec un partenaire financier.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Avec NexaActiv.</strong> BNLsoft assure le suivi budgétaire et comptable du PTA,
+        tandis que <a href="/docs/nexactiv.html" class="inline">NexaActiv</a> pilote son exécution
+        opérationnelle&nbsp;: activités, validations et déplacements.
+      </p>
+    </div>
+
+    <h2 id="operations">Opérations financières</h2>
+    <p>
+      BNLsoft gère les opérations propres au fonctionnement des organisations à but non lucratif,
+      avec une traçabilité complète de chaque flux&nbsp;:
+    </p>
+    <ul>
+      <li><strong>DRF</strong> — demandes de remboursement de fonds.</li>
+      <li><strong>DPD</strong> — demandes de paiement direct.</li>
+      <li><strong>Subventions</strong> — suivi des financements reçus.</li>
+      <li><strong>Bons de commande</strong> — engagement des dépenses.</li>
+    </ul>
+
+    <h2 id="etats">États financiers OHADA</h2>
+    <p>
+      Générez automatiquement vos états financiers conformes OHADA, exportables en PDF et prêts
+      à soumettre à vos partenaires&nbsp;:
+    </p>
+    <ul>
+      <li><strong>Bilan</strong></li>
+      <li><strong>Compte de résultat</strong></li>
+      <li><strong>Flux de trésorerie</strong></li>
+    </ul>
+
+    <h2 id="personnel">Gestion du personnel</h2>
+    <p>
+      La version 4.0.2 apporte une gestion complète du personnel de votre organisation, avec
+      des matricules modifiables à tout moment.
+    </p>
+
+    <h2 id="licences">Licences multi-postes</h2>
+    <p>
+      BNLsoft prend en charge les <strong>licences multi-postes</strong>&nbsp;: plusieurs
+      collaborateurs peuvent disposer du logiciel sur leur propre machine.
+      <a href="/#contact" class="inline">Contactez-nous</a> pour dimensionner votre licence.
+    </p>
+
+    <h2 id="faq">Questions fréquentes</h2>
+
+    <h3>BNLsoft fonctionne-t-il sans internet&nbsp;?</h3>
+    <p>
+      Oui, entièrement. C'est un choix de conception assumé&nbsp;: le logiciel a été pensé pour les
+      équipes comptables d'ONG en Afrique de l'Ouest, où la connexion n'est pas toujours fiable.
+      Seul le téléchargement de l'installeur ou d'une mise à jour requiert une connexion.
+    </p>
+
+    <h3>Existe-t-il une version Mac ou Linux&nbsp;?</h3>
+    <p>
+      Non. BNLsoft est une application Windows (10 et 11). Si vous travaillez sur un autre système,
+      <a href="/docs/nexactiv.html" class="inline">NexaActiv</a> est accessible depuis n'importe
+      quel navigateur — sa portée fonctionnelle est cependant différente.
+    </p>
+
+    <h3>Le plan comptable SYSCEBNL est-il à jour&nbsp;?</h3>
+    <p>
+      Oui. Le plan de comptes officiel SYSCEBNL est intégré et chargé automatiquement à
+      l'installation.
+    </p>
+
+    <h3>Comment mettre à jour BNLsoft&nbsp;?</h3>
+    <p>
+      Téléchargez la dernière version depuis la
+      <a href="/produits/bnlsoft/" class="inline">page BNLsoft</a> et lancez l'installeur.
+      La version courante est la <strong>4.0.2</strong>.
+    </p>
+
+    <h3>Puis-je récupérer mes données dans Excel&nbsp;?</h3>
+    <p>
+      Oui pour le budget, qui s'importe et s'exporte au format Excel. Les états financiers
+      s'exportent quant à eux en PDF.
+    </p>
+
+    <div class="cta-box">
+      <h3>Prêt à moderniser votre comptabilité&nbsp;?</h3>
+      <p>BNLsoft v4.0.2 — conforme SYSCEBNL et OHADA, développé au Bénin par NexaPro.</p>
+      <a href="/produits/bnlsoft/" class="btn-primary">Découvrir BNLsoft</a>
+    </div>
+  </main>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/">Accueil</a>
+    <a href="/docs/">Documentation</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/mentions-legales.html">Mentions légales</a>
+    <a href="/politique-confidentialite.html">Confidentialité</a>
+  </div>
+  <div>© 2026 NexaPro — Éditeur de solutions SaaS B2B</div>
+</footer>
+
+</body>
+</html>

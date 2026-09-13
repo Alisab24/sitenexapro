@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaActiv — Activités, plan de travail annuel et validations | NexaPro</title>
+  <meta name="description" content="NexaActiv pilote le quotidien de votre organisation : plan de travail annuel, suivi des activités, circuits de validation, déplacements, documents signés et archives. 30 jours d'essai sans moyen de paiement.">
+  <meta name="keywords" content="plan de travail annuel, PTA, circuit de validation, gestion activités ONG, ordre de mission, archives documents, NexaActiv">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="canonical" href="https://nexapro.tech/nexactiv.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NexaActiv — Activités, plan de travail annuel et validations">
+  <meta property="og:description" content="Planifiez votre PTA, suivez vos activités, faites valider vos demandes et archivez vos documents signés.">
+  <meta property="og:url" content="https://nexapro.tech/nexactiv.html">
+  <meta property="og:site_name" content="NexaPro">
+
+  <style>
+    :root {
+      --blue: #2563EB;
+      --blue-light: #3B82F6;
+      --blue-glow: rgba(37, 99, 235, 0.35);
+      --green: #059669;
+      --green-light: #34D399;
+      --bg: #07090F;
+      --bg2: #0C1120;
+      --surface: #141E30;
+      --surface2: #1A2540;
+      --border: rgba(37, 99, 235, 0.18);
+      --border2: rgba(255,255,255,0.07);
+      --text: #EDF2FF;
+      --text2: #8FA3BF;
+      --text3: #64748B;
+      --white: #FFFFFF;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      letter-spacing: -0.1px;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(7, 9, 15, 0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border2);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 34px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text2); text-decoration: none;
+      font-size: 0.9rem; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 22px; border-radius: 9px;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; transition: all .2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--blue); color: var(--white);
+      box-shadow: 0 0 24px rgba(37,99,235,0.3);
+    }
+    .btn-primary:hover { background: #1D4ED8; transform: translateY(-1px); box-shadow: 0 0 34px rgba(37,99,235,0.5); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.15); }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 150px 0 90px;
+      background:
+        radial-gradient(900px 420px at 50% -8%, rgba(37,99,235,0.16), transparent 70%),
+        radial-gradient(700px 380px at 85% 15%, rgba(5,150,105,0.09), transparent 70%);
+      text-align: center;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 100px;
+      background: rgba(5,150,105,0.12); border: 1px solid rgba(5,150,105,0.3);
+      font-size: 0.8rem; font-weight: 600; color: var(--green-light);
+      margin-bottom: 1.75rem;
+    }
+    .pill .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green-light);
+    }
+    h1 {
+      font-size: 3.4rem; font-weight: 800;
+      letter-spacing: -2px; line-height: 1.08;
+      margin-bottom: 1.35rem;
+    }
+    h1 .grad {
+      background: linear-gradient(120deg, var(--blue-light), var(--green-light));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--text2);
+      max-width: 640px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-note { margin-top: 1.5rem; font-size: 0.85rem; color: var(--text3); }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 0; }
+    .section-label {
+      text-align: center; font-size: 0.76rem; font-weight: 700;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 0.9rem;
+    }
+    h2 {
+      font-size: 2.25rem; font-weight: 800;
+      letter-spacing: -1px; text-align: center;
+      margin-bottom: 1rem; line-height: 1.18;
+    }
+    .section-sub {
+      text-align: center; color: var(--text2);
+      max-width: 620px; margin: 0 auto 3.5rem;
+      font-size: 1.02rem; line-height: 1.7;
+    }
+
+    /* ── FEATURES ── */
+    .features { background: var(--bg2); border-block: 1px solid var(--border2); }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .feature {
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 1.75rem;
+      transition: all .22s;
+    }
+    .feature:hover { border-color: var(--border); transform: translateY(-3px); }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: rgba(37,99,235,0.14); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; margin-bottom: 1.1rem;
+    }
+    .feature h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature p { color: var(--text2); font-size: 0.93rem; line-height: 1.65; }
+
+    /* ── FLOW ── */
+    .flow-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem; counter-reset: flow;
+    }
+    .flow-step {
+      position: relative; padding-top: 3.25rem;
+      counter-increment: flow;
+    }
+    .flow-step::before {
+      content: counter(flow);
+      position: absolute; top: 0; left: 0;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--blue-light);
+    }
+    .flow-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
+    .flow-step p { color: var(--text2); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── AUDIENCE ── */
+    .audience { background: var(--bg2); border-block: 1px solid var(--border2); }
+    .audience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .audience-card {
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: 14px; padding: 2rem;
+    }
+    .audience-card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+    .audience-card p { color: var(--text2); font-size: 0.94rem; margin-bottom: 1.1rem; }
+    .audience-card ul { list-style: none; }
+    .audience-card li {
+      color: var(--text2); font-size: 0.9rem;
+      padding-left: 1.5rem; position: relative; margin-bottom: 0.55rem;
+    }
+    .audience-card li::before {
+      content: '✓'; position: absolute; left: 0;
+      color: var(--green-light); font-weight: 700;
+    }
+
+    /* ── PAIRING ── */
+    .pairing {
+      background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(5,150,105,0.07));
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+      display: grid; grid-template-columns: 1fr auto; gap: 2rem;
+      align-items: center;
+    }
+    .pairing h3 { font-size: 1.35rem; margin-bottom: 0.65rem; }
+    .pairing p { color: var(--text2); font-size: 0.96rem; line-height: 1.7; }
+
+    /* ── CTA ── */
+    .cta-section { text-align: center; }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(5,150,105,0.09));
+      border: 1px solid var(--border);
+      border-radius: 18px; padding: 3.5rem 2rem;
+    }
+    .cta-box h2 { margin-bottom: 0.85rem; }
+    .cta-box p { color: var(--text2); margin-bottom: 2rem; font-size: 1.02rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border2);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .footer-links { margin-bottom: 1rem; }
+    footer a {
+      color: var(--text2); text-decoration: none;
+      margin: 0 0.7rem; font-size: 0.88rem;
+    }
+    footer a:hover { color: var(--text); }
+    .footer-copy { color: var(--text3); font-size: 0.84rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.25rem; }
+      .pairing { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 1rem; height: 60px; }
+      .nav-links { display: none; }
+      .nav-logo img { height: 30px; }
+      nav .btn { font-size: 0.78rem; padding: 8px 12px; }
+      .container { padding: 0 1.25rem; }
+      .hero { padding: 110px 0 70px; }
+      h1 { font-size: 2.3rem; letter-spacing: -1.2px; }
+      .hero-sub { font-size: 1.02rem; }
+      section { padding: 60px 0; }
+      h2 { font-size: 1.7rem; letter-spacing: -0.6px; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .pairing { padding: 1.75rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1rem; }
+      h1 { font-size: 1.85rem; }
+      .hero-sub { font-size: 0.96rem; }
+      .hero-cta { flex-direction: column; }
+      .hero-cta .btn { width: 100%; }
+      .features-grid { grid-template-columns: 1fr; }
+      .flow-grid { grid-template-columns: 1fr; }
+      h2 { font-size: 1.45rem; }
+      .cta-box { padding: 2.25rem 1.25rem; }
+      .cta-box .btn { width: 100%; }
+      footer a { display: inline-block; margin: 0.3rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/brand/nexapro_logo_white.svg" alt="NexaPro">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#products">Produits</a></li>
+    <li><a href="/docs/nexactiv.html">Documentation</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="https://activ.nexapro.tech/inscription" class="btn btn-primary">Essai 30 jours</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="pill"><span class="dot"></span> Disponible maintenant</div>
+    <h1>Votre plan de travail annuel,<br><span class="grad">exécuté et tracé</span></h1>
+    <p class="hero-sub">
+      NexaActiv pilote le quotidien de votre organisation : planifiez votre PTA, suivez vos
+      activités, faites valider vos demandes et archivez vos documents signés — le tout
+      depuis votre navigateur.
+    </p>
+    <div class="hero-cta">
+      <a href="https://activ.nexapro.tech/inscription" class="btn btn-primary">
+        Créer mon organisation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/docs/nexactiv.html" class="btn btn-outline">Lire la documentation</a>
+    </div>
+    <p class="hero-note">30 jours d'essai · Sans engagement ni moyen de paiement</p>
+  </div>
+</header>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <div class="section-label">Fonctionnalités</div>
+    <h2>Tout ce que votre organisation pilote au quotidien</h2>
+    <p class="section-sub">
+      Six briques qui couvrent le cycle complet, de la planification annuelle à l'archivage
+      des justificatifs.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">📅</div>
+        <h3>Plan de travail annuel</h3>
+        <p>Déclarez ce que votre organisation prévoit sur l'exercice et rattachez-y chaque activité menée dans l'année.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📋</div>
+        <h3>Suivi des activités</h3>
+        <p>Ateliers, formations, missions de supervision, réunions : une vue centralisée du planifié, de l'en cours et du terminé.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <h3>Circuits de validation</h3>
+        <p>Les demandes suivent un circuit configuré pour votre organisation. Chaque décision porte son auteur et sa date.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✈️</div>
+        <h3>Déplacements</h3>
+        <p>Missions et déplacements déclarés, validés et rattachés aux activités qui les ont motivés.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📄</div>
+        <h3>Documents signés</h3>
+        <p>Les documents produits et signés restent liés à l'activité ou à la demande dont ils découlent.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🗄️</div>
+        <h3>Archives centralisées</h3>
+        <p>Fini les pièces éparpillées entre boîtes courriel et disques partagés. Tout est retrouvable depuis l'activité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section>
+  <div class="container">
+    <div class="section-label">Comment ça marche</div>
+    <h2>Opérationnel en quelques minutes</h2>
+    <p class="section-sub">
+      Pas d'installation, pas de configuration serveur. Un navigateur suffit.
+    </p>
+
+    <div class="flow-grid">
+      <div class="flow-step">
+        <h3>Créez votre espace</h3>
+        <p>Nom de l'organisation, sigle et coordonnées. Il apparaîtra sur vos documents et vos éditions.</p>
+      </div>
+      <div class="flow-step">
+        <h3>Activez par courriel</h3>
+        <p>Un lien d'activation arrive sur l'adresse renseignée. Votre essai de 30 jours démarre.</p>
+      </div>
+      <div class="flow-step">
+        <h3>Posez votre PTA</h3>
+        <p>Déclarez vos activités prévues sur l'exercice et vos circuits de validation.</p>
+      </div>
+      <div class="flow-step">
+        <h3>Pilotez l'exécution</h3>
+        <p>Suivez le réalisé, validez les demandes et archivez les justificatifs au fil de l'eau.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience">
+  <div class="container">
+    <div class="section-label">Pour qui</div>
+    <h2>Conçu pour les organisations qui rendent des comptes</h2>
+    <p class="section-sub">
+      Quand chaque dépense et chaque activité doivent être justifiées auprès d'un partenaire
+      financier, la traçabilité n'est pas un confort — c'est une obligation.
+    </p>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>ONG et associations</h3>
+        <p>Vos partenaires financiers exigent des justificatifs traçables et un suivi rigoureux du plan de travail.</p>
+        <ul>
+          <li>PTA structuré et suivi du réalisé</li>
+          <li>Justificatifs rattachés à chaque activité</li>
+          <li>Historique complet pour les audits</li>
+          <li>Ordres de mission tracés</li>
+        </ul>
+      </div>
+      <div class="audience-card">
+        <h3>Structures et projets</h3>
+        <p>Vous coordonnez des équipes, des budgets et des validations hiérarchiques sur plusieurs sites.</p>
+        <ul>
+          <li>Circuits de validation configurables</li>
+          <li>Vue centralisée multi-équipes</li>
+          <li>Archives consultables à tout moment</li>
+          <li>Accessible depuis n'importe où</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIRING -->
+<section>
+  <div class="container">
+    <div class="pairing">
+      <div>
+        <h3>NexaActiv + BNLsoft, le duo complet</h3>
+        <p>
+          NexaActiv pilote l'exécution opérationnelle de votre plan de travail annuel — activités,
+          validations, déplacements. <strong>BNLsoft</strong> en assure le suivi comptable et
+          budgétaire selon le référentiel SYSCEBNL, avec des états financiers conformes OHADA.
+          Deux outils, un même plan de travail.
+        </p>
+      </div>
+      <a href="/produits/bnlsoft/" class="btn btn-outline">Découvrir BNLsoft</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ouvrez votre espace en deux minutes</h2>
+      <p>30 jours d'essai, sans engagement ni moyen de paiement.</p>
+      <a href="https://activ.nexapro.tech/inscription" class="btn btn-primary">
+        Créer mon organisation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="/">Accueil</a>
+    <a href="/#products">Produits</a>
+    <a href="/docs/nexactiv.html">Documentation</a>
+    <a href="https://activ.nexapro.tech">Se connecter</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/mentions-legales.html">Mentions légales</a>
+    <a href="/politique-confidentialite.html">Confidentialité</a>
+  </div>
+  <div class="footer-copy">© 2026 NexaPro — Éditeur de solutions SaaS B2B</div>
+</footer>
+
+</body>
+</html>
