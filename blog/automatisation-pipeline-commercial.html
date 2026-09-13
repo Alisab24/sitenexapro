@@ -490,6 +490,28 @@
         padding: 14px 24px;
       }
     }
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 8px; flex-direction: column; gap: 5px;
+    }
+    .hamburger-line { width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 1000; background: #07090F;
+      display: none; align-items: center; justify-content: center;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; padding: 8px;
+    }
+    .mobile-menu-nav { display: flex; flex-direction: column; align-items: center; gap: 1.75rem; }
+    .mobile-menu-link { color: #fff; text-decoration: none; font-size: 1.2rem; }
+    .mobile-menu-link:hover { color: #3B82F6; }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { display: flex; }
+    }
+
   </style>
 </head>
 <body>
@@ -509,6 +531,11 @@
         <a href="/#contact">Contact</a>
         <a href="/blog.html" class="nav-btn">Blog</a>
       </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
   </nav>
 
@@ -674,5 +701,32 @@
       </div>
     </div>
   </footer>
+
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Fermer le menu">✕</button>
+    <nav class="mobile-menu-nav">
+      <a href="/#vision" class="mobile-menu-link">Vision</a>
+      <a href="/#products" class="mobile-menu-link">Produits</a>
+      <a href="/docs/" class="mobile-menu-link">Documentation</a>
+      <a href="/blog.html" class="mobile-menu-link">Blog</a>
+      <a href="/#mission" class="mobile-menu-link">Mission</a>
+      <a href="/#contact" class="mobile-menu-link">Contact</a>
+    </nav>
+  </div>
+  <script>
+    (() => {
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      const setOpen = (open) => {
+        menu.classList.toggle('active', open);
+        btn.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+      btn.addEventListener('click', () => setOpen(true));
+      document.getElementById('mobileMenuClose').addEventListener('click', () => setOpen(false));
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    })();
+  </script>
 </body>
 </html>
