@@ -417,7 +417,7 @@
 
     try {
       const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/partner_applications?referral_code=eq.${encodeURIComponent(code)}&select=full_name,email,profile_type,referral_code,status,approved_at`,
+        `${SUPABASE_URL}/rest/v1/partner_applications?referral_code=eq.${encodeURIComponent(code)}&select=full_name,profile_type,referral_code,status,approved_at`,
         { headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}` } }
       );
       const data = await res.json();

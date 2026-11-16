@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — Partenaires LeadQualif</title>
-  <link rel="icon" type="image/svg+xml" href="../../leadqualif-favicon.svg">
+  <title>Administration — NexaPro</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -39,6 +40,12 @@
     .login-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; }
     .login-logo-icon { width: 38px; height: 38px; background: var(--blue); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
     .login-logo span { font-size: 1.15rem; font-weight: 800; color: var(--text); }
+    .login-logo em { font-style: normal; font-weight: 600; color: var(--text3); }
+    .login-info { display: none; background: rgba(26,122,74,0.08); color: var(--green); border: 1px solid rgba(26,122,74,0.2); border-radius: 8px; padding: 0.65rem 0.9rem; font-size: 0.83rem; margin-bottom: 1rem; }
+    .login-info.show { display: block; }
+    .link-btn { display: block; margin: 1rem auto 0; background: none; border: none; color: var(--blue); font: inherit; font-size: 0.83rem; font-weight: 600; cursor: pointer; }
+    .link-btn:hover { text-decoration: underline; }
+    [hidden] { display: none !important; }
     .login-card h2 { font-size: 1.3rem; margin-bottom: 0.35rem; }
     .login-card p { color: var(--text2); font-size: 0.88rem; margin-bottom: 1.75rem; }
     .form-group { margin-bottom: 1rem; }
@@ -75,7 +82,27 @@
     .btn-logout { background: rgba(255,255,255,0.12); color: white; border: none; border-radius: 6px; padding: 5px 12px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
     .btn-logout:hover { background: rgba(255,255,255,0.22); }
 
+    .topbar-link { color: rgba(255,255,255,0.7); font-size: 0.82rem; text-decoration: none; }
+    .topbar-link:hover { color: white; }
+
     .main-content { padding: 2rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+
+    /* ===== TABS ===== */
+    .tabs { display: flex; gap: 0.25rem; border-bottom: 1px solid var(--border); margin-bottom: 1.25rem; overflow-x: auto; }
+    .tab-btn { padding: 0.7rem 1rem; background: none; border: none; border-bottom: 2px solid transparent; font: inherit; font-size: 0.92rem; font-weight: 700; color: var(--text2); cursor: pointer; white-space: nowrap; }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .tab-count:not(:empty) { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 10px; background: rgba(46,117,182,0.12); color: var(--blue); font-size: 0.72rem; }
+    .tab-intro { color: var(--text2); font-size: 0.88rem; margin-bottom: 1.5rem; }
+
+    /* ===== MESSAGES ===== */
+    .message-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .message-card header { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .message-card p { color: var(--text); font-size: 0.9rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .message-company { font-weight: 500; color: var(--text2); }
+    a.applicant-email { display: inline-block; text-decoration: none; }
+    a.applicant-email:hover { text-decoration: underline; }
+    .applications-wrap { overflow-x: auto; }
 
     /* ===== STATS BAR ===== */
     .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
@@ -217,6 +244,7 @@
     @media (max-width: 640px) {
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       .main-content { padding: 1rem; }
+      .topbar-user, .topbar-link { display: none; }
       .apps-table th:nth-child(3), .apps-table td:nth-child(3) { display: none; }
     }
   </style>
@@ -227,139 +255,139 @@
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo">
-      <div class="login-logo-icon">LQ</div>
-      <span>LeadQualif</span>
+      <img src="/favicon.svg" alt="" width="38" height="38">
+      <span>NexaPro <em>Admin</em></span>
     </div>
-    <h2>Administration</h2>
-    <p>Connectez-vous pour gérer les candidatures partenaires.</p>
-    <div class="login-error" id="login-error">Email ou mot de passe incorrect.</div>
+
+    <div class="login-error" id="login-error" role="alert"></div>
+    <div class="login-info" id="login-info" role="status"></div>
+
+    <!-- Connexion -->
     <form id="login-form">
+      <h2>Administration</h2>
+      <p>Connectez-vous pour gérer les candidatures partenaires et les messages du site.</p>
       <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="admin-email" placeholder="admin@leadqualif.com" required autocomplete="email">
+        <label for="admin-email">Email</label>
+        <input type="email" id="admin-email" placeholder="contact@nexapro.dev" required autocomplete="username">
       </div>
       <div class="form-group">
-        <label>Mot de passe</label>
-        <input type="password" id="admin-password" placeholder="••••••••" required autocomplete="current-password">
+        <label for="admin-password">Mot de passe</label>
+        <input type="password" id="admin-password" required autocomplete="current-password">
       </div>
       <button type="submit" class="btn-login" id="login-btn">Se connecter</button>
+      <button type="button" class="link-btn" onclick="showAuthView('forgot')">Mot de passe oublié ?</button>
+    </form>
+
+    <!-- Mot de passe oublié -->
+    <form id="forgot-form" hidden>
+      <h2>Mot de passe oublié</h2>
+      <p>Indiquez l'adresse du compte administrateur. Vous recevrez un lien pour choisir un nouveau mot de passe.</p>
+      <div class="form-group">
+        <label for="forgot-email">Email</label>
+        <input type="email" id="forgot-email" placeholder="contact@nexapro.dev" required autocomplete="username">
+      </div>
+      <button type="submit" class="btn-login" id="forgot-btn">Envoyer le lien</button>
+      <button type="button" class="link-btn" onclick="showAuthView('login')">← Retour à la connexion</button>
+    </form>
+
+    <!-- Nouveau mot de passe (arrivée depuis le lien reçu par e-mail) -->
+    <form id="reset-form" hidden>
+      <h2>Nouveau mot de passe</h2>
+      <p>Choisissez un nouveau mot de passe pour le compte administrateur.</p>
+      <div class="form-group">
+        <label for="reset-password">Nouveau mot de passe</label>
+        <input type="password" id="reset-password" required minlength="10" autocomplete="new-password">
+      </div>
+      <div class="form-group">
+        <label for="reset-password2">Confirmez le mot de passe</label>
+        <input type="password" id="reset-password2" required minlength="10" autocomplete="new-password">
+      </div>
+      <button type="submit" class="btn-login" id="reset-btn">Enregistrer</button>
     </form>
   </div>
 </div>
 
 <!-- ===== MAIN APP ===== -->
 <div id="app">
-  <!-- Topbar -->
   <div class="topbar">
     <div class="topbar-logo">
-      <div class="topbar-logo-icon">LQ</div>
-      <span>LeadQualif</span>
+      <img src="/favicon.svg" alt="" width="30" height="30">
+      <span>NexaPro</span>
       <span class="topbar-badge">Admin</span>
     </div>
     <div class="topbar-right">
+      <a class="topbar-link" href="/">Voir le site</a>
       <span class="topbar-user" id="topbar-email"></span>
       <button class="btn-logout" onclick="logout()">Déconnexion</button>
     </div>
   </div>
 
-  <!-- Main -->
   <div class="main-content">
-    <div style="margin-bottom:1.5rem">
-      <h1 style="font-size:1.4rem;font-weight:800">Candidatures Partenaires</h1>
-      <p style="color:var(--text2);font-size:0.88rem;margin-top:3px">Gérez les demandes d'adhésion au programme partenaires.</p>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" id="tab-btn-apps" role="tab" onclick="showTab('apps')">Candidatures partenaires <span class="tab-count" id="count-apps"></span></button>
+      <button class="tab-btn" id="tab-btn-messages" role="tab" onclick="showTab('messages')">Messages de contact <span class="tab-count" id="count-messages"></span></button>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-bar">
-      <div class="stat-card">
-        <div class="stat-label">Total</div>
-        <div class="stat-value" id="stat-total">—</div>
-      </div>
-      <div class="stat-card pending">
-        <div class="stat-label">En attente</div>
-        <div class="stat-value" id="stat-pending">—</div>
-      </div>
-      <div class="stat-card approved">
-        <div class="stat-label">Approuvés</div>
-        <div class="stat-value" id="stat-approved">—</div>
-      </div>
-      <div class="stat-card rejected">
-        <div class="stat-label">Rejetés</div>
-        <div class="stat-value" id="stat-rejected">—</div>
-      </div>
-    </div>
+    <!-- ===== Candidatures ===== -->
+    <section id="tab-apps">
+      <p class="tab-intro">Demandes d'adhésion au programme partenaires LeadQualif.</p>
 
-    <!-- Filters -->
-    <div class="filter-bar">
-      <button class="filter-btn active" onclick="setFilter('all', this)">Toutes</button>
-      <button class="filter-btn" onclick="setFilter('pending', this)">En attente</button>
-      <button class="filter-btn" onclick="setFilter('approved', this)">Approuvées</button>
-      <button class="filter-btn" onclick="setFilter('rejected', this)">Rejetées</button>
-      <div class="spacer"></div>
-      <input class="search-input" type="text" placeholder="🔍 Rechercher nom, email…" oninput="filterSearch(this.value)">
-    </div>
+      <div class="stats-bar">
+        <div class="stat-card"><div class="stat-label">Total</div><div class="stat-value" id="stat-total">—</div></div>
+        <div class="stat-card pending"><div class="stat-label">En attente</div><div class="stat-value" id="stat-pending">—</div></div>
+        <div class="stat-card approved"><div class="stat-label">Approuvés</div><div class="stat-value" id="stat-approved">—</div></div>
+        <div class="stat-card rejected"><div class="stat-label">Rejetés</div><div class="stat-value" id="stat-rejected">—</div></div>
+      </div>
 
-    <!-- Table -->
-    <div class="applications-wrap">
-      <table class="apps-table" id="apps-table">
-        <thead>
-          <tr>
-            <th>Candidat</th>
-            <th>Profil</th>
-            <th>Clients potentiels</th>
-            <th>Statut</th>
-            <th>Code parrainage</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="apps-tbody">
-          <tr><td colspan="7" class="loading-state">Chargement…</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter('all', this)">Toutes</button>
+        <button class="filter-btn" onclick="setFilter('pending', this)">En attente</button>
+        <button class="filter-btn" onclick="setFilter('approved', this)">Approuvées</button>
+        <button class="filter-btn" onclick="setFilter('rejected', this)">Rejetées</button>
+        <div class="spacer"></div>
+        <input class="search-input" type="search" placeholder="Rechercher nom, email…" aria-label="Rechercher une candidature" oninput="filterSearch(this.value)">
+      </div>
+
+      <div class="applications-wrap">
+        <table class="apps-table">
+          <thead>
+            <tr>
+              <th>Candidat</th><th>Profil</th><th>Clients potentiels</th><th>Statut</th>
+              <th>Code parrainage</th><th>Date</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="apps-tbody">
+            <tr><td colspan="7" class="loading-state">Chargement…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Messages ===== -->
+    <section id="tab-messages" hidden>
+      <p class="tab-intro">Messages envoyés depuis le formulaire de contact de nexapro.dev, du plus récent au plus ancien.</p>
+      <div id="messages-list"><div class="loading-state">Chargement…</div></div>
+    </section>
   </div>
 </div>
 
 <!-- ===== DETAIL MODAL ===== -->
 <div class="modal-overlay" id="detail-modal">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
+    <button class="modal-close" onclick="closeModal()" aria-label="Fermer">×</button>
     <h3 id="modal-title">Détail candidature</h3>
-    <div class="modal-field">
-      <label>Nom complet</label>
-      <div class="value" id="modal-name"></div>
-    </div>
-    <div class="modal-field">
-      <label>Email</label>
-      <div class="value" id="modal-email"></div>
-    </div>
-    <div class="modal-field">
-      <label>Téléphone</label>
-      <div class="value" id="modal-phone"></div>
-    </div>
-    <div class="modal-field">
-      <label>Profil</label>
-      <div class="value" id="modal-profile"></div>
-    </div>
-    <div class="modal-field">
-      <label>Clients potentiels</label>
-      <div class="value" id="modal-clients"></div>
-    </div>
-    <div class="modal-field">
-      <label>Message</label>
-      <div class="value" id="modal-message"></div>
-    </div>
-    <div class="modal-field">
-      <label>Date de candidature</label>
-      <div class="value" id="modal-date"></div>
-    </div>
+    <div class="modal-field"><label>Nom complet</label><div class="value" id="modal-name"></div></div>
+    <div class="modal-field"><label>Email</label><div class="value" id="modal-email"></div></div>
+    <div class="modal-field"><label>Téléphone</label><div class="value" id="modal-phone"></div></div>
+    <div class="modal-field"><label>Profil</label><div class="value" id="modal-profile"></div></div>
+    <div class="modal-field"><label>Clients potentiels</label><div class="value" id="modal-clients"></div></div>
+    <div class="modal-field"><label>Message</label><div class="value" id="modal-message"></div></div>
+    <div class="modal-field"><label>Date de candidature</label><div class="value" id="modal-date"></div></div>
 
-    <!-- Referral link (shown when approved) -->
     <div id="modal-referral-wrap" style="display:none">
       <hr class="modal-divider">
       <div class="referral-box">
-        <div class="ref-label">🔗 Lien de parrainage</div>
+        <div class="ref-label">Lien du tableau de bord partenaire</div>
         <div class="ref-link-row">
           <div class="ref-link" id="modal-ref-link"></div>
           <button class="btn-copy" onclick="copyLink('modal-ref-link')">Copier</button>
@@ -369,7 +397,7 @@
     </div>
 
     <div class="modal-field" style="margin-top:1rem">
-      <label>Note admin (optionnel)</label>
+      <label for="modal-notes">Note admin (optionnel)</label>
       <textarea id="modal-notes" placeholder="Notes internes…"></textarea>
     </div>
 
@@ -378,84 +406,249 @@
   </div>
 </div>
 
-<!-- Toast -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
   const SUPABASE_URL  = 'https://rscjrpisvorapbopagox.supabase.co';
   const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzY2pycGlzdm9yYXBib3BhZ294Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDg4MzUsImV4cCI6MjA4MTEyNDgzNX0.DhtSn5sk3mtyFdk9_i4oE35w7mjomYJtG5uQHJc3ckw';
   const PARTNER_DASHBOARD_BASE = window.location.origin + '/leadqualif/partner.html';
+  const ADMIN_URL = window.location.origin + window.location.pathname;
+  const STORAGE_KEY = 'nexapro_admin_session';
 
   let SESSION = null;
   let allApps = [];
+  let allMessages = null;
   let currentFilter = 'all';
   let currentSearch = '';
   let currentModalId = null;
 
-  // ===== AUTH =====
+  // ===== SESSION STORAGE =====
+  function saveSession(data) {
+    SESSION = {
+      access_token: data.access_token,
+      refresh_token: data.refresh_token,
+      expires_at: data.expires_at || Math.floor(Date.now() / 1000) + (Number(data.expires_in) || 3600),
+      email: data.user?.email || data.email || SESSION?.email || ''
+    };
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(SESSION)); } catch (_) {}
+  }
+  function readStoredSession() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch (_) { return null; }
+  }
+  function clearSession() {
+    SESSION = null;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
+  }
+
+  // ===== AUTH API =====
+  async function authRequest(path, { method = 'POST', body, token } = {}) {
+    const res = await fetch(`${SUPABASE_URL}/auth/v1/${path}`, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON,
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+      },
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error_description || data.msg || data.message || `Erreur ${res.status}`);
+    return data;
+  }
+
+  async function ensureFreshToken() {
+    if (!SESSION) throw new Error('Session expirée');
+    if (SESSION.expires_at - Math.floor(Date.now() / 1000) > 60) return;
+    const data = await authRequest('token?grant_type=refresh_token', { body: { refresh_token: SESSION.refresh_token } });
+    saveSession(data);
+  }
+
+  // Authenticated call to the REST API. A 401 means the session is gone: back to login.
+  async function api(path, options = {}) {
+    await ensureFreshToken();
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON,
+        'Authorization': `Bearer ${SESSION.access_token}`,
+        ...(options.headers || {})
+      }
+    });
+    if (res.status === 401) {
+      endSession('Votre session a expiré. Reconnectez-vous.');
+      throw new Error('Session expirée');
+    }
+    return res;
+  }
+
+  // ===== AUTH VIEWS =====
+  function showAuthView(view) {
+    for (const v of ['login', 'forgot', 'reset']) {
+      document.getElementById(`${v}-form`).hidden = v !== view;
+    }
+    setAuthMessage();
+  }
+  function setAuthMessage(error, info) {
+    const e = document.getElementById('login-error');
+    const i = document.getElementById('login-info');
+    e.textContent = error || ''; e.classList.toggle('show', !!error);
+    i.textContent = info || '';  i.classList.toggle('show', !!info);
+  }
+
+  function endSession(message) {
+    clearSession();
+    allApps = []; allMessages = null;
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('admin-password').value = '';
+    showAuthView('login');
+    if (message) setAuthMessage(message);
+  }
+
+  async function logout() {
+    const token = SESSION?.access_token;
+    endSession();
+    if (token) { try { await authRequest('logout', { token }); } catch (_) {} }
+  }
+
+  // Opens the app only for accounts listed as administrators.
+  async function enterApp() {
+    const res = await api('rpc/is_nexapro_admin', { method: 'POST', body: '{}' });
+    const isAdmin = res.ok && (await res.json()) === true;
+    if (!isAdmin) {
+      const token = SESSION?.access_token;
+      endSession("Ce compte n'a pas les droits d'administration.");
+      if (token) { try { await authRequest('logout', { token }); } catch (_) {} }
+      return;
+    }
+    document.getElementById('topbar-email').textContent = SESSION.email;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadApplications();
+    loadMessages();
+  }
+
   document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email    = document.getElementById('admin-email').value.trim();
     const password = document.getElementById('admin-password').value;
     const btn = document.getElementById('login-btn');
     btn.disabled = true; btn.textContent = 'Connexion…';
-    document.getElementById('login-error').classList.remove('show');
+    setAuthMessage();
     try {
-      const res = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error_description || data.msg || 'Erreur');
-      SESSION = data;
-      document.getElementById('topbar-email').textContent = email;
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('app').style.display = 'block';
-      loadApplications();
+      const data = await authRequest('token?grant_type=password', { body: { email, password } });
+      saveSession(data);
+      await enterApp();
     } catch (err) {
-      document.getElementById('login-error').textContent = err.message;
-      document.getElementById('login-error').classList.add('show');
+      setAuthMessage(/invalid login/i.test(err.message) ? 'Email ou mot de passe incorrect.' : err.message);
+    } finally {
       btn.disabled = false; btn.textContent = 'Se connecter';
     }
   });
 
-  function logout() {
-    SESSION = null; allApps = [];
-    document.getElementById('app').style.display = 'none';
-    document.getElementById('login-screen').style.display = 'flex';
-    document.getElementById('admin-password').value = '';
+  document.getElementById('forgot-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('forgot-email').value.trim();
+    const btn = document.getElementById('forgot-btn');
+    btn.disabled = true; btn.textContent = 'Envoi…';
+    setAuthMessage();
+    try {
+      await authRequest(`recover?redirect_to=${encodeURIComponent(ADMIN_URL)}`, { body: { email } });
+      // Same answer whether or not the account exists.
+      setAuthMessage(null, "Si un compte existe pour cette adresse, un lien de réinitialisation vient d'être envoyé.");
+    } catch (err) {
+      setAuthMessage(err.message);
+    } finally {
+      btn.disabled = false; btn.textContent = 'Envoyer le lien';
+    }
+  });
+
+  document.getElementById('reset-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const p1 = document.getElementById('reset-password').value;
+    const p2 = document.getElementById('reset-password2').value;
+    if (p1 !== p2) { setAuthMessage('Les deux mots de passe ne correspondent pas.'); return; }
+    const btn = document.getElementById('reset-btn');
+    btn.disabled = true; btn.textContent = 'Enregistrement…';
+    setAuthMessage();
+    try {
+      await ensureFreshToken();
+      await authRequest('user', { method: 'PUT', body: { password: p1 }, token: SESSION.access_token });
+      document.getElementById('reset-form').reset();
+      await enterApp();
+      showToast('Mot de passe mis à jour.');
+    } catch (err) {
+      setAuthMessage(err.message);
+    } finally {
+      btn.disabled = false; btn.textContent = 'Enregistrer';
+    }
+  });
+
+  // ===== STARTUP =====
+  (async function init() {
+    // Arriving from the e-mailed reset link: tokens are in the URL fragment.
+    const hash = new URLSearchParams(window.location.hash.slice(1));
+    if (hash.get('access_token') || hash.get('error')) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+    if (hash.get('error')) {
+      showAuthView('forgot');
+      setAuthMessage('Ce lien est invalide ou a expiré. Demandez-en un nouveau.');
+      return;
+    }
+    if (hash.get('access_token') && hash.get('type') === 'recovery') {
+      saveSession({
+        access_token: hash.get('access_token'),
+        refresh_token: hash.get('refresh_token'),
+        expires_in: hash.get('expires_in')
+      });
+      try {
+        const user = await authRequest('user', { method: 'GET', token: SESSION.access_token });
+        saveSession({ ...SESSION, email: user.email });
+        showAuthView('reset');
+      } catch (_) {
+        endSession('Ce lien est invalide ou a expiré. Demandez-en un nouveau.');
+      }
+      return;
+    }
+
+    const stored = readStoredSession();
+    if (stored?.refresh_token) {
+      SESSION = stored;
+      try { await enterApp(); } catch (_) { endSession(); }
+    }
+  })();
+
+  // ===== TABS =====
+  function showTab(name) {
+    for (const t of ['apps', 'messages']) {
+      document.getElementById(`tab-${t}`).hidden = t !== name;
+      document.getElementById(`tab-btn-${t}`).classList.toggle('active', t === name);
+    }
   }
 
-  function authHeaders() {
-    return {
-      'Content-Type': 'application/json',
-      'apikey': SUPABASE_ANON,
-      'Authorization': `Bearer ${SESSION.access_token}`
-    };
-  }
-
-  // ===== LOAD DATA =====
+  // ===== LOAD APPLICATIONS =====
   async function loadApplications() {
     try {
-      const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/partner_applications?select=*&order=created_at.desc`,
-        { headers: authHeaders() }
-      );
+      const res = await api('partner_applications?select=*&order=created_at.desc');
+      if (!res.ok) throw new Error(`Erreur ${res.status}`);
       allApps = await res.json();
       updateStats();
       renderTable();
     } catch (err) {
       document.getElementById('apps-tbody').innerHTML =
-        `<tr><td colspan="7" class="empty-state"><div>❌ Erreur de chargement: ${err.message}</div></td></tr>`;
+        `<tr><td colspan="7" class="empty-state">Erreur de chargement : ${escHtml(err.message)}</td></tr>`;
     }
   }
 
   function updateStats() {
+    const count = (s) => allApps.filter(a => a.status === s).length;
     document.getElementById('stat-total').textContent    = allApps.length;
-    document.getElementById('stat-pending').textContent  = allApps.filter(a => a.status === 'pending').length;
-    document.getElementById('stat-approved').textContent = allApps.filter(a => a.status === 'approved').length;
-    document.getElementById('stat-rejected').textContent = allApps.filter(a => a.status === 'rejected').length;
+    document.getElementById('stat-pending').textContent  = count('pending');
+    document.getElementById('stat-approved').textContent = count('approved');
+    document.getElementById('stat-rejected').textContent = count('rejected');
+    document.getElementById('count-apps').textContent = count('pending') || '';
   }
 
   // ===== FILTER & SEARCH =====
@@ -469,7 +662,6 @@
     currentSearch = val.toLowerCase();
     renderTable();
   }
-
   function getFiltered() {
     return allApps.filter(a => {
       const matchFilter = currentFilter === 'all' || a.status === currentFilter;
@@ -484,102 +676,113 @@
   const profileLabels = { smma:'Agence SMMA', consultant:'Consultant', freelance:'Freelance', influencer:'Influenceur', other:'Autre' };
   const statusLabels  = { pending:'En attente', approved:'Approuvé', rejected:'Rejeté', contacted:'Contacté' };
   const clientsLabels = { '1-5':'1 à 5', '5-20':'5 à 20', '20-50':'20 à 50', '50+':'50+' };
+  const safeClass = (v, known, fallback) => (v in known ? v : fallback);
 
   function renderTable() {
     const apps = getFiltered();
     const tbody = document.getElementById('apps-tbody');
     if (apps.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="7" class="empty-state"><div class="emoji">🔍</div><div>Aucune candidature${currentFilter !== 'all' ? ' dans cette catégorie' : ''}</div></td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="7" class="empty-state">Aucune candidature${currentFilter !== 'all' ? ' dans cette catégorie' : ''}</td></tr>`;
       return;
     }
     tbody.innerHTML = apps.map(a => {
-      const profileClass = `profile-${a.profile_type || 'other'}`;
-      const statusClass  = `status-${a.status || 'pending'}`;
+      const profileClass = `profile-${safeClass(a.profile_type, profileLabels, 'other')}`;
+      const statusClass  = `status-${safeClass(a.status, statusLabels, 'pending')}`;
       const dateStr = a.created_at ? new Date(a.created_at).toLocaleDateString('fr-FR', { day:'2-digit', month:'short', year:'numeric' }) : '—';
       const codeCell = a.referral_code
-        ? `<span class="referral-code-cell">${a.referral_code}</span>`
+        ? `<span class="referral-code-cell">${escHtml(a.referral_code)}</span>`
         : `<span class="no-code">Non généré</span>`;
-      const actionBtns = buildActionBtns(a);
       return `
         <tr>
           <td>
             <div class="applicant-name">${escHtml(a.full_name || '—')}</div>
             <div class="applicant-email">${escHtml(a.email || '—')}</div>
           </td>
-          <td><span class="profile-tag ${profileClass}">${profileLabels[a.profile_type] || a.profile_type || '—'}</span></td>
-          <td><span class="clients-badge">${clientsLabels[a.potential_clients] || a.potential_clients || '—'} clients</span></td>
-          <td><span class="status-badge ${statusClass}">${statusLabels[a.status] || a.status || '—'}</span></td>
+          <td><span class="profile-tag ${profileClass}">${escHtml(profileLabels[a.profile_type] || a.profile_type || '—')}</span></td>
+          <td><span class="clients-badge">${escHtml(clientsLabels[a.potential_clients] || a.potential_clients || '—')} clients</span></td>
+          <td><span class="status-badge ${statusClass}">${escHtml(statusLabels[a.status] || a.status || '—')}</span></td>
           <td>${codeCell}</td>
           <td class="date-cell">${dateStr}</td>
-          <td><div class="action-btns">${actionBtns}</div></td>
+          <td><div class="action-btns">${buildActionBtns(a)}</div></td>
         </tr>`;
     }).join('');
   }
 
+  // Row actions are wired by data attributes, so no database value ends up inside inline JS.
   function buildActionBtns(a) {
-    let btns = `<button class="btn-view" onclick="openModal('${a.id}')">Détails</button>`;
+    const id = escHtml(a.id);
+    let btns = `<button class="btn-view" data-action="view" data-id="${id}">Détails</button>`;
     if (a.status === 'pending') {
-      btns += `<button class="btn-approve" onclick="approveApp('${a.id}')">✓ Approuver</button>`;
-      btns += `<button class="btn-reject"  onclick="rejectApp('${a.id}')">✗ Rejeter</button>`;
+      btns += `<button class="btn-approve" data-action="approve" data-id="${id}">✓ Approuver</button>`;
+      btns += `<button class="btn-reject" data-action="reject" data-id="${id}">✗ Rejeter</button>`;
     }
     if (a.status === 'approved' && a.referral_code) {
-      btns += `<button class="btn-copy-link" onclick="copyRawLink('${a.referral_code}')">📋 Copier lien</button>`;
+      btns += `<button class="btn-copy-link" data-action="copy" data-id="${id}">Copier le lien</button>`;
     }
     return btns;
   }
 
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    if (btn.dataset.action === 'view') openModal(id);
+    if (btn.dataset.action === 'approve') approveApp(id);
+    if (btn.dataset.action === 'reject') rejectApp(id);
+    if (btn.dataset.action === 'copy') {
+      const a = allApps.find(x => x.id === id);
+      if (a) copyText(`${PARTNER_DASHBOARD_BASE}?code=${encodeURIComponent(a.referral_code)}`);
+    }
+  });
+
   // ===== APPROVE / REJECT =====
   function generateReferralCode() {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let code = 'LQ';
-    for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
-    return code;
+    const bytes = crypto.getRandomValues(new Uint8Array(8));
+    return 'LQ' + Array.from(bytes, b => chars[b % chars.length]).join('');
+  }
+
+  async function patchApp(id, body) {
+    const res = await api(`partner_applications?id=eq.${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      // return=representation: an update blocked by access rules returns zero rows instead of a silent success.
+      headers: { 'Prefer': 'return=representation' },
+      body: JSON.stringify(body)
+    });
+    const rows = res.ok ? await res.json() : [];
+    if (!res.ok || rows.length === 0) throw new Error("La modification n'a pas été enregistrée.");
+    const idx = allApps.findIndex(a => a.id === id);
+    if (idx !== -1) allApps[idx] = rows[0];
+    updateStats(); renderTable();
+    return rows[0];
+  }
+
+  function modalNotes(id) {
+    return currentModalId === id ? (document.getElementById('modal-notes').value || null) : undefined;
   }
 
   async function approveApp(id) {
-    const code = generateReferralCode();
-    const notes = document.getElementById('modal-notes')?.value || '';
     try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/partner_applications?id=eq.${id}`, {
-        method: 'PATCH',
-        headers: { ...authHeaders(), 'Prefer': 'return=minimal' },
-        body: JSON.stringify({
-          status: 'approved',
-          referral_code: code,
-          approved_at: new Date().toISOString(),
-          admin_notes: notes || null
-        })
+      const row = await patchApp(id, {
+        status: 'approved',
+        referral_code: generateReferralCode(),
+        approved_at: new Date().toISOString(),
+        ...(modalNotes(id) !== undefined ? { admin_notes: modalNotes(id) } : {})
       });
-      if (!res.ok) throw new Error('Erreur lors de l\'approbation');
-      // Update local state
-      const idx = allApps.findIndex(a => a.id === id);
-      if (idx !== -1) {
-        allApps[idx].status = 'approved';
-        allApps[idx].referral_code = code;
-        allApps[idx].approved_at = new Date().toISOString();
-      }
-      updateStats(); renderTable();
-      showToast(`✅ Partenaire approuvé — Code: ${code}`);
-      // If modal is open for this app, update it
+      showToast(`Partenaire approuvé — code ${row.referral_code}`);
       if (currentModalId === id) openModal(id);
-    } catch (err) { showToast('❌ ' + err.message); }
+    } catch (err) { showToast(err.message); }
   }
 
   async function rejectApp(id) {
-    const notes = document.getElementById('modal-notes')?.value || '';
     try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/partner_applications?id=eq.${id}`, {
-        method: 'PATCH',
-        headers: { ...authHeaders(), 'Prefer': 'return=minimal' },
-        body: JSON.stringify({ status: 'rejected', admin_notes: notes || null })
+      await patchApp(id, {
+        status: 'rejected',
+        ...(modalNotes(id) !== undefined ? { admin_notes: modalNotes(id) } : {})
       });
-      if (!res.ok) throw new Error('Erreur lors du rejet');
-      const idx = allApps.findIndex(a => a.id === id);
-      if (idx !== -1) allApps[idx].status = 'rejected';
-      updateStats(); renderTable();
       showToast('Candidature rejetée.');
       closeModal();
-    } catch (err) { showToast('❌ ' + err.message); }
+    } catch (err) { showToast(err.message); }
   }
 
   // ===== MODAL =====
@@ -587,7 +790,7 @@
     const a = allApps.find(x => x.id === id);
     if (!a) return;
     currentModalId = id;
-    document.getElementById('modal-title').textContent = `Candidature — ${a.full_name}`;
+    document.getElementById('modal-title').textContent   = `Candidature — ${a.full_name || ''}`;
     document.getElementById('modal-name').textContent    = a.full_name || '—';
     document.getElementById('modal-email').textContent   = a.email || '—';
     document.getElementById('modal-phone').textContent   = a.phone || '—';
@@ -597,24 +800,22 @@
     document.getElementById('modal-date').textContent    = a.created_at ? new Date(a.created_at).toLocaleString('fr-FR') : '—';
     document.getElementById('modal-notes').value         = a.admin_notes || '';
 
-    // Referral link section
     const refWrap = document.getElementById('modal-referral-wrap');
     if (a.status === 'approved' && a.referral_code) {
-      const url = `${PARTNER_DASHBOARD_BASE}?code=${a.referral_code}`;
-      document.getElementById('modal-ref-link').textContent = url;
+      document.getElementById('modal-ref-link').textContent = `${PARTNER_DASHBOARD_BASE}?code=${encodeURIComponent(a.referral_code)}`;
       refWrap.style.display = 'block';
     } else {
       refWrap.style.display = 'none';
     }
 
-    // Action buttons in modal
     const actDiv = document.getElementById('modal-actions');
     if (a.status === 'pending') {
+      const safeId = escHtml(id);
       actDiv.innerHTML = `
-        <button class="btn-reject"  onclick="rejectApp('${id}')">✗ Rejeter</button>
-        <button class="btn-approve" onclick="approveApp('${id}')">✓ Approuver & Générer lien</button>`;
+        <button class="btn-reject" data-action="reject" data-id="${safeId}">✗ Rejeter</button>
+        <button class="btn-approve" data-action="approve" data-id="${safeId}">✓ Approuver et générer le lien</button>`;
     } else {
-      actDiv.innerHTML = `<div style="font-size:0.85rem;color:var(--text2)">Statut : <strong>${statusLabels[a.status]}</strong>${a.approved_at ? ' le ' + new Date(a.approved_at).toLocaleDateString('fr-FR') : ''}</div>`;
+      actDiv.innerHTML = `<div style="font-size:0.85rem;color:var(--text2)">Statut : <strong>${escHtml(statusLabels[a.status] || a.status || '—')}</strong>${a.approved_at ? ' le ' + new Date(a.approved_at).toLocaleDateString('fr-FR') : ''}</div>`;
     }
 
     document.getElementById('detail-modal').classList.add('open');
@@ -627,28 +828,60 @@
   document.getElementById('detail-modal').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) closeModal();
   });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // ===== CONTACT MESSAGES =====
+  async function loadMessages() {
+    const list = document.getElementById('messages-list');
+    try {
+      const res = await api('nexapro_contact_messages?select=id,created_at,first_name,last_name,email,company,profile,message&order=created_at.desc&limit=200');
+      if (!res.ok) throw new Error(`Erreur ${res.status}`);
+      allMessages = await res.json();
+      document.getElementById('count-messages').textContent = allMessages.length || '';
+      if (allMessages.length === 0) {
+        list.innerHTML = `<div class="empty-state">Aucun message reçu pour l'instant.</div>`;
+        return;
+      }
+      list.innerHTML = allMessages.map(m => `
+        <article class="message-card">
+          <header>
+            <div>
+              <div class="applicant-name">${escHtml(`${m.first_name} ${m.last_name}`)} <span class="message-company">· ${escHtml(m.company)}</span></div>
+              <a class="applicant-email" href="mailto:${escHtml(m.email)}">${escHtml(m.email)}</a>
+            </div>
+            <div class="date-cell">${new Date(m.created_at).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' })}</div>
+          </header>
+          <p>${escHtml(m.message)}</p>
+        </article>`).join('');
+    } catch (err) {
+      list.innerHTML = `<div class="empty-state">Erreur de chargement : ${escHtml(err.message)}</div>`;
+    }
+  }
 
   // ===== COPY =====
-  function copyLink(elementId) {
-    const txt = document.getElementById(elementId).textContent;
-    navigator.clipboard.writeText(txt).then(() => showToast('🔗 Lien copié !'));
+  function copyText(txt) {
+    navigator.clipboard.writeText(txt).then(
+      () => showToast('Lien copié.'),
+      () => showToast('Copie impossible. Sélectionnez le lien à la main.')
+    );
   }
-  function copyRawLink(code) {
-    const url = `${PARTNER_DASHBOARD_BASE}?code=${code}`;
-    navigator.clipboard.writeText(url).then(() => showToast('🔗 Lien copié !'));
+  function copyLink(elementId) {
+    copyText(document.getElementById(elementId).textContent);
   }
 
   // ===== TOAST =====
+  let toastTimer;
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3500);
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
   }
 
   // ===== UTILS =====
   function escHtml(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 </script>
 </body>
