@@ -2808,31 +2808,31 @@
       </div>
       
       <div class="contact-right">
-        <form id="contactForm" onsubmit="handleSubmit(event);">
+        <form id="contactForm">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Prénom</label>
-              <input type="text" class="form-input" placeholder="Jean" required>
+              <input type="text" name="firstName" class="form-input" placeholder="Jean" autocomplete="given-name" required>
             </div>
             <div class="form-group">
               <label class="form-label">Nom</label>
-              <input type="text" class="form-input" placeholder="Dupont" required>
+              <input type="text" name="lastName" class="form-input" placeholder="Dupont" autocomplete="family-name" required>
             </div>
           </div>
           
           <div class="form-group">
             <label class="form-label">Email professionnel</label>
-            <input type="email" class="form-input" placeholder="jean@entreprise.com" required>
+            <input type="email" name="email" class="form-input" placeholder="jean@entreprise.com" autocomplete="email" required>
           </div>
           
           <div class="form-group">
             <label class="form-label">Entreprise</label>
-            <input type="text" class="form-input" placeholder="TechCorp SAS" required>
+            <input type="text" name="company" class="form-input" placeholder="TechCorp SAS" autocomplete="organization" required>
           </div>
           
           <div class="form-group">
             <label class="form-label">Votre profil</label>
-            <select class="form-select" required>
+            <select name="profile" class="form-select" required>
               <option value="">Sélectionnez...</option>
               <option value="ceo">CEO / Fondateur</option>
               <option value="sales">Directeur Commercial</option>
@@ -2845,7 +2845,7 @@
           
           <div class="form-group">
             <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Décrivez vos enjeux et objectifs..." required></textarea>
+            <textarea name="message" class="form-textarea" placeholder="Décrivez vos enjeux et objectifs..." minlength="10" maxlength="2000" required></textarea>
           </div>
           
           <button type="submit" class="btn-submit" id="submitBtn">Envoyer votre demande</button>
@@ -2932,8 +2932,6 @@
   </div>
 </footer>
 
-<!-- À connecter à un backend ou service tiers pour les formulaires de contact -->
-<!-- Exemples : Formspree, Netlify Forms, Getform, etc. -->
 
 <script>
   // Arriving from another page with /#section: the native jump fires before layout settles
@@ -3031,36 +3029,6 @@
 
   if (metricsSection) metricsObserver.observe(metricsSection);
 
-  // Contact form handler
-  function handleSubmit(event) {
-    event.preventDefault();
-    
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const originalText = submitBtn.textContent;
-    
-    // Simulate form submission
-    submitBtn.textContent = 'Envoi en cours...';
-    submitBtn.disabled = true;
-    
-    setTimeout(() => {
-      submitBtn.textContent = 'Message envoyé ✓';
-      submitBtn.style.background = '#10b981';
-      
-      // Reset form
-      form.reset();
-      
-      // Reset button after 3 seconds
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-      }, 3000);
-    }, 1500);
-  }
-
-  // Make function global
-  window.handleSubmit = handleSubmit;
 
   // Simplified counter animations for mission section
   try {
@@ -3173,8 +3141,7 @@
   });
 
   // Formulaire de contact fonctionnel avec Edge Function Supabase
-  const EDGE_FUNCTION_URL = "https://[TON-PROJECT-REF].supabase.co/functions/v1/add-lead";
-  const NEXAPRO_API_KEY = "[NEXAPRO_API_KEY_PUBLIQUE]";
+  const EDGE_FUNCTION_URL = "https://rscjrpisvorapbopagox.supabase.co/functions/v1/add-lead";
 
   async function handleContactSubmit(e) {
     e.preventDefault();
@@ -3224,10 +3191,7 @@
     try {
       const response = await fetch(EDGE_FUNCTION_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': NEXAPRO_API_KEY,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(fields),
       });
 
@@ -3256,7 +3220,7 @@
       }
     } catch (err) {
       const errorEl = document.createElement('div');
-      errorEl.textContent = err.message || 'Erreur. Contactez-nous à contact@nexapro.dev';
+      errorEl.textContent = (err instanceof TypeError) ? 'Envoi impossible. Écrivez-nous à contact@nexapro.dev' : (err.message || 'Erreur. Écrivez-nous à contact@nexapro.dev');
       errorEl.style.cssText = `
         background: rgba(239,68,68,0.1);
         border: 1px solid rgba(239,68,68,0.3);
@@ -3271,7 +3235,7 @@
       setTimeout(() => errorEl.remove(), 5000);
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer →';
+      submitBtn.textContent = 'Envoyer votre demande';
       submitBtn.style.opacity = '1';
     }
   }
