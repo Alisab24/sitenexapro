@@ -1,6 +1,6 @@
 // BNLsoft — Suivi des activations & révocation à distance (NexaPro)
 // =================================================================
-// Version VERCEL (le site nexapro.tech étant statique, pas de PHP).
+// Version VERCEL (le site nexapro.dev étant statique, pas de PHP).
 //
 // INSTALLATION (une seule fois) :
 //  1. Dans le projet Vercel : onglet  Storage → Create Database →
@@ -10,7 +10,7 @@
 //  2. Copiez CE fichier dans votre dépôt du site :  api/activation.js
 //     (le dossier « api » à la racine, à côté de index.html).
 //  3. Poussez / redéployez. Test :
-//     https://nexapro.tech/api/activation?action=ping  →  {"ok":true}
+//     https://nexapro.dev/api/activation?action=ping  →  {"ok":true}
 //
 // Actions :
 //   ?action=ping&sig=..&poste=..&org=..&ver=..   (clients, automatique)

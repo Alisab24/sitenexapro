@@ -2,10 +2,10 @@
 
 ## 🏗️ Vue d'ensemble
 
-Cette architecture connecte le formulaire de contact de nexapro.tech directement au pipeline LeadQualif via une Edge Function Supabase sécurisée.
+Cette architecture connecte le formulaire de contact de nexapro.dev directement au pipeline LeadQualif via une Edge Function Supabase sécurisée.
 
 ```
-Formulaire nexapro.tech 
+Formulaire nexapro.dev 
   → POST Supabase Edge Function "add-lead" 
   → Validation + anti-spam + enrichissement 
   → INSERT table leads Supabase 
@@ -32,7 +32,7 @@ Formulaire nexapro.tech
 ## 🔐 Sécurité implémentée
 
 ### 1. **CORS restrictif**
-- Origins autorisées : `https://nexapro.tech`, `https://www.nexapro.tech`
+- Origins autorisées : `https://nexapro.dev`, `https://nexapro.dev`
 - Méthodes autorisées : `POST, OPTIONS`
 - Headers autorisés : `Content-Type, x-api-key`
 
@@ -60,7 +60,7 @@ Formulaire nexapro.tech
 
 ### 1. **Soumission du formulaire**
 ```javascript
-// Frontend (nexapro.tech)
+// Frontend (nexapro.dev)
 const response = await fetch(EDGE_FUNCTION_URL, {
   method: 'POST',
   headers: {
@@ -190,7 +190,7 @@ curl -i --location --request POST \
   'https://[PROJECT-REF].supabase.co/functions/v1/add-lead' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: [NEXAPRO_API_KEY]' \
-  --header 'Origin: https://nexapro.tech' \
+  --header 'Origin: https://nexapro.dev' \
   --data '{
     "firstName": "Jean",
     "lastName": "Test",
@@ -208,7 +208,7 @@ curl -i --location --request POST \
 - [ ] La Edge Function rejette les origines non listées dans ALLOWED_ORIGINS
 - [ ] Le honeypot est invisible dans le DOM (position absolute, hors écran)
 - [ ] Le rate limiting bloque après 5 soumissions par IP par heure
-- [ ] Les leads créés depuis nexapro.tech ont source="nexapro-website" dans Supabase
+- [ ] Les leads créés depuis nexapro.dev ont source="nexapro-website" dans Supabase
 - [ ] RLS est activé sur la table leads
 - [ ] Le fichier .env.local est dans .gitignore
 - [ ] Le formulaire affiche un message de succès sans révéler d'infos techniques

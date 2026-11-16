@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /leadqualif/admin/
+Disallow: /partner-admin-panel.html
+Disallow: /partner-dashboard.html
+
+Sitemap: https://nexapro.dev/sitemap.xml

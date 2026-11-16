@@ -25,7 +25,7 @@ curl -i --location --request POST \
   'http://localhost:54321/functions/v1/add-lead' \
   --header 'Content-Type: application/json' \
   --header 'x-api-key: [NEXAPRO_API_KEY]' \
-  --header 'Origin: https://nexapro.tech' \
+  --header 'Origin: https://nexapro.dev' \
   --data '{
     "firstName": "Jean",
     "lastName": "Test",
